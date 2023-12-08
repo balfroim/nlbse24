@@ -6,7 +6,8 @@ import pandas as pd
 from models.method import Method, OrderedMethod
 from models.changed_line import ChangedLine
 
-from constants.paths import DATASET_PATH
+from constants.paths import DATASET_PATH, QUERIES_MIDDLE_PATH
+from constants.code import EXTRACT_METHODS_QLL
 from models.bug import Bug
 import logging
 import contextlib
@@ -103,6 +104,15 @@ def fail_tour(error, reason):
             "error_message": str(error)
         }
 
+# if codeql not exists raise exception
+if not os.path.exists("./codeql"):
+    raise Exception("CodeQL not found. Please install CodeQL (See https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli)")
+
+os.makedirs(os.path.join(*QUERIES_MIDDLE_PATH), exist_ok=True)
+os.makedirs("./stacktraces", exist_ok=True)
+
+if not os.path.exists(os.path.join(*QUERIES_MIDDLE_PATH, "method_extract.qll")):
+    CommandRunner.write_to_file(os.path.join(*QUERIES_MIDDLE_PATH, "method_extract.qll"), EXTRACT_METHODS_QLL)
 
 for bug in bugs:
     if os.path.exists(bug.project.STACKTRACE_PATH):
