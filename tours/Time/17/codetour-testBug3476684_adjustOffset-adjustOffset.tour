@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testBug3476684_adjustOffset to adjustOffset",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/TestDateTimeZoneCutover.java",
+      "description": "This code snippet appears to be a method named add, which is likely part of a class related to date and time manipulation. The method seems to be overriding a superclass algorithm to handle the addition of a value to a date or time field within a ReadablePartial object.\n\nThe method takes four parameters: a ReadablePartial object, a field index, an array of values, and the value to add. It then performs the addition operation based on the provided parameters.\n\nThe method first checks if the value to add is zero, in which case it simply returns the original values array.\n\nIf the date is contiguous (meaning the fields are continuous, such as in a month-day combination), the method calculates the new instant based on the partial fields and then adds the specified value. It then returns the updated values array based on the chronology.\n\nIf the date is not contiguous, it delegates the addition operation to the superclass implementation.\n\nOverall, this method seems to provide a specialized way to handle the addition of values to date and time fields within a partial date representation, ensuring proper handling of different field types and chronologies.",
+      "line": 1263
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTime.java",
+      "description": "This code snippet appears to be a method named withLaterOffsetAtOverlap within a class related to date and time manipulation, possibly a subclass of ZonedDateTime. The method is designed to return a copy of the ZonedDateTime object with the zone offset adjusted to the later of the two valid offsets at a local time-line overlap.\n\nIn the case of a local time-line overlap, such as during an autumn daylight savings transition, where there are two valid offsets for the local date-time, this method ensures that the returned ZonedDateTime has the later of the two offsets selected.\n\nIf the method is called when there is no overlap, the original ZonedDateTime is returned unchanged.\n\nThe method operates immutably, meaning it does not modify the original ZonedDateTime instance but instead returns a new instance with the adjusted offset.\n\nOverall, this method provides a way to handle local time-line overlaps and ensure that the correct offset is selected, maintaining the integrity of the date-time representation.",
+      "line": 687
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTimeZone.java",
+      "description": "This code snippet appears to be a method named adjustOffset within a class related to date and time manipulation. The method is designed to adjust the offset of a given instant to be either the earlier or later one during an overlap in the time zone.\n\nThe method takes two parameters: the instant to adjust and a boolean flag indicating whether to adjust to the earlier or later offset. It then performs a series of calculations to determine the appropriate adjustment.\n\nFirst, it evaluates the instants three hours before and after the given instant to determine if there is an overlap in the local times. If the local times before and after are the same, it indicates that there is no overlap, and the original instant is returned.\n\nIf there is an overlap, the method works out the range of instants that have duplicate local times and calculates the adjusted instant based on the specified earlier or later offset.\n\nThe method seems to handle the complexities of time zone transitions, ensuring that the correct offset is applied to the given instant, taking into account any overlaps in the local time representation.\n\nOverall, this method provides a way to handle time zone transitions and adjust the offset of an instant to the appropriate value during overlaps, ensuring accurate time calculations.",
+      "line": 1180
+    }
+  ],
+  "ref": "D4J_Time_17_BUGGY_VERSION"
+}

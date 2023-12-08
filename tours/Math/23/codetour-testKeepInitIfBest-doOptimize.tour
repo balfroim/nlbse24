@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testKeepInitIfBest to doOptimize",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/math3/optimization/univariate/BrentOptimizerTest.java",
+      "description": "The code snippet provided is a unit test written in Java using the JUnit testing framework. The test method `testKeepInitIfBest` is designed to verify the behavior of a mathematical optimization algorithm, specifically the BrentOptimizer, in a specific scenario.\n\nThe test sets up a mathematical function `f` and an optimizer `optimizer` with certain parameters. It then performs an optimization using the `optimizer.optimize` method and checks whether the best point is reported correctly by comparing the function values at the obtained solution and the expected initial guess.\n\nThe test uses assertions to verify that the reported best point has a lower or equal function value compared to the expected initial guess. If the assertion fails, it means that the best point was not reported correctly, and the test fails with the message \"Best point not reported.\"\n\nThe commented-out lines in the test method seem to be for debugging purposes, providing additional information about the evaluation process and function values.\n\nOverall, this test is checking the correctness of the optimization algorithm in reporting the best point, and it seems to be related to a specific issue (MATH-855) that the algorithm had prior to its resolution.",
+      "line": 222
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math3/optimization/univariate/BaseAbstractUnivariateOptimizer.java",
+      "description": "The provided code snippet appears to be a method named `optimize` within a class that implements the optimization algorithm. The method is responsible for performing the optimization of a univariate function within a specified range.\n\nThe method takes in parameters such as the maximum number of evaluations, the univariate function to be optimized, the optimization goal type (minimize or maximize), the minimum and maximum values for the search range, and the starting value for the optimization.\n\nBefore proceeding with the optimization, the method performs some checks to ensure that the function and goal type are not null. If either of them is null, a NullArgumentException is thrown.\n\nAfter the checks, the method sets the search range, starting value, goal type, and function for the optimization. It also resets the evaluation count to prepare for the computation.\n\nFinally, the method calls the `doOptimize` method to perform the actual computation and returns the result as a `UnivariatePointValuePair`, which likely contains the optimized point and its function value.\n\nOverall, this method serves as an entry point for performing univariate function optimization and encapsulates the necessary setup and computation logic for the optimization process.",
+      "line": 135
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java",
+      "description": "This code snippet appears to be an implementation of the Brent optimization algorithm for univariate function optimization. The `doOptimize` method is responsible for performing the optimization and finding the optimal point for the given univariate function within a specified range.\n\nThe method initializes various variables and performs the optimization using a combination of parabolic interpolation and golden section steps. It iteratively refines the search interval and the current best point based on the function values at different points within the interval.\n\nThe method also incorporates a convergence checker to determine if the optimization has converged based on user-defined criteria. If the convergence condition is met, the method returns the best point encountered during the optimization process.\n\nOverall, this code snippet represents the core logic of the Brent optimization algorithm, which aims to efficiently find the optimal point for a univariate function by iteratively narrowing down the search interval and updating the best point based on function evaluations.",
+      "line": 281
+    }
+  ],
+  "ref": "D4J_Math_23_BUGGY_VERSION"
+}

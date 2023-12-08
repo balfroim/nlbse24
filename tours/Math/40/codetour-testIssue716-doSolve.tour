@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testIssue716 to doSolve",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolverTest.java",
+      "description": "The second code snippet appears to be a test method for a mathematical solver. It creates an instance of the BracketingNthOrderBrentSolver, which is a numerical analysis class used to find roots of real-valued functions. The test method defines a UnivariateFunction, sharpTurn, and then uses the solver to find a root of this function within a specified interval. The test then makes assertions to validate the result of the solver.\n\nThe test seems to be checking if the solver can accurately find the root of the sharpTurn function within the given parameters and constraints. The test checks if the function value at the result is close to 0, if the function value at the result is greater than or equal to 0, and if the result is approximately -0.5.\n\nThe error message \"org.apache.commons.math.exception.TooManyEvaluationsException\" suggests that the solver exceeded the maximum number of function evaluations allowed (100 in this case). This could be due to the complexity of the function or the chosen parameters for the solver. It may be necessary to review the function, solver parameters, and constraints to ensure the solver can converge within the specified limits.",
+      "line": 97
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java",
+      "description": "The provided code snippet appears to be a method for solving a mathematical problem. The method signature indicates that it takes in parameters such as the maximum number of evaluations, a function, minimum and maximum values, and a starting value. It seems to be a part of a mathematical solver or optimization algorithm.\n\nThe method initializes the solver with the specified parameters and then performs the computation to solve the problem. The actual computation logic is abstracted and not visible in the provided snippet.\n\nIt's important to note that the code snippet is incomplete, and the context of the method is not fully clear. Without additional context or the implementation details of the \"doSolve\" method, it's challenging to provide a more detailed explanation.",
+      "line": 191
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java",
+      "description": "The provided code snippet appears to be an implementation of a numerical algorithm for solving a mathematical problem, possibly related to root finding or optimization. The method \"doSolve\" seems to be a core part of the algorithm, responsible for iteratively narrowing down the interval to locate the root of a function.\n\nThe method initializes arrays to store points and values, evaluates the function at initial points, and then proceeds with a search loop to iteratively refine the bracketing interval containing the root. It uses various strategies such as inverse polynomial interpolation and bisection to guess the root and update the bracketing interval.\n\nThe method also handles scenarios where the function value crosses zero within the interval, and it adjusts the interval boundaries accordingly. It checks for convergence and determines the appropriate solution based on the allowed side (left, right, any, below, or above) for the root.\n\nOverall, the method seems to be a complex and detailed implementation of a numerical algorithm for finding roots of a function within a specified interval. It involves careful management of bracketing intervals and employs multiple strategies to converge towards the root.\n\nIt's important to note that the code snippet is quite extensive and involves intricate numerical computation and algorithmic logic. The specific details of the mathematical problem being solved and the context of its usage would",
+      "line": 345
+    }
+  ],
+  "ref": "D4J_Math_40_BUGGY_VERSION"
+}

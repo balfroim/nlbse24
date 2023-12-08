@@ -1,0 +1,37 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testXYAutoRange1 to getDataRange",
+  "steps": [
+    {
+      "file": "/source/org/jfree/chart/ChartFactory.java",
+      "description": "This code snippet is a method for creating a scatter plot using JFreeChart library in Java. The method takes several parameters such as title, axis labels, dataset, plot orientation, legend, tooltips, and URLs to customize the scatter plot.\n\nThe method initializes the X and Y axes with labels, and sets their range to exclude zero. It then creates an XYPlot with the provided dataset, X and Y axes, and sets the orientation. Additionally, it configures tooltip and URL generators based on the provided flags for tooltips and URLs.\n\nA renderer is set for the plot to control the visual representation of the data points, and a JFreeChart object is created with the specified title, plot, and legend. Finally, the method applies a theme to the chart and returns the created scatter plot.",
+      "line": 1512
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/XYPlot.java",
+      "description": "This code snippet is a constructor for an XYPlot, which is a component of a chart in the JFreeChart library. The constructor initializes the plot with the specified dataset, domain axis, range axis, and renderer.\n\nThe constructor sets default values for various plot attributes such as orientation, weight, axis offsets, gridlines, markers, and crosshairs. It also initializes storage for datasets, axes, renderers, and other related mappings.\n\nAdditionally, the constructor configures the provided dataset, domain axis, range axis, and renderer, and sets up change listeners for them. It also configures gridlines, minor gridlines, zero baselines, and crosshairs for both domain and range axes.\n\nOverall, this constructor sets up the initial state of the XYPlot and prepares it to be used in creating a chart with the specified dataset, axes, and renderer.",
+      "line": 710
+    },
+    {
+      "file": "/source/org/jfree/chart/axis/Axis.java",
+      "description": "This code snippet is a method within a class that sets a reference to the plot that the axis is assigned to. It takes a Plot object as a parameter and assigns it to the internal plot variable. Additionally, it calls a configure method, which likely sets up the axis based on its association with the plot.\n\nThe method is marked as being used internally, meaning it's intended for internal use and not to be called directly by external code. It's part of the internal workings of the axis and plot interaction, and external users of this class should not need to call this method directly.\n\nIn summary, this method is used to establish the association between an axis and a plot, and it triggers necessary configurations based on this association.",
+      "line": 1045
+    },
+    {
+      "file": "/source/org/jfree/chart/axis/NumberAxis.java",
+      "description": "This code snippet shows a method called \"configure\" within a class. The method is responsible for configuring the axis to work with a specified plot. If the axis has auto-scaling enabled, it adjusts the maximum and minimum values based on the data.\n\nThe method first checks if the axis has auto-scaling enabled using the \"isAutoRange\" method. If auto-scaling is enabled, it then proceeds to automatically adjust the range based on the available data using the \"autoAdjustRange\" method.\n\nIn summary, the \"configure\" method ensures that the axis is appropriately configured to work with the plot, and if auto-scaling is enabled, it adjusts the axis range dynamically based on the data.",
+      "line": 419
+    },
+    {
+      "file": "/source/org/jfree/chart/axis/NumberAxis.java",
+      "description": "This code snippet contains a method named \"autoAdjustRange\" which is responsible for automatically adjusting the axis range to ensure that all data is visible on the plot.\n\nThe method first obtains the associated plot and checks if it is an instance of ValueAxisPlot. If so, it retrieves the data range and adjusts it based on the specified range type (positive or negative) and whether the auto range includes zero.\n\nIt then handles scenarios such as fixed auto range, minimum range size, and sticky zero margins to ensure that the axis range is appropriately adjusted to accommodate the data and maintain visibility.\n\nIn summary, the \"autoAdjustRange\" method is crucial for dynamically adjusting the axis range based on the data and plot configuration to ensure that all data is visible within the plot.",
+      "line": 510
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/XYPlot.java",
+      "description": "This code snippet is a method that calculates and returns the data range for the specified axis in a chart. The method iterates through the datasets mapped to the axis, retrieves their bounds, and combines them to determine the overall range of data visible on the axis.\n\nIt first identifies whether the axis is a domain axis or a range axis, and then collects the datasets and annotations associated with it. It then iterates through the datasets, retrieves their renderer, and calculates the domain or range bounds based on the axis type. Additionally, it considers any annotations that should be included in the data bounds.\n\nAfter processing the datasets and annotations, the method returns the combined range of data for the specified axis.\n\nIn summary, this method is crucial for determining the visible data range on a specific axis in a chart, considering the datasets, renderers, and annotations associated with that axis.",
+      "line": 4519
+    }
+  ],
+  "ref": "D4J_Chart_4_BUGGY_VERSION"
+}

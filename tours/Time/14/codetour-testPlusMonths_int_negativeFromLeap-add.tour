@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testPlusMonths_int_negativeFromLeap to add",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/TestMonthDay_Basics.java",
+      "description": "The code snippet is a test method written in Java. It is testing the functionality of adding a negative number of months to a MonthDay object. \n\nIn this specific test, a MonthDay object is created with the date February 29th using the ISO chronology. Then, the test attempts to add -1 month to this date. The expected result is a MonthDay object representing January 29th using the same ISO chronology.\n\nHowever, the test has failed with the error message: org.joda.time.IllegalFieldValueException, and it has produced the following message: Value 29 for dayOfMonth must be in the range [1,28].\n\nThis error indicates that the code is attempting to create a date that is not valid in the given calendar system. In the ISO calendar system, February can only have up to 28 days, so the date February 29th is not valid. Therefore, the test is failing when trying to manipulate this invalid date.",
+      "line": 463
+    },
+    {
+      "file": "/src/main/java/org/joda/time/MonthDay.java",
+      "description": "This code snippet is a method from the MonthDay class in Java, which represents a combination of a month and a day without a year. The method is named plusMonths and is used to return a new MonthDay instance that is a copy of the original MonthDay with the specified number of months added.\n\nThe method takes an integer parameter 'months' which represents the number of months to add. It then returns a new MonthDay instance with the increased months. The method ensures that the original MonthDay instance remains immutable and unaffected by this operation.\n\nThe method also specifies that the month will wrap at the end of the year from December to January, and the day will be adjusted to the last valid value if necessary.\n\nAdditionally, the method provides examples of alternative ways to achieve the same effect using other methods available in the MonthDay class.\n\nOverall, this method provides a convenient way to manipulate MonthDay instances by adding or subtracting months while maintaining immutability and handling month and day adjustments.",
+      "line": 593
+    },
+    {
+      "file": "/src/main/java/org/joda/time/MonthDay.java",
+      "description": "This code snippet is a method from the MonthDay class in Java, which represents a combination of a month and a day without a year. The method is named withFieldAdded and is used to return a new MonthDay instance with the value of the specified field increased by a given amount.\n\nThe method takes two parameters: fieldType, which represents the type of field to add to (such as days or months), and amount, which is the amount to add to the specified field.\n\nThe method ensures that if the addition amount is zero, the original MonthDay instance is returned.\n\nThe method provides examples of equivalent lines of code to achieve the same effect using other methods available in the MonthDay class.\n\nInternally, the method calculates the new values for the MonthDay instance based on the specified field and amount. It then returns a new MonthDay instance with the updated field value.\n\nAdditionally, the method specifies that it may throw an IllegalArgumentException if the value is null or invalid, and an ArithmeticException if the new date-time exceeds the capacity.\n\nOverall, this method provides a way to manipulate specific fields (such as days or months) of a MonthDay instance by adding or subtracting values and returning a new instance with the updated field value.",
+      "line": 521
+    },
+    {
+      "file": "/src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java",
+      "description": "This code snippet appears to be a method named add, which is likely part of a class related to date and time manipulation. The method seems to be overriding a superclass algorithm to handle the addition of a value to a date or time field within a ReadablePartial object.\n\nThe method takes four parameters: a ReadablePartial object, a field index, an array of values, and the value to add. It then performs the addition operation based on the provided parameters.\n\nThe method first checks if the value to add is zero, in which case it simply returns the original values array.\n\nIf the date is contiguous (meaning the fields are continuous, such as in a month-day combination), the method calculates the new instant based on the partial fields and then adds the specified value. It then returns the updated values array based on the chronology.\n\nIf the date is not contiguous, it delegates the addition operation to the superclass implementation.\n\nOverall, this method seems to provide a specialized way to handle the addition of values to date and time fields within a partial date representation, ensuring proper handling of different field types and chronologies.",
+      "line": 220
+    }
+  ],
+  "ref": "D4J_Time_14_BUGGY_VERSION"
+}

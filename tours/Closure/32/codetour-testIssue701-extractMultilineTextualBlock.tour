@@ -1,0 +1,72 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testIssue701 to extractMultilineTextualBlock",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/Compiler.java",
+      "description": "This code snippet appears to be a method named `parseInputs` within a larger codebase. The method seems to be responsible for parsing external and main inputs, likely related to a JavaScript compiler or interpreter.\n\nThe method starts by checking if there are existing parse trees for external and main inputs, and detaches them if they exist. Then, it creates new synthetic root nodes for externs and main inputs.\n\nFollowing this, the method seems to handle parsing of externs sources, processing of modules, managing dependencies, and building the abstract syntax tree (AST) for the inputs. It also checks for certain conditions such as stale inputs, JSDocInfo annotations, and devMode checks.\n\nAdditionally, there are references to options, performance tracking, source map generation, and error handling throughout the method.\n\nOverall, the `parseInputs` method seems to be a crucial part of a JavaScript compiler or interpreter, responsible for handling various aspects of input parsing, module processing, and AST construction.",
+      "line": 1387
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/CompilerInput.java",
+      "description": "This code snippet is a method named `getAstRoot` that seems to be part of a larger codebase, possibly related to abstract syntax tree (AST) manipulation in a compiler or interpreter.\n\nThe method takes an `AbstractCompiler` instance as a parameter and calls the `getAstRoot` method on an object named `ast`. It then performs some checks on the obtained root node, ensuring that it is not null, is a script node, and has a non-null input ID. Finally, it returns the obtained root node.\n\nOverall, this method appears to be responsible for retrieving the AST root node from an `ast` object and performing necessary validations before returning the root node.",
+      "line": 123
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/JsAst.java",
+      "description": "This code snippet is a method named `getAstRoot` that appears to be part of a larger codebase, likely related to abstract syntax tree (AST) manipulation in a compiler or interpreter.\n\nThe method checks if the `root` node is null. If it is null, it calls the `parse` method with the `compiler` as a parameter to generate the AST and then sets the input ID for the root node. Finally, it returns the obtained or newly parsed root node.\n\nIn summary, the `getAstRoot` method is responsible for obtaining the AST root node. If the root node is null, it triggers the parsing process using the provided compiler and sets the input ID before returning the root node.",
+      "line": 56
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/JsAst.java",
+      "description": "This code snippet contains a private method named `parse` which seems to be part of a larger codebase, likely related to parsing and processing source files in a compiler or interpreter.\n\nThe `parse` method takes an `AbstractCompiler` instance as a parameter and attempts to parse a source file. It uses a `ParserRunner` to parse the source file's code, utilizing the compiler's configuration and error reporter. If an IOException occurs during parsing, it reports a read error to the compiler.\n\nAfter parsing, it checks if the `root` node is null or if the compiler has encountered halting errors. If so, it creates a dummy block node. Otherwise, it prepares the AST using the compiler and sets the source file for tracking purposes.\n\nIn summary, the `parse` method is responsible for parsing a source file, handling errors, preparing the AST, and setting the source file for further processing within the compiler or interpreter.",
+      "line": 105
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/ParserRunner.java",
+      "description": "This code snippet appears to be a static method named `parse` that is part of a larger codebase, likely related to parsing and processing JavaScript code.\n\nThe `parse` method takes a `StaticSourceFile`, source code string, configuration, error reporter, and logger as parameters. It uses the Rhino JavaScript engine to parse the given source code string into an abstract syntax tree (AST).\n\nWithin the method, it sets up the JavaScript parsing environment, including language version, error handling, and configuration options. It then utilizes a `Parser` to parse the source code string and handle any parsing exceptions. After parsing, it transforms the AST using an `IRFactory` and sets it as a synthetic block before returning the resulting AST node.\n\nIn summary, the `parse` method is responsible for parsing JavaScript source code into an AST, applying necessary transformations, and returning the resulting AST node.",
+      "line": 148
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet contains a static method named `transformTree` that seems to be part of a larger codebase, likely related to transforming an abstract syntax tree (AST) representation of JavaScript code.\n\nThe `transformTree` method takes an `AstRoot` node, a `StaticSourceFile`, source code string, configuration, and error reporter as parameters. It uses an `IRFactory` to transform the given AST node into a new representation.\n\nWithin the method, it initializes an `IRFactory` with the provided source string, source file, configuration, and error reporter. It then transforms the AST node using the `IRFactory` and handles comments associated with the node, including JSDoc comments and block comments. Finally, it sets the file overview JSDoc and returns the transformed node.\n\nIn summary, the `transformTree` method is responsible for transforming an AST node using an `IRFactory`, handling associated comments, setting file overview JSDoc, and returning the transformed node.",
+      "line": 189
+    },
+    {
+      "file": "/lib/rhino/src/org/mozilla/javascript/IRFactory.java",
+      "description": "This code snippet shows a method named `transform` that appears to be part of a larger codebase, likely related to transforming different types of nodes in an abstract syntax tree (AST) representation of JavaScript code.\n\nThe `transform` method takes an `AstNode` as input and uses a switch statement to handle different types of nodes. For each type of node, it calls a specific transformation method to convert the node into a different representation. For example, it transforms array comprehensions, array literals, blocks, function calls, loops, literals, names, numbers, objects, regular expressions, and various other constructs.\n\nThe method seems to cover a wide range of JavaScript language constructs and handles each type of node appropriately by calling the corresponding transformation method.\n\nIn summary, the `transform` method is responsible for converting different types of AST nodes into a different representation based on their specific JavaScript language constructs.",
+      "line": 220
+    },
+    {
+      "file": "/lib/rhino/src/org/mozilla/javascript/IRFactory.java",
+      "description": "This code snippet contains a method named `transformArrayComp` which seems to be part of a larger codebase, likely related to transforming an array comprehension node in an abstract syntax tree (AST) representation of JavaScript code.\n\nThe `transformArrayComp` method takes an `ArrayComprehension` node as input and performs a transformation on it. It appears to rewrite an array comprehension expression into a new representation. The method creates a scope node and defines a temporary array name. It then constructs a new array and initializes it within a block node. Subsequently, it transforms the array comprehension using a helper method and adds the transformed block and array name to the scope node before returning the transformed node.\n\nIn summary, the `transformArrayComp` method is responsible for transforming an array comprehension node into a new representation within the AST, involving the creation of a scope, temporary array name, block, and array initialization.",
+      "line": 264
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet contains a method named `handlePossibleFileOverviewJsDoc` which seems to be part of a larger codebase, likely related to processing JavaScript documentation comments within an abstract syntax tree (AST) representation.\n\nThe `handlePossibleFileOverviewJsDoc` method takes a `Comment` and an `Node` as input parameters. It creates a `JsDocInfoParser` using the provided comment and IR node, then adds the comment to a collection of parsed comments. Subsequently, it calls another method to handle the possible file overview JsDoc using the created JsDocInfoParser.\n\nIn summary, the `handlePossibleFileOverviewJsDoc` method is responsible for parsing and processing JavaScript documentation comments, specifically handling possible file overview JsDoc, and adding the parsed comments to a collection for further processing.",
+      "line": 258
+    },
+    {
+      "file": "/lib/rhino/src/org/mozilla/javascript/IRFactory.java",
+      "description": "This code snippet contains a method named `arrayCompTransformHelper` which seems to be part of a larger codebase, likely related to transforming an array comprehension node in an abstract syntax tree (AST) representation of JavaScript code.\n\nThe `arrayCompTransformHelper` method takes an `ArrayComprehension` node and an array name as input parameters. It appears to decompile and transform the array comprehension node, including its result, loops, and filter, into a new representation. The method involves generating code for the `push` operation on the temporary array, handling loop iterations, and building the body statement.\n\nThe method walks through the array comprehension loops, collecting and defining their iterator symbols, and then generates code for the `push` operation and the body statement. It also handles destructuring forms and adds the result to the call node.\n\nIn summary, the `arrayCompTransformHelper` method is responsible for decompiling and transforming an array comprehension node, including its loops and filter, into a new representation within the AST.",
+      "line": 359
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "In this code snippet, the `createJsDocInfoParser` method is defined. This method is responsible for creating a JsDocInfoParser and parsing a JsDoc string. It is used for handling individual JSDoc comments as well as file-level JSDoc comments such as `@fileoverview` and `@license`.\n\nThe method takes a `Comment` node and an `irNode` as input parameters. It extracts the comment content, line number, and position information from the node. Then, it creates a JsDocInfoParser and initializes it with a JsDocTokenStream, which represents the content of the comment without the initial '/**'. The JsDocInfoParser is configured with the provided parameters, including the configuration and error reporter. After initialization, it parses the JsDoc content.\n\nIn summary, the `createJsDocInfoParser` method encapsulates the logic for creating a JsDocInfoParser, parsing JsDoc content, and handling both individual and file-level JSDoc comments within a JavaScript codebase.",
+      "line": 357
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet contains a method named `parse` which is responsible for parsing a JSDoc comment. The method reads tokens from a JsDocTokenStream until the end of the comment is reached. It handles various JSDoc annotations and their associated information, such as `@param`, `@return`, `@deprecated`, `@type`, `@typedef`, and others.\n\nThe method processes each token within the JSDoc comment, handling different annotations and their respective details. It records information such as descriptions, types, deprecations, authorship, visibility, and more based on the encountered annotations. Additionally, it handles extended types, file-level JSDoc comments, and warnings for parsing errors or unexpected tokens.\n\nIn summary, the `parse` method is a comprehensive parser for JSDoc comments, extracting and recording various types of information and annotations to build a JSDocInfo object.",
+      "line": 949
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet contains a method named `parse` which is responsible for parsing a JSDoc comment. The method reads tokens from a JsDocTokenStream until the end of the comment is reached. It handles various JSDoc annotations and their associated information, such as `@param`, `@return`, `@deprecated`, `@type`, `@typedef`, and others.\n\nThe method processes each token within the JSDoc comment, handling different annotations and their respective details. It records information such as descriptions, types, deprecations, authorship, visibility, and more based on the encountered annotations. Additionally, it handles extended types, file-level JSDoc comments, and warnings for parsing errors or unexpected tokens.\n\nIn summary, the `parse` method is a comprehensive parser for JSDoc comments, extracting and recording various types of information and annotations to build a JSDocInfo object.",
+      "line": 1429
+    }
+  ],
+  "ref": "D4J_Closure_32_BUGGY_VERSION"
+}

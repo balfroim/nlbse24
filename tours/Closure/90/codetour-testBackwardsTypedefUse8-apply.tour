@@ -1,0 +1,57 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testBackwardsTypedefUse8 to apply",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "It looks like the code snippet provided is related to a testing phase for a software project. The `processForTesting` method seems to be the main entry point for testing the code. Here's a summary of what the code does:\n\n1. It first checks the state to ensure that the `scopeCreator` and `topScope` are not already initialized.\n\n2. It then initializes a `scopeCreator` using a `MemoizedScopeCreator` and a `topScope` using the `TypedScopeCreator` with the `compiler`.\n\n3. After that, it creates a scope for the provided `externsRoot` and `jsRoot` using the `scopeCreator`.\n\n4. It initializes a `TypeInferencePass` and processes type inference for the `externsRoot` and `jsRoot`.\n\n5. Finally, it processes the `externsRoot` and `jsRoot` and returns the `topScope`.\n\nThis code seems to be part of a larger system for testing and type inference in a software project.",
+      "line": 363
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/MemoizedScopeCreator.java",
+      "description": "This code snippet appears to be a method for creating a scope within a larger system. Here's a summary of what the code does:\n\nThe `createScope` method takes a `Node` and a `Scope` as parameters. It first checks if there is already a scope associated with the given node. If not, it delegates the creation of the scope to another `delegate` and then stores the created scope in a map for future reference. If a scope already exists for the given node, it ensures that the parent of the existing scope matches the provided parent scope.\n\nIn simpler terms, this method is responsible for creating and managing scopes within the system, ensuring that each node has a corresponding scope and that the parent-child relationships between scopes are maintained correctly.",
+      "line": 59
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypedScopeCreator.java",
+      "description": "This code snippet appears to be a method for creating a scope with all types declared, and declaring newly discovered types and type properties in the type registry. Here's a summary of what the code does:\n\n1. The `createScope` method takes a `Node` (root) and a `Scope` (parent) as parameters.\n\n2. It first checks if the parent scope is null, indicating that it's the global scope. If so, it creates an initial scope for the global scope and uses a `GlobalScopeBuilder` to traverse the nodes and build the global scope.\n\n3. If the parent scope is not null, it creates a new scope as a child of the parent scope and uses a `LocalScopeBuilder` to build the local scope.\n\n4. After building the scope, it resolves any stub declarations and types.\n\n5. It then gathers the properties in each function found in the global scope, based on the `@this` type, and traverses the function nodes to collect properties.\n\n6. If the parent scope is null (indicating the global scope), it defines delegate proxy prototype properties using the coding convention and type registry.\n\n7. Finally, it returns the newly created scope.\n\nIn simpler terms, this method is responsible for creating and populating",
+      "line": 212
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/JSType.java",
+      "description": "It seems like the provided code snippet is related to resolving a type within a given scope. Here's a summary of what the code does:\n\nThe `resolve` method is responsible for resolving a type within a given scope. It takes an `ErrorReporter` and a `StaticScope` as parameters.\n\n1. It first checks if the type has already been resolved. If so, it returns the resolved type. If not, it proceeds to resolve the type.\n\n2. Upon resolving the type, it sets the `resolved` flag to true and calls the `resolveInternal` method to perform the actual resolution.\n\n3. After resolving the type, it sets the resolved type internally and returns the resolved result.\n\nIn simpler terms, this method ensures that a type is resolved within a given scope, and it maintains the resolved state to avoid redundant resolution for efficiency.",
+      "line": 897
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/FunctionType.java",
+      "description": "It seems like the provided code snippet is related to resolving a type within a given scope. Here's a summary of what the code does:\n\nThe `resolve` method is responsible for resolving a type within a given scope. It takes an `ErrorReporter` and a `StaticScope` as parameters.\n\n1. It first checks if the type has already been resolved. If so, it returns the resolved type. If not, it proceeds to resolve the type.\n\n2. Upon resolving the type, it sets the `resolved` flag to true and calls the `resolveInternal` method to perform the actual resolution.\n\n3. After resolving the type, it sets the resolved type internally and returns the resolved result.\n\nIn simpler terms, this method ensures that a type is resolved within a given scope, and it maintains the resolved state to avoid redundant resolution for efficiency.",
+      "line": 903
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/JSType.java",
+      "description": "The provided code snippet contains a method named `safeResolve` which performs a null-safe resolution of a JSType. Here's a summary of what the code does:\n\nThe `safeResolve` method takes a `JSType`, an `ErrorReporter`, and a `StaticScope` as parameters.\n\n1. It first checks if the given `JSType` is null. If it is null, the method returns null, indicating that there is no type to resolve.\n\n2. If the `JSType` is not null, the method calls the `resolve` method on the type, passing the `ErrorReporter` and `StaticScope` as parameters to perform the resolution.\n\nIn simpler terms, this method provides a safe way to resolve a JSType, handling the case where the type is null by returning null, and otherwise delegating the resolution to the type's `resolve` method.",
+      "line": 927
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/JSType.java",
+      "description": "The provided code snippet contains a method called `resolve` within a class. Here's a summary of what the code does:\n\nThe `resolve` method is responsible for resolving a type within a given scope. It takes an `ErrorReporter` and a `StaticScope` as parameters.\n\n1. It first checks if the type has already been resolved. If so, it returns the resolved type. If not, it proceeds to resolve the type.\n\n2. Upon resolving the type, it sets the `resolved` flag to true and calls the `resolveInternal` method to perform the actual resolution.\n\n3. After resolving the type, it sets the resolved type internally and returns the resolved result.\n\nIn simpler terms, this method ensures that a type is resolved within a given scope, and it maintains the resolved state to avoid redundant resolution for efficiency.",
+      "line": 897
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/NamedType.java",
+      "description": "The provided code snippet contains a method called `resolveInternal` within a class. Here's a summary of what the code does:\n\nThe `resolveInternal` method is responsible for resolving the referenced type within the enclosing scope. It overrides the behavior defined in the superclass.\n\n1. It first attempts to resolve the type via the registry to avoid triggering warnings built into the resolution via properties. If the resolution via the registry is successful, it continues the resolution process and returns the referenced type if it's the last generation in the registry.\n\n2. If the resolution via the registry is not successful, it then attempts to resolve the type via properties. After this, it again checks if the referenced type is the last generation in the registry and returns it if so.\n\n3. Throughout the process, it also handles the detection of implicit prototype cycles and triggers the appropriate handling if detected.\n\nIn simpler terms, this method is responsible for resolving the referenced type within the enclosing scope, utilizing different mechanisms for resolution and handling implicit prototype cycles.",
+      "line": 209
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/NamedType.java",
+      "description": "The provided code snippet contains a method called `resolveViaRegistry` within a class. Here's a summary of what the code does:\n\nThe `resolveViaRegistry` method is a private method responsible for resolving a named type by looking it up in the registry. It takes an `ErrorReporter` and a `StaticScope` as parameters.\n\n1. It attempts to retrieve the type from the registry based on the reference.\n\n2. If the type is found in the registry, it sets the referenced and resolved type, and then returns true to indicate successful resolution.\n\n3. If the type is not found in the registry, it returns false to indicate that the resolution was not successful.\n\nIn simpler terms, this method checks if a named type can be resolved by looking it up in the registry, and returns true if the resolution is successful, and false otherwise.",
+      "line": 223
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/NamedType.java",
+      "description": "The provided code snippet contains a method called `setReferencedAndResolvedType` within a class. Here's a summary of what the code does:\n\nThe `setReferencedAndResolvedType` method is a private method responsible for setting the referenced and resolved type based on the provided JSType. It takes a JSType, an ErrorReporter, and a StaticScope as parameters.\n\n1. It first applies a validator function to the type if it is not null.\n\n2. It then sets the referenced type based on the provided type.\n\n3. After setting the referenced type, it checks for any cycles in the enum element and handles them if detected.\n\n4. Finally, it sets the resolved type internally based on the referenced type.\n\nIn simpler terms, this method sets the referenced and resolved type based on the provided JSType, applies validation if needed, and handles any enum element cycles before setting the resolved type internally.",
+      "line": 303
+    }
+  ],
+  "ref": "D4J_Closure_90_BUGGY_VERSION"
+}

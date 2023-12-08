@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testSuspiciousBlockCommentWarning3 to handleBlockComment",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/ParserRunner.java",
+      "description": "This code snippet is a Java method that parses JavaScript code. It takes the source code as a string, along with other parameters such as a source file, configuration, error reporter, and logger. The method uses the Rhino JavaScript engine to parse the source code and generate an abstract syntax tree (AST) representing the code's structure.\n\nThe method sets up the JavaScript parsing environment, including error handling, language version, and various parsing options. It then uses the Parser class to parse the source string and create an AST. If an error occurs during parsing, it is reported to the logger.\n\nFinally, the method returns a ParseResult object containing the root node of the parsed AST and the original AST root.\n\nOverall, this code snippet demonstrates how to use the Rhino JavaScript engine to parse JavaScript code and extract its structure for further processing or analysis.",
+      "line": 147
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet is a Java method that transforms an abstract syntax tree (AST) representing JavaScript code. It takes the original AST node, along with a source file, source code string, configuration, and error reporter as parameters.\n\nThe method uses an IRFactory (Intermediate Representation Factory) to transform the original AST node into a new Node representing the intermediate representation of the JavaScript code. It also handles comments associated with the original AST, including JSDoc comments and block comments.\n\nAfter transforming the AST, the method sets the file overview JSDoc for the intermediate representation Node and returns the transformed Node.\n\nIn summary, this code snippet demonstrates a process for transforming an AST of JavaScript code into an intermediate representation, handling associated comments, and setting file overview JSDoc for further processing or analysis.",
+      "line": 209
+    },
+    {
+      "file": "/lib/rhino/src/org/mozilla/javascript/IRFactory.java",
+      "description": "This code snippet is a method that handles the transformation of an array comprehension expression in JavaScript. The array comprehension expression is a concise way to create arrays based on existing arrays.\n\nThe method takes an ArrayComprehension node as input and rewrites it into an equivalent representation using the SpiderMonkey AST (Abstract Syntax Tree) structure. It creates a new scope node and generates the necessary nodes to represent the array comprehension expression.\n\nThe transformation involves creating a new array, defining temporary variables, and building the structure to handle the iteration and conditionals specified in the array comprehension expression.\n\nOverall, this code snippet demonstrates the process of transforming array comprehension expressions into an equivalent representation using the SpiderMonkey AST, which is commonly used for parsing and analyzing JavaScript code.",
+      "line": 225
+    },
+    {
+      "file": "/lib/rhino/src/org/mozilla/javascript/IRFactory.java",
+      "description": "This code snippet is a method that assists in transforming an array comprehension expression in JavaScript. The method takes an ArrayComprehension node and an array name as input and performs the transformation process.\n\nThe method first handles the decompilation of the array comprehension expression and then proceeds to process the loops within the expression. It iterates through each loop, collecting and defining iterator symbols, and generating the necessary code for the array comprehension transformation.\n\nThe transformation involves building the body statement, handling filtering conditions, and creating the necessary loop structures to represent the array comprehension expression.\n\nOverall, this code snippet demonstrates the detailed process of transforming array comprehension expressions into an equivalent representation using the SpiderMonkey AST, including handling iterators, destructuring assignment, filtering, and loop structures.",
+      "line": 320
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet is a method that assists in transforming an array comprehension expression in JavaScript. The method takes an ArrayComprehension node and an array name as input and performs the transformation process.\n\nThe method first handles the decompilation of the array comprehension expression and then proceeds to process the loops within the expression. It iterates through each loop, collecting and defining iterator symbols, and generating the necessary code for the array comprehension transformation.\n\nThe transformation involves building the body statement, handling filtering conditions, and creating the necessary loop structures to represent the array comprehension expression.\n\nOverall, this code snippet demonstrates the detailed process of transforming array comprehension expressions into an equivalent representation using the SpiderMonkey AST, including handling iterators, destructuring assignment, filtering, and loop structures.",
+      "line": 258
+    }
+  ],
+  "ref": "D4J_Closure_122_BUGGY_VERSION"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testBug1835955 to removeValue",
+  "steps": [
+    {
+      "file": "/source/org/jfree/data/category/DefaultCategoryDataset.java",
+      "description": "This code snippet is from a method in a class related to handling datasets. The method `removeColumn` is used to remove a column from the dataset based on the provided column key. After removing the column, it triggers a `DatasetChangeEvent` to notify all registered listeners about the change in the dataset. The `fireDatasetChanged()` method is responsible for triggering this event. Additionally, the `@see` tag provides a reference to the `removeRow` method, indicating its relevance to the current method.",
+      "line": 352
+    },
+    {
+      "file": "/source/org/jfree/data/DefaultKeyedValues2D.java",
+      "description": "This code snippet is from a method in a class related to managing a table or dataset. The `removeColumn` method is used to remove a column from the table based on the provided column key. It also includes additional details such as the exceptions that can be thrown, such as `UnknownKeyException` and `IllegalArgumentException`, and the conditions under which they are thrown. \n\nThe method iterates through the rows of the table and removes the value corresponding to the specified column key from each row. After iterating through all the rows, it removes the column key from the list of column keys.\n\nThe `@see` tags provide references to related methods, such as `removeColumn(int)` and `removeRow(Comparable)`, for further context and usage.",
+      "line": 461
+    },
+    {
+      "file": "/source/org/jfree/data/DefaultKeyedValues.java",
+      "description": "This code snippet is from a method in a class related to managing a collection of values. The `removeValue` method is used to remove a value from the collection based on the provided key. It includes details such as the exceptions that can be thrown, such as `IllegalArgumentException` and `UnknownKeyException`, and the conditions under which they are thrown.\n\nThe method first attempts to find the index of the value associated with the given key. If the index is found to be less than 0, it means the key is not recognized, and the method simply returns without performing any removal. Otherwise, it proceeds to remove the value at the identified index.\n\nThis method assumes the existence of an `getIndex` method to find the index of the key, and a `removeValue` method to remove the value at a specific index.",
+      "line": 338
+    }
+  ],
+  "ref": "D4J_Chart_18_BUGGY_VERSION"
+}

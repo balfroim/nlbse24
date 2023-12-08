@@ -1,0 +1,72 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testIssue1017 to isSafeReplacement",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+      "description": "This code snippet appears to be a method called \"process\" that takes in two parameters, \"externs\" and \"root,\" which are of type Node. Within this method, a change handler is added to a compiler, and then a traversal of the nodes is initiated. During the traversal, functions are visited, and if a function is found, the last child of the function node is obtained. Then, a loop is executed where a handler is reset, and a traversal of the nodes is performed using a \"PeepCallback.\" This loop continues as long as a condition is met, and finally, the traversal is ended, and the change handler is removed from the compiler.\n\nIn summary, this method seems to be part of a compiler or code analysis tool that traverses and processes nodes, possibly for the purpose of making changes or optimizations to the code. It uses a change handler and callbacks to perform its operations.",
+      "line": 77
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+      "description": "This code snippet is invoking the method `traverseChangedFunctions` of the `NodeTraversal` class. It is passing two arguments to the method: `compiler` and a new instance of an anonymous class that implements the `FunctionCallback` interface.\n\nThe `traverseChangedFunctions` method seems to be responsible for traversing and processing functions that have changed within the compiler or code analysis tool. The anonymous class being passed as the second argument likely contains the logic for handling the functions during the traversal.\n\nIn summary, this code snippet is initiating a traversal of changed functions within the compiler and providing a callback implementation to handle the processing of these functions.",
+      "line": 63
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverseChangedFunctions` within a class. The method takes two parameters: an `AbstractCompiler` instance and a `FunctionCallback` instance. The purpose of this method is to traverse and process functions that have changed within the compiler.\n\nThe method uses a `NodeTraversal` instance to traverse the JavaScript root node and its children. During the traversal, it checks if a function has changed by calling `comp.hasScopeChanged(n)`. If a function has changed, the provided callback's `visit` method is invoked to handle the changed function.\n\nThe comments within the method provide additional details about the behavior and considerations for the traversal, such as handling scope changes and reporting code modifications to the compiler.\n\nIn summary, this method facilitates the traversal of changed functions within the compiler and invokes a callback to process these functions. It also includes important considerations for tracking scope changes and reporting modifications.",
+      "line": 486
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is part of a method named `traverse` within a class. The purpose of this method is to recursively traverse a parse tree represented by nodes.\n\nWhen the `traverse` method is called, it initializes some variables and then starts the traversal by pushing the scope of the root node. It then traverses the branches of the parse tree starting from the root node, ensuring that the shallow callbacks will traverse the root. After the traversal is complete, it pops the scope.\n\nThe code also includes exception handling to catch any unexpected exceptions that may occur during the traversal and rethrows them as unexpected exceptions.\n\nIn summary, this method is responsible for recursively traversing a parse tree represented by nodes, handling scope, and ensuring proper exception handling during the traversal process.",
+      "line": 292
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a private method called `traverseBranch` within a class. The purpose of this method is to traverse a branch of nodes in a parse tree.\n\nWhen the `traverseBranch` method is called, it first checks the type of the node to determine if it is a script. If it is a script, it sets the input ID and source name. Then, it checks if the provided callback allows traversal of the current node. If traversal is allowed, it proceeds to traverse the children nodes recursively. If the node is a function, a specific method `traverseFunction` is called to handle the traversal. Otherwise, it iterates through the children nodes and recursively traverses each child node.\n\nAfter traversing the children nodes, the method invokes the callback's `visit` method to perform any necessary processing on the current node.\n\nIn summary, this method is responsible for recursively traversing a branch of nodes in a parse tree, handling different node types, and invoking a callback to process each node during the traversal.",
+      "line": 541
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a static method named `traverse` within a class. The purpose of this method is to traverse a node recursively using a provided callback.\n\nWhen the `traverse` method is called, it creates a new `NodeTraversal` instance with the given compiler and callback, and then initiates the traversal of the specified root node.\n\nIn summary, this method provides a convenient way to perform a recursive traversal of a node using the provided compiler and callback, encapsulating the traversal logic within a static method for ease of use.",
+      "line": 495
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a method named `traverse` within a class. The purpose of this method is to recursively traverse a parse tree represented by nodes.\n\nWhen the `traverse` method is called, it first initializes some variables related to the traversal, such as input ID and source name. It then pushes the scope of the root node and proceeds to traverse the branches of the parse tree starting from the root node. After the traversal is complete, it pops the scope.\n\nThe method also includes exception handling to catch any unexpected exceptions that may occur during the traversal and rethrows them as unexpected exceptions.\n\nIn summary, this method encapsulates the logic for recursively traversing a parse tree, handling scope, and ensuring proper exception handling during the traversal process.",
+      "line": 292
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a private method called `traverseBranch` within a class. The purpose of this method is to traverse a branch of nodes in a parse tree.\n\nThe method starts by determining the type of the node and handling special cases, such as when the node is of type `SCRIPT`. It then checks if the provided callback allows traversal of the current node. If traversal is allowed, it proceeds to traverse the children nodes recursively. If the node is a function, a specific method `traverseFunction` is called to handle the traversal. Otherwise, it iterates through the children nodes and recursively traverses each child node.\n\nAfter traversing the children nodes, the method invokes the callback's `visit` method to perform any necessary processing on the current node.\n\nIn summary, this method encapsulates the logic for recursively traversing a branch of nodes in a parse tree, handling different node types, and invoking a callback to process each node during the traversal.",
+      "line": 541
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a private method called `traverseBranch` within a class. The purpose of this method is to traverse a branch of nodes in a parse tree.\n\nThe method starts by determining the type of the node and handling special cases, such as when the node is of type `SCRIPT`. It then checks if the provided callback allows traversal of the current node. If traversal is allowed, it proceeds to traverse the children nodes recursively. If the node is a function, a specific method `traverseFunction` is called to handle the traversal. Otherwise, it iterates through the children nodes and recursively traverses each child node.\n\nAfter traversing the children nodes, the method invokes the callback's `visit` method to perform any necessary processing on the current node.\n\nIn summary, this method encapsulates the logic for recursively traversing a branch of nodes in a parse tree, handling different node types, and invoking a callback to process each node during the traversal.",
+      "line": 541
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ExploitAssigns.java",
+      "description": "This code snippet shows a method named `optimizeSubtree` that takes a node (subtree) as input and optimizes it by performing a specific operation on its children nodes.\n\nThe method iterates through the children nodes of the input subtree. For each child node, it checks if it represents an assignment expression. If an assignment expression is found, it collapses the assignment by performing a specific operation called `collapseAssign`. This operation likely modifies the subtree to optimize the structure or behavior of the code.\n\nAfter iterating through all the children nodes, the method returns the optimized subtree.\n\nIn summary, the `optimizeSubtree` method is responsible for iterating through the children nodes of a given subtree, identifying and optimizing specific patterns, and then returning the optimized subtree.",
+      "line": 41
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ExploitAssigns.java",
+      "description": "This code snippet shows a method named `collapseAssign` within a class. The purpose of this method is to attempt to collapse a given assignment operation into subsequent expressions.\n\nThe method takes parameters representing the nodes involved in the assignment operation. It first retrieves the left and right values of the assignment. Then, it checks if the left or right value is collapsible and attempts to collapse the assignment into subsequent expressions using the method `collapseAssignEqualTo`. If a collapse occurs, it reports a code change.\n\nAdditionally, if the right value is another assignment, the method recursively deals with nested assignments by calling itself with the right value.\n\nIn summary, the `collapseAssign` method is responsible for analyzing and potentially collapsing assignment operations into subsequent expressions, handling collapsible values, and reporting code changes when a collapse occurs.",
+      "line": 60
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ExploitAssigns.java",
+      "description": "This code snippet defines a method named `collapseAssignEqualTo` within a class. The purpose of this method is to attempt to collapse a given assignment expression into the expression directly following it, if possible.\n\nThe method takes the expression, its parent, and the value of the expression as parameters. It then iterates through the subsequent expressions to find a suitable candidate for collapsing the assignment. It considers various cases such as logical operators, variable declarations, property accesses, assignments, and immutable values to determine if the assignment can be collapsed into the subsequent expression.\n\nIf a suitable candidate is found, the method performs the collapse by replacing the subsequent expression with the assignment and returns true. If no suitable candidate is found, it returns false.\n\nIn summary, the `collapseAssignEqualTo` method is responsible for analyzing subsequent expressions and attempting to collapse an assignment expression into the following expression, based on various conditions and constraints.",
+      "line": 199
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ExploitAssigns.java",
+      "description": "This code snippet shows a method named `isSafeReplacement` within a class. The purpose of this method is to check a name referenced in a node to determine if it might have changed and whether a replacement can be made.\n\nThe method takes a node and a replacement node as parameters. It first checks if the node is a simple name, in which case it returns true. If the node is a property access (GetProp), it further checks if the name referenced by the node might have changed. If the name is assigned to the replacement node, the method returns false, indicating that the replacement cannot be made. Otherwise, it returns true.\n\nIn summary, the `isSafeReplacement` method is responsible for determining whether it is safe to replace a node with another node based on the referenced name and its potential changes.",
+      "line": 220
+    }
+  ],
+  "ref": "D4J_Closure_124_BUGGY_VERSION"
+}

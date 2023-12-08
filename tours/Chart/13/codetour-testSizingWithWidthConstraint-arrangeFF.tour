@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testSizingWithWidthConstraint to arrangeFF",
+  "steps": [
+    {
+      "file": "/source/org/jfree/chart/block/BlockContainer.java",
+      "description": "This code snippet is a method that arranges the contents of a block within given constraints and returns the block size. It takes in a graphics device and a constraint as parameters. The method then uses an \"arrangement\" object to arrange the block using the provided graphics device and constraint. Finally, it returns the size of the arranged block in Java2D units. The method is well-documented with clear explanations of its parameters and return value.",
+      "line": 183
+    },
+    {
+      "file": "/source/org/jfree/chart/block/BorderArrangement.java",
+      "description": "This code snippet is a method that arranges items within a container based on the given constraint. It takes the container, graphics device, and constraint as parameters. The method then calculates the content size based on the constraint type for width and height. Depending on the combination of width and height constraint types, different arrangement methods are called to calculate the content size. Once the content size is determined, the method returns the block size, which is the total width and height of the arranged items within the container. The method also handles different scenarios for fixed, range, and none constraint types for both width and height.",
+      "line": 172
+    },
+    {
+      "file": "/source/org/jfree/chart/block/BorderArrangement.java",
+      "description": "This code snippet is a method that arranges a container with a fixed width and no constraint on the height. It takes the container, graphics device, and fixed width as parameters. The method then calculates the arrangement of the container's contents based on the fixed width. It uses different rectangle constraints to arrange the top, bottom, left, right, and center blocks within the container. The method computes the dimensions of each block and then determines the overall height of the container based on the arranged blocks. Finally, it returns the container size after arranging the contents. The method is well-documented with clear explanations of its parameters and return value.",
+      "line": 324
+    },
+    {
+      "file": "/source/org/jfree/chart/block/BorderArrangement.java",
+      "description": "This code snippet is a method that arranges items within a container based on the given constraint. It takes the container, graphics device, and constraint as parameters. The method then calculates the content size based on the constraint type for width and height. Depending on the combination of width and height constraint types, different arrangement methods are called to calculate the content size. Once the content size is determined, the method returns the block size, which is the total width and height of the arranged items within the container. The method also handles different scenarios for fixed, range, and none constraint types for both width and height. The method is well-documented with clear explanations of its parameters and return value.",
+      "line": 172
+    },
+    {
+      "file": "/source/org/jfree/chart/block/BorderArrangement.java",
+      "description": "This code snippet is a method that arranges items within a container using a fixed width and a fixed height constraint. It takes the container, graphics device, and constraint as parameters. The method then calculates the arrangement of the container's contents based on the fixed width and height. It uses different rectangle constraints to arrange the top, bottom, left, right, and center blocks within the container. The method computes the dimensions of each block and sets their bounds within the container. Finally, it returns the container size after the arrangement, which is the same as the specified constraint width and height. The method is well-documented with clear explanations of its parameters and return value.",
+      "line": 489
+    }
+  ],
+  "ref": "D4J_Chart_13_BUGGY_VERSION"
+}

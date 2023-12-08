@@ -1,0 +1,67 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testIssue937 to annotateCalls",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/Compiler.java",
+      "description": "This code snippet appears to be a method named `parseInputs` within a larger codebase. The method seems to be responsible for parsing external and main inputs, likely related to a JavaScript compiler or interpreter.\n\nThe method begins by checking if old roots exist and detaching their individual file parse trees if so. It then proceeds to parse the main JavaScript sources and externs sources, adding them to the respective root nodes.\n\nFollowing this, the code checks for certain options and performs operations such as processing AMD and CommonJS modules, managing dependencies, and hoisting no-compile files. It also builds the abstract syntax tree (AST) for the inputs and annotates the nodes in the tree with information from the input files, which is used to construct the SourceMap.\n\nThe method seems to handle various error scenarios and includes checks for dev mode, source map output path, and name reference report path. It also utilizes a tracer for performance tracking.\n\nOverall, this method appears to be a critical part of a JavaScript compiler or interpreter, responsible for parsing and processing input sources, managing dependencies, and building the AST.",
+      "line": 1420
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/Compiler.java",
+      "description": "This code snippet is a private method named `hoistExterns` within a larger codebase. The method appears to be responsible for hoisting inputs with the `@externs` annotation into the externs list.\n\nThe method iterates through the inputs and, based on certain conditions, adds the inputs marked as externs to the externs list. It checks if the input file is explicitly marked as an externs file using JSDocInfo, and if so, it adds the input to the externs pile and removes it from the module. Additionally, it sets the input as an extern and adds it to the externs list.\n\nThe method also handles scenarios where the dependency options need management and skips sources that are obviously not externs based on the dependency information.\n\nFinally, if there are stale inputs, it calls the `repartitionInputs` method.\n\nOverall, this method seems to be crucial for managing and categorizing inputs marked as externs within the context of a larger system, likely related to a JavaScript compiler or interpreter.",
+      "line": 1461
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/CompilerInput.java",
+      "description": "This code snippet is a method named `getAstRoot` within a larger codebase. The method appears to be part of a class that deals with abstract syntax trees (AST) in a compiler or interpreter context.\n\nThe method retrieves the AST root node from an `ast` object and performs some validation checks. It ensures that the root node is not null and that it is a script node. Additionally, it checks for the presence of an input ID associated with the root node.\n\nOverall, this method seems to be responsible for retrieving the AST root node and performing necessary validation to ensure the integrity of the AST within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 123
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/JsAst.java",
+      "description": "This code snippet is a method named `getAstRoot` within a larger codebase. The method appears to be part of a class that deals with abstract syntax trees (AST) in a compiler or interpreter context.\n\nThe method first checks if the `root` node is null. If it is, the method proceeds to parse the AST using the `parse` method and sets the input ID for the root node. Once the root node is initialized, it is returned.\n\nOverall, this method seems to be responsible for retrieving the AST root node, parsing it if necessary, and setting the input ID within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 56
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/JsAst.java",
+      "description": "This code snippet is a private method named `parse` within a larger codebase. The method appears to be responsible for parsing source files and generating an abstract syntax tree (AST) within the context of a compiler or interpreter for a programming language.\n\nThe method begins by attempting to parse the source file using a `ParserRunner` and sets the resulting AST as the root. It also handles any potential IOException that may occur during the parsing process and reports a read error if necessary.\n\nFollowing the parsing process, the method checks if the root is null or if the compiler has encountered halting errors. In such cases, it creates a dummy block as a fallback. If the parsing is successful, the method prepares the AST for further processing and sets the source file for tracking purposes.\n\nOverall, this method is crucial for the initial parsing of source files, handling potential errors, and preparing the AST for subsequent compiler passes within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 107
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/Compiler.java",
+      "description": "This code snippet shows a method named `prepareAst` within a larger codebase. The method appears to be part of a system that involves processing an abstract syntax tree (AST) in the context of a compiler or interpreter for a programming language.\n\nThe `prepareAst` method seems to be responsible for preparing the AST for further processing by invoking a compiler pass. It creates an instance of the `PrepareAst` compiler pass and processes the AST root node using this pass.\n\nOverall, this method is a crucial step in the compilation or interpretation process, where the AST is prepared for subsequent compiler passes within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 1964
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/PrepareAst.java",
+      "description": "This code snippet shows a method named `process` within a larger codebase. The method appears to be part of a system that involves processing nodes, likely in the context of a compiler or interpreter for a programming language.\n\nThe `process` method is responsible for traversing and processing nodes, specifically for preparing annotations. If the `checkOnly` flag is set, it normalizes node types. Otherwise, it traverses the provided externs and root nodes, applying the `PrepareAnnotations` process to each.\n\nOverall, this method seems to be a critical part of the compilation or interpretation process, where nodes are processed to prepare annotations within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 72
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named `traverse` within a larger codebase. The method appears to be part of a system that involves traversing nodes, likely in the context of a compiler or interpreter for a programming language.\n\nThe `traverse` method is responsible for recursively traversing a node using a provided callback. It creates an instance of `NodeTraversal` with the given compiler and callback, then initiates the traversal of the root node.\n\nOverall, this method seems to be a fundamental part of the node traversal process within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 491
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named `traverse` within a larger codebase. The method appears to be part of a system that involves traversing a parse tree, likely in the context of a compiler or interpreter for a programming language.\n\nThe `traverse` method is responsible for recursively traversing a parse tree. It initializes the input ID and source name, sets the current node to the root, pushes the scope, and then traverses the branches of the parse tree. Additionally, it handles any unexpected exceptions that may occur during the traversal process.\n\nOverall, this method seems to be a fundamental part of the parse tree traversal process within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 294
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named `traverseBranch` within a larger codebase. The method appears to be part of a system that involves traversing a branch of nodes, likely in the context of a compiler or interpreter for a programming language.\n\nThe `traverseBranch` method is responsible for traversing a branch of nodes within the parse tree. It identifies the type of the node and sets the input ID and source name if the node type is a script. It then checks if the traversal should continue based on the callback's decision. If the node is a function, it traverses the function node; otherwise, it iterates through the node's children and recursively traverses each child node. After traversing the children, it visits the current node using the callback.\n\nOverall, this method seems to be a fundamental part of the node traversal process within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 537
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named `traverseBranch` within a larger codebase. The method appears to be part of a system that involves traversing a branch of nodes, likely in the context of a compiler or interpreter for a programming language.\n\nThe `traverseBranch` method is responsible for recursively traversing a branch of nodes within the parse tree. It first identifies the type of the node and sets the input ID and source name if the node type is a script. Then, it checks if the traversal should continue based on the callback's decision. If the node is a function, it traverses the function node; otherwise, it iterates through the node's children and recursively traverses each child node. After traversing the children, it visits the current node using the callback.\n\nOverall, this method seems to be a fundamental part of the node traversal process within the context of a larger system, likely related to a compiler or interpreter for a programming language.",
+      "line": 537
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "The given code consists of two classes: `PaintWindow` and `PaintObject`. The `PaintWindow` class contains an instance of the `PaintObject` class, which is responsible for handling mouse events such as click, move, and release on the application canvas. \n\nIn the `PaintWindow` class, the constructor initializes a default `PaintObject` for pencil drawing, setting the color to green and the thickness to 5. The `onMouseEvent` method delegates the event handling to the `PaintObject` instance.\n\nThe `traverseBranch` method appears to be part of a tree traversal mechanism. It takes a node and its parent as input and recursively traverses the branch of nodes. If the node type is a script, it sets the input ID and source name. It then checks if the traversal should continue based on the callback's decision. If the node is a function, it traverses the function node; otherwise, it iterates through the node's children and recursively traverses each child node. After traversing the children, it visits the current node using the callback.\n\nOverall, the `traverseBranch` method seems to be a fundamental part of the node traversal process within the context of a larger system, likely related to a compiler or interpreter for",
+      "line": 537
+    }
+  ],
+  "ref": "D4J_Closure_129_BUGGY_VERSION"
+}

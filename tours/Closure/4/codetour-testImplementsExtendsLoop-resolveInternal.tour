@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testImplementsExtendsLoop to resolveInternal",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "It seems like the code snippet you've provided is related to a testing phase for a software project. The `processForTesting` method appears to be the main entry point for this testing phase. It seems to be creating a scope for testing the code.\n\nThe method starts by performing some state checks using `Preconditions.checkState` to ensure that certain conditions are met before proceeding. It then initializes a `scopeCreator` and a `topScope` using the `MemoizedScopeCreator` and `TypedScopeCreator` respectively.\n\nAfter that, it creates a `TypeInferencePass` and processes the type inference for the provided `externsRoot` and `jsRoot`. Finally, it calls the `process` method with the `externsRoot` and `jsRoot`, and returns the `topScope`.\n\nIt's important to note that this code snippet seems to be part of a larger context, and its functionality is dependent on the overall structure and purpose of the software project.",
+      "line": 389
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/MemoizedScopeCreator.java",
+      "description": "This code snippet appears to be a method for creating a scope in a software project. The method `createScope` takes a `Node` and a `Scope` as parameters and returns a `Scope` object.\n\nIt first checks if there is already a scope associated with the given `Node` in the `scopes` map. If there isn't, it delegates the creation of the scope to a `delegate` and then stores the created scope in the `scopes` map. If a scope already exists for the given `Node`, it checks that the provided parent scope matches the parent of the existing scope.\n\nIn summary, this method is responsible for managing and creating scopes for nodes in the software project, ensuring that each node has an associated scope and that the scope hierarchy is maintained correctly.",
+      "line": 88
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypedScopeCreator.java",
+      "description": "This code snippet appears to be a method for creating a scope with all types declared, and for declaring newly discovered types and type properties in the type registry. It seems to be part of a larger system for analyzing and building scopes in a software project.\n\nThe `createScope` method is responsible for constructing a scope based on the provided `Node` and `Scope` parent. It first checks if the parent scope is null, and if so, it sets up the global scope by marking the main root, externs root, and source root with the global this type. It then runs a first-order analysis over the syntax tree and finds all the classes in the global scope.\n\nIf the parent scope is not null, it creates a new scope and uses a `LocalScopeBuilder` to build the scope. After setting up the scope, it resolves stub declarations and types, and gathers properties in each function found in the global scope.\n\nAdditionally, it defines delegate proxy prototype properties if the parent scope is null.\n\nIn summary, this method is a crucial part of the scope creation process in the software project, handling the setup and resolution of types and properties within the scopes.",
+      "line": 255
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/JSType.java",
+      "description": "This code snippet appears to be a method for resolving a type within a given scope. It seems to be part of a type resolution process in a software project.\n\nThe `resolve` method is designed to resolve a type in the provided scope. It first checks if the type has already been resolved. If it has, it returns the resolved result. If not, it sets the resolved flag to true, and then calls the `resolveInternal` method to perform the actual resolution. After obtaining the resolved result, it sets the resolved type internally and returns the result.\n\nThe comments in the method indicate that for efficiency, a type should only be resolved once per compilation job. It also mentions the potential need for a generational flag for incremental compilations.\n\nIn summary, this method is responsible for resolving types within a given scope, ensuring that each type is resolved only once and preserving object equality during the resolution process.",
+      "line": 1432
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/jstype/FunctionType.java",
+      "description": "This code snippet appears to be a method called `resolveInternal` that is part of a type resolution process in a software project. It seems to be related to resolving various types and type properties within a given scope.\n\nThe method begins by setting the internal resolved type, then proceeds to resolve the `call` and `prototypeSlot` types using the `safeResolve` method. It also handles warnings related to the `typeOfThis` and performs coercions and restrictions on the resolved types.\n\nAdditionally, it resolves the implemented interfaces and subtypes, and then calls the `resolveInternal` method of the superclass.\n\nIn summary, this method is responsible for resolving and handling various types and type properties within the context of the software project's type system. It ensures that types are resolved correctly and that any necessary coercions or restrictions are applied.",
+      "line": 1207
+    }
+  ],
+  "ref": "D4J_Closure_4_BUGGY_VERSION"
+}

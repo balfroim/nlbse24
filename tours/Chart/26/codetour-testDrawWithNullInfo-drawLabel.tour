@@ -1,0 +1,42 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testDrawWithNullInfo to drawLabel",
+  "steps": [
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet is a method that creates and returns a buffered image containing a chart. It takes the width and height of the image as parameters, along with an object for carrying back chart state information. Inside the method, it calls another method to create the buffered image with the specified width, height, image type, and chart rendering information. The returned buffered image will contain the drawn chart.",
+      "line": 1369
+    },
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet is a method that creates and returns a buffered image containing a chart. It takes the width, height, image type, and an object for carrying back chart state information as parameters. Inside the method, it creates a new buffered image with the specified width, height, and image type. Then, it creates a Graphics2D object from the image, draws the chart onto the image using the provided information, and disposes of the Graphics2D object before returning the image.",
+      "line": 1390
+    },
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet is a method that draws a chart onto a Java 2D graphics device, such as the screen or a printer. It takes the graphics device, chart area, anchor point, and chart rendering information as parameters. \n\nThe method begins by notifying listeners that the drawing has started and setting the chart area in the provided information. It then sets the clip to ensure no drawing occurs outside the chart area and adds rendering hints.\n\nThe method proceeds to draw the chart background, including the background paint and image, as well as the border if it's visible. It then handles the title, subtitles, and plot area, drawing each component onto the graphics device.\n\nFinally, it resets the clip, notifies listeners that the drawing has finished, and completes the drawing process.",
+      "line": 1219
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/XYPlot.java",
+      "description": "This code snippet is a method that draws a plot within a specified area on a graphics device. It takes the graphics device, plot area, anchor point, parent plot state, and plot rendering information as parameters.\n\nThe method first checks if the plot area is large enough to draw, and if not, it returns. It then records the plot area and adjusts it for plot insets. After this, it proceeds to draw the plot background, axes, gridlines, and markers associated with a specific renderer.\n\nNext, it handles annotations and renders data items based on the specified dataset rendering order. It also manages crosshair functionality for both domain and range axes, drawing crosshairs if required.\n\nIf no data is found, it draws a no data message. Finally, it completes the drawing process by handling foreground markers, annotations, and the plot outline.\n\nOverall, this method is responsible for rendering the plot and its components within the specified area on the graphics device.",
+      "line": 2762
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/XYPlot.java",
+      "description": "This code snippet is a utility method for drawing the axes on a plot. It takes the graphics device, plot area, data area, and plot rendering information as parameters.\n\nThe method first creates an AxisCollection and adds domain and range axes to it. It then proceeds to draw the axes at the top, bottom, left, and right of the plot area, based on their respective positions. As each axis is drawn, its state information is collected and stored in a map.\n\nOverall, this method is responsible for organizing and drawing the axes within the plot area, ensuring they are correctly positioned and aligned based on the provided data area.",
+      "line": 3045
+    },
+    {
+      "file": "/source/org/jfree/chart/axis/NumberAxis.java",
+      "description": "This code snippet is a method that draws an axis on a Java 2D graphics device, such as the screen or a printer. It takes the graphics device, cursor location, plot area, data area, axis location, and plot rendering information as parameters.\n\nThe method first checks if the axis is visible, and if not, it creates an axis state with ticks for gridlines and returns it. If the axis is visible, it proceeds to draw the tick marks and labels, and then the axis label. The method returns the final axis state after drawing the axis components.\n\nOverall, this method is responsible for rendering the axis, including tick marks, labels, and the axis label, based on the provided parameters and graphics device.",
+      "line": 685
+    },
+    {
+      "file": "/source/org/jfree/chart/axis/Axis.java",
+      "description": "This code snippet is a method responsible for drawing the label of an axis. It takes the label text, graphics device, plot area, data area, axis location, axis state, and plot rendering information as parameters.\n\nThe method first checks if the label is null or empty, and if so, it returns the current axis state. If the label is not empty, it proceeds to draw the label based on the specified edge (top, bottom, left, or right) of the plot area. It also handles the rotation of the label text based on the label angle.\n\nAdditionally, the method creates a hotspot for the label and, if a plot rendering information is provided, adds an entity to the entity collection for interactivity.\n\nOverall, this method is responsible for rendering the label of an axis, ensuring its correct placement and rotation based on the provided parameters and graphics device.",
+      "line": 1200
+    }
+  ],
+  "ref": "D4J_Chart_26_BUGGY_VERSION"
+}

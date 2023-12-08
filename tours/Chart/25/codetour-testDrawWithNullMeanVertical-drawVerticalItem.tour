@@ -1,0 +1,42 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testDrawWithNullMeanVertical to drawVerticalItem",
+  "steps": [
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet is a method that creates and returns a buffered image of a chart. It takes in the width and height of the image, as well as an object for carrying back chart state information. Inside the method, it calls another method to create the buffered image with the specified width, height, image type, and chart rendering information. The returned buffered image can be used to display the chart in an application.",
+      "line": 1375
+    },
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet is a method that creates and returns a buffered image of a chart. It takes in the width, height, image type, and an object for carrying back chart state information. Inside the method, it creates a new buffered image with the specified width, height, and image type. It then creates a graphics context from the image, draws the chart onto the image, disposes of the graphics context, and returns the resulting buffered image. This method is useful for generating images of charts for display or saving.",
+      "line": 1396
+    },
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet is a method that draws a chart onto a Java 2D graphics device, such as the screen or a printer. It takes in the graphics device, the area for the chart to be drawn, an anchor point, and an object for recording drawing information. \n\nThe method begins by notifying listeners that the drawing has started and records the chart area if information is requested. It then sets the clip to ensure no drawing occurs outside the chart area and adds rendering hints. \n\nThe method proceeds to draw the chart background, including the background paint and image, as well as the border if it's visible. It then draws the title, subtitles, and the plot (axes and data visualization) within the specified plot area. \n\nFinally, it resets the clip, notifies listeners that the drawing has finished, and completes the drawing process. This method is a key part of the JFreeChart library for rendering charts.",
+      "line": 1225
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/CategoryPlot.java",
+      "description": "This code snippet is a method that draws a plot onto a Java 2D graphics device, such as the screen or a printer. It takes in the graphics device, the area for the plot to be drawn, an anchor point, parent plot state, and an object for recording plot rendering information.\n\nThe method first checks if the plot area is large enough to draw, and if so, records the plot area and adjusts it for insets. It then calculates the data area and draws the plot background. \n\nNext, it draws the axes, gridlines, markers, data items, and annotations within the specified plot area. It also handles the rendering order of data items and foreground/background annotations. \n\nAdditionally, it sets up alpha-transparency, clips the drawing area, and handles the display of no data message and range crosshair if required. Finally, it draws an outline around the plot area. This method is a fundamental part of rendering plots in the JFreeChart library.",
+      "line": 2722
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/CategoryPlot.java",
+      "description": "This code snippet is a method that renders a representation of a dataset within a specified data area using the appropriate renderer. It takes in the graphics device, the region for data to be drawn, the dataset and renderer index, and an object for collecting dimension information.\n\nThe method first checks if there is data in the dataset and if a renderer is available. If so, it initializes the renderer's state and iterates through the dataset to draw each item using the renderer. The drawing order can be controlled based on the sorting order of rows and columns.\n\nThe method returns a boolean indicating whether real data was found and rendered. This method is essential for rendering the visual representation of data within a plot or chart.",
+      "line": 2904
+    },
+    {
+      "file": "/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java",
+      "description": "This code snippet is a method responsible for drawing a bar with its standard deviation line range for a single data item within a (series, category) in a category plot. It takes in the graphics device, renderer state, data area, plot, domain axis, range axis, dataset, row index, column index, and pass index.\n\nFirst, the method checks if the dataset is an instance of StatisticalCategoryDataset and then proceeds to draw the item based on the plot's orientation. If the orientation is horizontal, it calls the drawHorizontalItem method, and if it's vertical, it calls the drawVerticalItem method to render the bar and its standard deviation line range.\n\nThis method is essential for rendering statistical data in a category plot, such as displaying bars with associated standard deviation information.",
+      "line": 215
+    },
+    {
+      "file": "/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java",
+      "description": "This code snippet is a method that handles the drawing of a single item for a plot with a vertical orientation, specifically for a statistical category dataset. It takes in various parameters including the graphics device, renderer state, data area, plot, domain axis, range axis, dataset, row index, and column index.\n\nThe method first calculates the position and dimensions of the bar to be drawn based on the data and plot configuration. It then proceeds to draw the bar, including its standard deviation lines, based on the statistical data provided by the dataset. Additionally, it handles the rendering of item labels and the creation of item entities for interaction.\n\nOverall, this method is responsible for visually representing statistical data within a category plot, including the display of bars with associated standard deviation information and item labels.",
+      "line": 500
+    }
+  ],
+  "ref": "D4J_Chart_25_BUGGY_VERSION"
+}

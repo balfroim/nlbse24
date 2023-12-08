@@ -1,0 +1,30 @@
+{
+    "tours": [
+        {
+            "failing_test": {
+                "className": " org.apache.commons.math3.util.MathArraysTest",
+                "methodName": "testLinearCombinationWithSingleElementArray",
+                "error": "java.lang.ArrayIndexOutOfBoundsException",
+                "message": "1"
+            },
+            "patched_method": {
+                "file_path": "/src/main/java/org/apache/commons/math3/util/MathArrays.java",
+                "method_name": "linearCombination",
+                "content": "    /**\n     * Compute a linear combination accurately.\n     * This method computes the sum of the products\n     * <code>a<sub>i</sub> b<sub>i</sub></code> to high accuracy.\n     * It does so by using specific multiplication and addition algorithms to\n     * preserve accuracy and reduce cancellation effects.\n     * <br/>\n     * It is based on the 2005 paper\n     * <a href=\"http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.2.1547\">\n     * Accurate Sum and Dot Product</a> by Takeshi Ogita, Siegfried M. Rump,\n     * and Shin'ichi Oishi published in SIAM J. Sci. Comput.\n     *\n     * @param a Factors.\n     * @param b Factors.\n     * @return <code>&Sigma;<sub>i</sub> a<sub>i</sub> b<sub>i</sub></code>.\n     * @throws DimensionMismatchException if arrays dimensions don't match\n     */\n    public static double linearCombination(final double[] a, final double[] b)\n        throws DimensionMismatchException {\n        final int len = a.length;\n        if (len != b.length) {\n            throw new DimensionMismatchException(len, b.length);\n        }\n\n            // Revert to scalar multiplication.\n\n        final double[] prodHigh = new double[len];\n        double prodLowSum = 0;\n\n        for (int i = 0; i < len; i++) {\n            final double ai = a[i];\n            final double ca = SPLIT_FACTOR * ai;\n            final double aHigh = ca - (ca - ai);\n            final double aLow = ai - aHigh;\n\n            final double bi = b[i];\n            final double cb = SPLIT_FACTOR * bi;\n            final double bHigh = cb - (cb - bi);\n            final double bLow = bi - bHigh;\n            prodHigh[i] = ai * bi;\n            final double prodLow = aLow * bLow - (((prodHigh[i] -\n                                                    aHigh * bHigh) -\n                                                   aLow * bHigh) -\n                                                  aHigh * bLow);\n            prodLowSum += prodLow;\n        }\n\n\n        final double prodHighCur = prodHigh[0];\n        double prodHighNext = prodHigh[1];\n        double sHighPrev = prodHighCur + prodHighNext;\n        double sPrime = sHighPrev - prodHighNext;\n        double sLowSum = (prodHighNext - (sHighPrev - sPrime)) + (prodHighCur - sPrime);\n\n        final int lenMinusOne = len - 1;\n        for (int i = 1; i < lenMinusOne; i++) {\n            prodHighNext = prodHigh[i + 1];\n            final double sHighCur = sHighPrev + prodHighNext;\n            sPrime = sHighCur - prodHighNext;\n            sLowSum += (prodHighNext - (sHighCur - sPrime)) + (sHighPrev - sPrime);\n            sHighPrev = sHighCur;\n        }\n\n        double result = sHighPrev + (prodLowSum + sLowSum);\n\n        if (Double.isNaN(result)) {\n            // either we have split infinite numbers or some coefficients were NaNs,\n            // just rely on the naive implementation and let IEEE754 handle this\n            result = 0;\n            for (int i = 0; i < len; ++i) {\n                result += a[i] * b[i];\n            }\n        }\n\n        return result;\n    }",
+                "javadoc_start_line": 797,
+                "annotations_start_line": 814,
+                "method_start_line": 815,
+                "end_line": 872
+            },
+            "steps": [],
+            "generation_failure": {
+                "error": "Failed to generate stacktrace",
+                "error_message": "Command failed: defects4j test -w ./projects/Math/3 -t  org.apache.commons.math3.util::testLinearCombinationWithSingleElementArray\nRunning ant (compile.tests)................................................ OK\nRunning ant (run.dev.tests)................................................ FAIL\nExecuted command:  cd /home/balfroim/Documents/Shomidacode/script/projects/Math/3 && /home/balfroim/Documents/Defect4J/defects4j/major/bin/ant -f /home/balfroim/Documents/Defect4J/defects4j/framework/projects/defects4j.build.xml -Dd4j.home=/home/balfroim/Documents/Defect4J/defects4j -Dd4j.dir.projects=/home/balfroim/Documents/Defect4J/defects4j/framework/projects -Dbasedir=/home/balfroim/Documents/Shomidacode/script/projects/Math/3 -Dbuild.compiler=javac1.7 -DOUTFILE=/home/balfroim/Documents/Shomidacode/script/projects/Math/3/failing_tests -Dtest.entry.class= org.apache.commons.math3.util -Dtest.entry.method=testLinearCombinationWithSingleElementArray run.dev.tests 2>&1\nOpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=1G; support was removed in 8.0\nBuildfile: /home/balfroim/Documents/Defect4J/defects4j/framework/projects/defects4j.build.xml\n\nBUILD FAILED\nTarget \"org.apache.commons.math3.util\" does not exist in the project \"Defects4J\". \n\nTotal time: 0 seconds\nCannot run tests! at /home/balfroim/Documents/Defect4J/defects4j/framework/bin/d4j/d4j-test line 135.\nCompilation failed in require at /home/balfroim/Documents/Defect4J/defects4j/framework/bin/defects4j line 195.\n\n"
+            }
+        }
+    ],
+    "project": {
+        "name": "Math",
+        "version": 3
+    }
+}

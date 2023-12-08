@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testAliasing7 to isPrototypePropertyAssign",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/RemoveUnusedPrototypeProperties.java",
+      "description": "This code snippet defines a method called `process` that takes two Node parameters, `externRoot` and `root`. Inside the method, an `AnalyzePrototypeProperties` object called `analyzer` is created with certain parameters. Then, the `process` method of the `analyzer` object is called with the `externRoot` and `root` parameters. After that, the method `removeUnusedSymbols` is called with the result of `analyzer.getAllNameInfo()` as its argument. This code seems to be part of a larger system for analyzing and processing prototype properties in a software project.",
+      "line": 74
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/AnalyzePrototypeProperties.java",
+      "description": "This code snippet defines a method called `process` that takes two Node parameters, `externRoot` and `root`. Inside the method, there is a conditional check that verifies if the `canModifyExterns` flag is not set. If the flag is not set, a traversal of the `externRoot` node is performed using `NodeTraversal` and a `ProcessExternProperties` object. After that, a traversal of the `root` node is performed using `NodeTraversal` and a `ProcessProperties` object.\n\nFollowing that, a `FixedPointGraphTraversal` object `t` is created with a `PropagateReferences` object. The `computeFixedPoint` method of `t` is then called with the `symbolGraph` and a set containing `externNode` and `globalNode` as its arguments. This code appears to be part of a system for processing and traversing nodes in a software project, possibly related to JavaScript or a similar language.",
+      "line": 157
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverse` that is used to recursively traverse a node in an abstract compiler. It takes three parameters: an `AbstractCompiler` object, a `Node` representing the root of the traversal, and a `Callback` object `cb`. Inside the method, a new `NodeTraversal` object `t` is created with the given compiler and callback, and then the `traverse` method of `t` is called with the root node. This code appears to be part of a system for traversing and processing nodes within a compiler or similar software tool.",
+      "line": 423
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverse` that is used to recursively traverse a parse tree represented by a `Node` object. Inside the method, the `sourceName` is initialized as an empty string, and the `curNode` is set to the root node. It then pushes the scope for the root node, traverses the branches of the root node, and then pops the scope. If an unexpected exception occurs during the traversal, it is caught, and a method called `throwUnexpectedException` is called with the unexpected exception as its argument. This code appears to be part of a system for traversing and processing parse trees, possibly related to a compiler or similar software tool.",
+      "line": 254
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverseBranch` that is used to traverse a branch of a parse tree represented by a `Node` object. Inside the method, it first checks the type of the node and sets the `sourceName` if the type is `SCRIPT`. Then, it sets the current node to the given node and checks if the traversal should continue based on a callback condition. \n\nIf the traversal should continue, it uses a switch statement to handle different node types. In the case of `Token.FUNCTION`, it calls the `traverseFunction` method. For other node types, it iterates through the children of the node and recursively calls `traverseBranch` for each child. After the traversal, it calls the `visit` method of the callback for the current node.\n\nAdditionally, the `@SuppressWarnings(\"fallthrough\")` annotation indicates that the code intentionally relies on fall-through behavior in the switch statement. This code appears to be part of a system for traversing and processing parse trees, possibly related to a compiler or similar software tool.",
+      "line": 465
+    }
+  ],
+  "ref": "D4J_Closure_67_BUGGY_VERSION"
+}

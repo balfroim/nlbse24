@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testCalendarTimezoneRespected to appendTo",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/time/FastDatePrinterTest.java",
+      "description": "This code snippet is a test method that checks if the calendar respects the specified time zone. It first retrieves the available time zones and the default time zone. Then, it iterates through the available time zones to find one that is different from the default time zone. Once found, it sets up a calendar and date format using the new time zone and compares the formatted time with the expected value.\n\nThe test ensures that the calendar and date formatting respect the specified time zone, and it verifies that the formatted time matches the expected value. If the test fails, it means that the calendar is not respecting the specified time zone.",
+      "line": 287
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java",
+      "description": "This code snippet appears to be a method that formats a `Calendar` object into a string. The method takes a `Calendar` object as input and returns the formatted string representation of the calendar. It seems to delegate the actual formatting to a `printer` object, which is not shown in the provided code snippet.\n\nThe method is likely part of a class that provides formatting functionality for `Calendar` objects, and it follows the standard practice of providing a descriptive Javadoc comment to explain its purpose and usage. However, without the context of the entire class and the definition of the `printer` object, it's challenging to provide a complete explanation.",
+      "line": 421
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+      "description": "This code snippet shows a method that takes a `Calendar` object as input and formats it into a string. It appears to use a `StringBuffer` to perform the formatting and returns the resulting string. The `mMaxLengthEstimate` variable is used to estimate the initial capacity of the `StringBuffer`.\n\nHowever, without the context of the entire class and the definition of the `format` method, it's challenging to provide a complete explanation. It seems like the method is part of a class that provides formatting functionality for `Calendar` objects, but further details about the purpose and usage of the method would be needed to provide a more comprehensive explanation.",
+      "line": 416
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+      "description": "This code snippet shows a method that takes a `Calendar` object and a `StringBuffer` as input and applies formatting rules to the calendar, appending the result to the provided `StringBuffer`. It seems to delegate the actual formatting to the `applyRules` method and returns the modified `StringBuffer`.\n\nThe method appears to be part of a class that provides functionality for formatting `Calendar` objects, but without the context of the entire class and the definition of the `applyRules` method, it's challenging to provide a complete explanation. Further details about the purpose and usage of the method would be needed to provide a more comprehensive explanation.",
+      "line": 442
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java",
+      "description": "This code snippet represents a method that performs formatting by applying rules to a specified calendar. The method takes a `Calendar` object and a `StringBuffer` as input, and it iterates through a collection of rules (`mRules`) to apply them to the calendar, appending the formatted result to the provided `StringBuffer`. Finally, it returns the modified `StringBuffer`.\n\nThe method is part of a class that appears to provide functionality for formatting `Calendar` objects based on a set of rules. The Javadoc comment provides a clear explanation of the purpose and usage of the method, emphasizing its role in applying formatting rules to the calendar and appending the result to the specified buffer.",
+      "line": 457
+    }
+  ],
+  "ref": "D4J_Lang_8_BUGGY_VERSION"
+}

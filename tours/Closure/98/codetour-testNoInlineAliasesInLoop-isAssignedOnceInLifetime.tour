@@ -1,0 +1,37 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testNoInlineAliasesInLoop to isAssignedOnceInLifetime",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/InlineVariables.java",
+      "description": "This code snippet defines a method named \"process\" that takes two parameters: \"externs\" and \"root\" of type Node. Inside the method, a new ReferenceCollectingCallback object is created with specific parameters, and then the \"process\" method of this callback object is called with the \"externs\" and \"root\" parameters. The purpose of this method seems to be to perform some kind of processing on the provided nodes using the ReferenceCollectingCallback. However, without more context about the surrounding code, it's difficult to determine the exact functionality of this method.",
+      "line": 88
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+      "description": "This code snippet defines a method named \"process\" that takes two parameters: \"externs\" and \"root\" of type Node. Inside the method, it calls a static method \"traverse\" of the NodeTraversal class, passing the compiler, root node, and the current instance of the class as parameters. The purpose of this method seems to be a convenience method for running a specific pass over a tree using the NodeTraversal class and the current instance as a callback. The NodeTraversal class likely provides functionality for traversing and processing nodes in a tree-like structure, and this method simplifies the process of using it with the current class.",
+      "line": 101
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method named \"process\" that takes two parameters: \"externs\" and \"root\" of type Node. Inside the method, it calls a static method \"traverse\" of the NodeTraversal class, passing the compiler, root node, and the current instance of the class as parameters. The purpose of this method seems to be a convenience method for running a specific pass over a tree using the NodeTraversal class and the current instance as a callback. The NodeTraversal class likely provides functionality for traversing and processing nodes in a tree-like structure, and this method simplifies the process of using it with the current class.",
+      "line": 427
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "It seems like the code snippet provided is incomplete and out of context. The code appears to be part of a method that is intended to traverse a parse tree recursively. However, without the complete context of the class and its dependencies, it's challenging to provide a precise explanation. Additionally, the usage of \"sourceName\", \"curNode\", \"pushScope\", \"traverseBranch\", and \"popScope\" suggests that this method is part of a larger system for parsing and processing code.\n\nIf you could provide more context or the complete class structure, I would be able to offer a more accurate explanation.",
+      "line": 258
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a private method named \"popScope\" within a class. The method is responsible for popping back to the previous scope, for example, when leaving a function. It first checks if a \"scopeCallback\" is not null, and if so, it calls the \"exitScope\" method on the \"scopeCallback\" object, passing the current instance as a parameter. Then, it checks if the \"scopeRoots\" list is empty. If it is, it pops the top element from the \"scopes\" stack; otherwise, it pops the top element from the \"scopeRoots\" stack. Finally, it pops an element from the \"cfgs\" stack.\n\nThis method seems to be part of a larger system for managing scopes and control flow within a program. The \"scopeCallback\", \"scopeRoots\", \"scopes\", and \"cfgs\" are likely related to the management of program scopes and control flow graphs.",
+      "line": 565
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+      "description": "This code snippet defines a method named \"exitScope\" within a class. The method is responsible for updating the block stack by popping the top element and then invoking any additional behavior through the \"afterExitScope\" method of the \"behavior\" object, passing the NodeTraversal instance \"t\" and the \"referenceMap\" as parameters.\n\nThe \"blockStack\" likely maintains a stack of blocks or scopes, and the \"exitScope\" method is used to handle the exiting of a scope by removing the top element from the stack. Additionally, it triggers any necessary post-exit behaviors through the \"afterExitScope\" method of the \"behavior\" object.\n\nIt seems like this method is part of a larger system for managing scopes and behaviors during the traversal of nodes, possibly in the context of a compiler or code analysis tool.",
+      "line": 143
+    }
+  ],
+  "ref": "D4J_Closure_98_BUGGY_VERSION"
+}

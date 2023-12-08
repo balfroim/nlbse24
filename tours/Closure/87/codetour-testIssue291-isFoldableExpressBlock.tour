@@ -1,0 +1,52 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testIssue291 to isFoldableExpressBlock",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+      "description": "This code snippet defines a method called `process` that takes two parameters: `Node externs` and `Node root`. Inside the method, a `NodeTraversal` object `t` is created, and then the traversal process begins by calling `beginTraversal` with the `NodeTraversal` object `t`. Then, the `traverse` method is called on the `root` node to traverse the abstract syntax tree. Finally, the traversal process is ended by calling `endTraversal` with the `NodeTraversal` object `t`. This code seems to be part of a larger system that involves traversing and processing nodes in an abstract syntax tree, likely related to a compiler or interpreter.",
+      "line": 61
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverse` that takes a `Node` parameter called `root`. Inside the method, it sets the `sourceName` to an empty string, then sets the `curNode` to the `root` node. It then pushes a scope for the `root` node, traverses the branch starting from the `root` node, and then pops the scope. If an unexpected exception occurs during the traversal, it is caught, and a method called `throwUnexpectedException` is called with the unexpected exception as a parameter. This code appears to be part of a tree traversal mechanism, likely used in parsing and processing a tree-like data structure.",
+      "line": 254
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverseBranch` that takes a `Node` parameter `n` and a `Node` parameter `parent`. Inside the method, it first checks the type of the node and sets the `sourceName` if the type is `SCRIPT`. Then, it sets the `curNode` to the current node and checks if traversal should be performed based on a callback. If traversal is allowed, it uses a switch statement to handle different node types, such as `FUNCTION`, and then recursively traverses the children nodes. After the traversal, it visits the current node using a callback. The `@SuppressWarnings(\"fallthrough\")` annotation is used to suppress warnings about fall-through in the switch statement. This code appears to be part of a tree traversal mechanism, likely used in parsing and processing a tree-like data structure, possibly related to a JavaScript parser or interpreter.",
+      "line": 465
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverseBranch` that takes a `Node` parameter `n` and a `Node` parameter `parent`. Inside the method, it first checks the type of the node and sets the `sourceName` if the type is `SCRIPT`. Then, it sets the `curNode` to the current node and checks if traversal should be performed based on a callback. If traversal is allowed, it uses a switch statement to handle different node types, such as `FUNCTION`, and then recursively traverses the children nodes. After the traversal, it visits the current node using a callback. The `@SuppressWarnings(\"fallthrough\")` annotation is used to suppress warnings about fall-through in the switch statement. This code appears to be part of a tree traversal mechanism, likely used in parsing and processing a tree-like data structure, possibly related to a JavaScript parser or interpreter.",
+      "line": 465
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method called `traverseBranch` that takes a `Node` parameter `n` and a `Node` parameter `parent`. Inside the method, it first checks the type of the node and sets the `sourceName` if the type is `SCRIPT`. Then, it sets the `curNode` to the current node and checks if traversal should be performed based on a callback. If traversal is allowed, it uses a switch statement to handle different node types, such as `FUNCTION`, and then recursively traverses the children nodes. After the traversal, it visits the current node using a callback. The `@SuppressWarnings(\"fallthrough\")` annotation is used to suppress warnings about fall-through in the switch statement. This code appears to be part of a tree traversal mechanism, likely used in parsing and processing a tree-like data structure, possibly related to a JavaScript parser or interpreter.",
+      "line": 465
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java",
+      "description": "This code snippet defines a method called `visit` that takes a `NodeTraversal` object `t`, a `Node` `n`, and a `Node` `parent`. Inside the method, it initializes a `currentVersionOfNode` with the `n` parameter and a `somethingChanged` boolean flag to `false`. Then, it enters a do-while loop where it iterates through a list of `AbstractPeepholeOptimization` objects called `peepholeOptimizations`. For each optimization, it attempts to optimize the subtree represented by the `currentVersionOfNode` and checks if a new version of the node is returned. If a new version is returned, it updates the `currentVersionOfNode` and sets `somethingChanged` to `true`. If the `currentVersionOfNode` becomes `null`, the method returns. This code seems to be part of a process that applies peephole optimizations to a tree-like data structure, likely related to a compiler or interpreter.",
+      "line": 85
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+      "description": "This code snippet is a method called `optimizeSubtree` that overrides a method from an interface or superclass. It takes a `Node` parameter `node` and attempts to apply various peephole minimizations based on the type of the node. It uses a switch statement to handle different node types, such as `RETURN`, `NOT`, `IF`, `EXPR_RESULT`, `HOOK`, `WHILE`, `DO`, `FOR`, `NEW`, and `CALL`. For each type, it tries to minimize or optimize the node in a specific way and returns the result. If the node type does not match any of the cases, it simply returns the original node, indicating that no optimization was performed. The `@SuppressWarnings(\"fallthrough\")` annotation is used to suppress warnings about fall-through in the switch statement. This code appears to be part of an optimization process for a tree-like data structure, likely related to a compiler or interpreter.",
+      "line": 103
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+      "description": "This code snippet is a method called `tryMinimizeIf` that attempts to optimize or minimize `IF` nodes into smaller `HOOKs` in a JavaScript abstract syntax tree. The method takes a `Node` parameter `n` representing the `IF` node and performs various transformations to optimize the structure. It checks the structure of the `IF` node, including its condition, then-branch, and else-branch, and attempts to transform it into a smaller `HOOK` node if certain conditions are met. \n\nThe method handles various scenarios such as converting `IF` nodes with literal conditions, simplifying `IF` nodes with single-branch or no-else-branch, transforming `IF` nodes with return statements, and optimizing `IF` nodes with specific patterns of expressions and assignments. It also handles cases where the `IF` node can be transformed into a `HOOK` node to achieve a more concise representation.\n\nOverall, the method aims to apply peephole optimizations to reduce the size and complexity of the `IF` nodes in the abstract syntax tree, improving the efficiency and readability of the generated code.",
+      "line": 462
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java",
+      "description": "This code snippet contains a method called `isFoldableExpressBlock` which is a utility method used to determine whether a given node represents a block with a single statement that is an expression. The method takes a `Node` parameter `n` and checks if it is a block with a single child that is an expression.\n\nIt first checks if the node is of type `BLOCK` and has only one child. If these conditions are met, it further checks if the child node is an expression. The method also includes a comment explaining a specific case related to event handlers in Internet Explorer (IE) and a link to a relevant issue.\n\nOverall, this method serves as a helper for identifying a specific structure within the abstract syntax tree, likely used in a compiler or interpreter for JavaScript or a similar language.",
+      "line": 538
+    }
+  ],
+  "ref": "D4J_Closure_87_BUGGY_VERSION"
+}

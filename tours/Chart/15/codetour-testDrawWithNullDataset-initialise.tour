@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testDrawWithNullDataset to initialise",
+  "steps": [
+    {
+      "file": "/source/org/jfree/chart/JFreeChart.java",
+      "description": "This code snippet appears to be a part of a Java class that is responsible for drawing a chart using Java 2D graphics. The `draw` method is the main focus of this class and is used to render the chart on a graphics device such as the screen or a printer.\n\nThe method takes several parameters including the graphics device, the area within which the chart should be drawn, an anchor point, and an object for recording information about the drawing process.\n\nThe method begins by notifying listeners that the drawing process has started. It then sets the chart area and ensures that no drawing occurs outside of it. Next, it handles drawing the chart background, including filling it with a specified paint and drawing a background image if available. It also checks if a border is visible and draws it if necessary.\n\nFollowing this, the method handles drawing the title and subtitles of the chart, and then proceeds to draw the plot, which includes axes and data visualization. Finally, it restores the original clip, notifies listeners that the drawing process has finished, and completes the method.\n\nOverall, this code snippet represents the core functionality for rendering a chart using Java 2D graphics and provides a detailed and structured approach to drawing the various components of the chart.",
+      "line": 1225
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/PiePlot3D.java",
+      "description": "This code snippet is a part of a Java class responsible for drawing a pie chart using Java 2D graphics. The `draw` method is called to render the pie chart on a graphics device such as the screen or a printer.\n\nThe method takes several parameters including the graphics device, the area within which the plot should be drawn, an anchor point, parent state, and an object for recording information about the drawing process.\n\nThe method begins by adjusting the plot area for any insets and then proceeds to draw the background of the plot. It then sets the clip for the graphics context and calculates various dimensions and areas for the pie chart.\n\nNext, it initializes the pie plot state and defines areas for linking, exploding, and drawing the pie sections. It then retrieves the dataset and checks if it's empty or null, and handles cases where there are too many elements to draw.\n\nThe method then proceeds to draw the pie chart by iterating through the dataset, calculating angles, and drawing the pie sections based on the data values. It also handles drawing the height, sides, and top of the pie, as well as setting up tooltips for each section.\n\nAdditionally, the method includes logic for drawing labels and simple labels for the pie chart, and it concludes by restoring the original clip, composite",
+      "line": 591
+    },
+    {
+      "file": "/source/org/jfree/chart/plot/PiePlot.java",
+      "description": "The provided code snippet consists of two classes: `PaintWindow` and `PaintObject`. The `PaintWindow` class contains an instance of the `PaintObject` class and is responsible for handling mouse events such as click, move, and release on the application canvas.\n\nIn the `PaintWindow` class, the constructor initializes a default `PaintObject` for pencil drawing, setting the color to green and the thickness to 5. The `onMouseEvent` method delegates the event handling to the `PaintObject` instance, allowing it to respond to the mouse events.\n\nThe second part of the code snippet is a method within an unspecified class. This method, named `initialise`, is used to initialize the drawing procedure for a pie plot. It takes parameters such as the graphics device, plot area, the plot itself, an index, and an object for collecting chart rendering information. The method returns a state object that maintains relevant state information for one chart drawing.\n\nIn summary, the first part of the code sets up the interaction between the `PaintWindow` and `PaintObject` classes for handling mouse events, while the second part initializes the drawing procedure for a pie plot, providing necessary state information for rendering the chart.",
+      "line": 2056
+    }
+  ],
+  "ref": "D4J_Chart_15_BUGGY_VERSION"
+}

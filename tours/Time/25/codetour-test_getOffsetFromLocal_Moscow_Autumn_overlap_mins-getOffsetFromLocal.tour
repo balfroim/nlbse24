@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from test_getOffsetFromLocal_Moscow_Autumn_overlap_mins to getOffsetFromLocal",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/TestDateTimeZoneCutover.java",
+      "description": "This code snippet is part of the Joda-Time library and is related to computing the parsed datetime by setting the saved fields. It is used internally to calculate the milliseconds since 1970-01-01T00:00:00Z based on the parsed fields.\n\nThe method `computeMillis` takes two parameters: `resetFields` and `text`. The `resetFields` parameter, when set to true, clears unsaved field values. The `text` parameter is an optional text being parsed, to be included in any error message.\n\nThe method first sorts the saved fields and then iterates through them to compute the millis value. It also handles the time zone offset and transition to ensure the correctness of the computed millis.\n\nIf any field is out of range, an IllegalArgumentException is thrown. Additionally, if there is an issue with the time zone offset transition, an IllegalArgumentException is also thrown.\n\nOverall, this method is an important part of the Joda-Time library's internal functionality for computing the milliseconds based on the parsed fields and handling time zone offsets. It is not typically used directly in application code but is crucial for the proper functioning of date and time parsing in the library.",
+      "line": 918
+    },
+    {
+      "file": "/src/test/java/org/joda/time/TestDateTimeZoneCutover.java",
+      "description": "This code snippet is part of the Joda-Time library and is related to computing the parsed datetime by setting the saved fields. It is used internally to calculate the milliseconds since 1970-01-01T00:00:00Z based on the parsed fields.\n\nThe method `computeMillis` takes two parameters: `resetFields` and `text`. The `resetFields` parameter, when set to true, clears unsaved field values. The `text` parameter is an optional text being parsed, to be included in any error message.\n\nThe method first sorts the saved fields and then iterates through them to compute the millis value. It also handles the time zone offset and transition to ensure the correctness of the computed millis.\n\nIf any field is out of range, an IllegalArgumentException is thrown. Additionally, if there is an issue with the time zone offset transition, an IllegalArgumentException is also thrown.\n\nOverall, this method is an important part of the Joda-Time library's internal functionality for computing the milliseconds based on the parsed fields and handling time zone offsets. It is not typically used directly in application code but is crucial for the proper functioning of date and time parsing in the library.",
+      "line": 1218
+    },
+    {
+      "file": "/src/test/java/org/joda/time/TestDateTimeZoneCutover.java",
+      "description": "This code snippet is a method used for testing time zone offset calculations in the Joda-Time library.\n\nThe method `doTest_getOffsetFromLocal` takes several parameters including year, month, day, hour, minute, second, millisecond, expected result, and a DateTimeZone object. It creates a DateTime object representing a specific date and time in UTC, then calculates the offset from the local time using the provided DateTimeZone. After that, it adjusts the DateTime object based on the calculated offset and compares the result with the expected value using an assertion.\n\nIn summary, this method is used to test the correctness of time zone offset calculations in the Joda-Time library by creating a DateTime object, calculating the offset from the local time, adjusting the time based on the offset, and then comparing the result with an expected value.",
+      "line": 1233
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTimeZone.java",
+      "description": "This code snippet is a method from a time zone handling library, and specifically, it is part of the logic for calculating the offset from local time to UTC time, considering daylight saving time (DST) transitions.\n\nThe method `getOffsetFromLocal` takes a millisecond instant relative to a specific time zone and calculates the offset needed to convert the local time to UTC time. It first estimates the offset at the given instant, then adjusts the instant using the estimate and recalculates the offset. If the offsets differ, it indicates that the instant is near a DST boundary.\n\nIn the case of a DST overlap (where the local time is ambiguous), the method returns the earlier instant to favor daylight (summer) time over standard (winter) time. It also ensures that time is always after the DST gap.\n\nThe method handles scenarios near DST boundaries and ensures that the calculated offset is suitable for obtaining an instant after any DST gap. It also addresses the behavior prior to specific versions of the library.\n\nIn summary, this method is crucial for accurately determining the offset from local time to UTC time, especially around DST transitions, and it ensures that the calculated offset aligns with the expected behavior near DST boundaries.",
+      "line": 901
+    }
+  ],
+  "ref": "D4J_Time_25_BUGGY_VERSION"
+}

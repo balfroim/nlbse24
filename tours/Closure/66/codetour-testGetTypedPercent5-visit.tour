@@ -1,0 +1,37 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testGetTypedPercent5 to visit",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet appears to be a part of a larger codebase, likely related to a compiler or static analysis tool. It seems to be a method named `processForTesting` that takes two parameters, `externsRoot` and `jsRoot`, which are nodes representing the external code and JavaScript code, respectively.\n\nThe method begins by performing some state checks using `Preconditions.checkState` to ensure that certain conditions are met before proceeding. It then initializes a `scopeCreator` and `topScope` if they are currently null.\n\nAfter that, it creates a new scope using the `scopeCreator` and the `externsAndJsRoot` node. Following this, it initializes a `TypeInferencePass` and processes the type inference for the external and JavaScript roots.\n\nFinally, it calls another `process` method with the `externsRoot` and `jsRoot` parameters and returns the `topScope`.\n\nIt seems like this code is part of a larger process for analyzing and inferring types in JavaScript code, likely for testing purposes.",
+      "line": 379
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet appears to be a method named `process` that is part of a larger system, possibly a compiler or static analysis tool for JavaScript.\n\nThe method takes two parameters, `externsRoot` and `jsRoot`, which are nodes representing the external code and JavaScript code to be processed.\n\nThe method begins by performing several checks using `Preconditions.checkNotNull` and `Preconditions.checkState` to ensure that certain conditions are met before proceeding. It also verifies the relationship between the `externsRoot` and `jsRoot` nodes.\n\nIf the `externsRoot` is not null, it calls a `check` method with the `externsRoot` and a boolean value `true`, and then calls the `check` method with the `jsRoot` and a boolean value `false`.\n\nIt seems like this method is responsible for processing the external and JavaScript code, possibly performing checks or validations as part of a larger compilation or analysis process.",
+      "line": 359
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet is a method named `check` that takes a `Node` and a `boolean` as parameters. It seems to be part of a larger system, possibly a compiler or static analysis tool for JavaScript.\n\nThe method begins by checking that the input `Node` is not null using `Preconditions.checkNotNull`.\n\nIt then creates a `NodeTraversal` object, passing in the compiler, the current instance (this), and the `scopeCreator`. It sets the `inExterns` flag based on the value of the `externs` parameter.\n\nThe `NodeTraversal` object is then used to traverse the given `Node` with the top scope. After the traversal, it calls the `process` method of `inferJSDocInfo`, passing in the `node` and `null` if `externs` is true, and `null` and the `node` if `externs` is false.\n\nIt seems like this method is responsible for traversing and processing nodes in the JavaScript code, possibly inferring JSDoc information and performing checks or validations as part of a larger compilation or analysis process.",
+      "line": 393
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a method named `traverseWithScope` that appears to be part of a larger system, possibly a compiler or static analysis tool for parsing and traversing a parse tree.\n\nThe method takes a `Node` and a `Scope` as parameters and is responsible for recursively traversing the parse tree with the given scope, starting from the provided root node. It is important to note that it should only be used in the global scope, as indicated by the comment.\n\nThe method begins by checking the state to ensure that the provided scope is indeed the global scope using `Preconditions.checkState(s.isGlobal())`.\n\nIt then initializes the `sourceName` to an empty string, sets the `curNode` to the root node, pushes the provided scope onto the scope stack, traverses the branch starting from the root node, and then pops the scope from the stack.\n\nIt seems like this method is a fundamental part of the parsing and traversal process for the parse tree within the context of a specific scope, likely as part of a larger compilation or analysis process.",
+      "line": 314
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a method named `traverseBranch` that seems to be part of a larger system, possibly a compiler or static analysis tool for traversing a parse tree.\n\nThe method is marked with `@SuppressWarnings(\"fallthrough\")`, indicating that the code intentionally uses fall-through behavior in a switch statement.\n\nIt takes a `Node` and its parent `Node` as parameters and is responsible for traversing a branch of the parse tree.\n\nThe method begins by determining the type of the current node and handling special cases, such as setting the `sourceName` if the node type is `SCRIPT`.\n\nIt then checks if the traversal should continue by invoking the `shouldTraverse` method of a `callback` object. If the traversal should not continue, the method returns early.\n\nIf the traversal should continue, it uses a switch statement to handle different node types. In the case of a `FUNCTION` node, it calls the `traverseFunction` method. For other node types, it iterates through the node's children and recursively calls `traverseBranch` for each child node.\n\nAfter traversing the children, it invokes the `visit` method of the `callback` object.\n\nOverall, this method appears to be a core part of the tree traversal process",
+      "line": 465
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet represents a method named `visit` that seems to be a crucial part of a type checking process. It is likely a part of a larger system, possibly a type inference or static analysis tool for JavaScript.\n\nThe method takes a `NodeTraversal` object `t`, a `Node` `n`, and its parent `Node` as parameters. It is responsible for visiting different types of parse tree nodes and performing type checking based on the node's type.\n\nThe method consists of a large switch statement where each case represents a different type of parse tree node. Within each case, specific type checking and validation logic is applied based on the type of the node. For example, it checks the type of a variable, handles different operators, handles literals such as numbers, strings, and regular expressions, and also handles various JavaScript constructs like function calls, assignments, comparisons, and logical operations.\n\nAdditionally, the method performs type inference and data flow analysis for certain nodes, and it also handles special cases like `WITH` and `CASE` statements.\n\nThroughout the method, it also checks for typeability and performs accounting for type checking, while also ensuring that certain sections of the code are not subject to type checking.\n\nOverall, this method seems to be a critical component of the type",
+      "line": 813
+    }
+  ],
+  "ref": "D4J_Closure_66_BUGGY_VERSION"
+}

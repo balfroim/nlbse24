@@ -1,0 +1,37 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testSyntaxError1 to getLine",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/JsMessageExtractor.java",
+      "description": "The given code snippet is a method named \"extractMessages\" that takes an array of JSSourceFile objects as input and returns a collection of JsMessage objects. This method is responsible for extracting JavaScript messages from the provided JavaScript source files. It throws an IOException if an error occurs during the extraction process. The method uses the Guava library's ImmutableList class to convert the array of inputs into an immutable list before processing.",
+      "line": 101
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/JsMessageExtractor.java",
+      "description": "The given code snippet is a method named \"extractMessages\" that takes an iterable of JSSourceFile objects as input and returns a collection of JsMessage objects. This method is responsible for extracting JavaScript messages from the provided JavaScript source files. It uses the Google Closure Compiler to parse and analyze the JavaScript code. It initializes the compiler, processes each input file individually to prevent out-of-memory issues, and then extracts the messages using a custom visitor called ExtractMessagesVisitor. If there are any errors during the compilation or message extraction, it throws an IOException or a RuntimeException with detailed error messages. Finally, it returns the collection of extracted messages.",
+      "line": 145
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/LightweightMessageFormatter.java",
+      "description": "The given code snippet is a method named \"formatError\" that takes a JSError object as input and returns a formatted error message as a string. This method is responsible for formatting the provided error object into a human-readable string representation. It uses another method called \"format\" internally to perform the formatting and passes a boolean parameter \"false\" to indicate that it's not a detailed format. The purpose of this method is to provide a user-friendly representation of the error for display or logging purposes.",
+      "line": 61
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/LightweightMessageFormatter.java",
+      "description": "The given code snippet is a private method named \"format\" that takes a JSError object and a boolean indicating whether it's a warning as input, and returns a formatted error or warning message as a string. This method is responsible for formatting the error or warning details, including the source excerpt, error description, source name, line number, and additional context. It constructs a human-readable representation of the error or warning, including the source name, line number, error level, description, and source excerpt with an arrow pointing to the specific location of the error. The method handles the formatting of error/warning messages for display or logging purposes.",
+      "line": 113
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/Compiler.java",
+      "description": "The given code snippet is a method named \"getSourceLine\" that takes a source name and a line number as input and returns the content of the specified line from the corresponding source file as a string. This method is responsible for retrieving the content of a specific line from the source file identified by its name and line number. It first checks if the line number is valid, then attempts to retrieve the corresponding source file and fetch the content of the specified line. If the source file or line is not found, it returns null. This method is useful for obtaining the source code line associated with a particular error or event for diagnostic or logging purposes.",
+      "line": 1907
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/SourceFile.java",
+      "description": "The given code snippet is a method named \"getLine\" that takes a line number as input and returns the content of the specified line from the source file as a string. This method is responsible for retrieving the content of a specific line from the source file. It first attempts to retrieve the entire source code and then iterates through the code to find the specified line. If the line is found, it returns the content of that line; otherwise, it returns null. The method also handles cases where the line number is beyond the end of the file or if there is an IO exception. Additionally, it optimizes the search process by remembering the previous offset and line number to speed up subsequent searches.",
+      "line": 246
+    }
+  ],
+  "ref": "D4J_Closure_56_BUGGY_VERSION"
+}

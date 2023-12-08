@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testFactorial to factorialLog",
+  "steps": [
+    {
+      "file": "/src/test/org/apache/commons/math/util/MathUtilsTest.java",
+      "description": "In the given code snippet, a method named `testFactorial` is defined. This method is used to test the factorial calculation functionality provided by the `MathUtils` class. \n\nThe method contains a series of assertions using the `assertEquals` method to compare the expected factorial values with the actual factorial values calculated by the `MathUtils` class. \n\nThe loop iterates through the numbers from 1 to 20 and checks the factorial values using different methods provided by the `MathUtils` class. Additionally, it also checks the factorial values for 0.\n\nThe `assertEquals` method is used to compare the expected factorial value with the actual factorial value, and it also specifies a delta value for the comparison to account for any floating-point precision issues.\n\nThe purpose of this method is to ensure that the factorial calculation methods in the `MathUtils` class are working correctly for a range of input values.",
+      "line": 244
+    },
+    {
+      "file": "/src/java/org/apache/commons/math/util/MathUtils.java",
+      "description": "In the provided code snippet, there is a method named `factorialDouble` which is part of a utility class, possibly named `MathUtils`. This method calculates the factorial of a given integer `n` and returns the result as a `double` value.\n\nThe method includes preconditions that specify the requirements for the input parameter `n`. It states that `n` must be greater than or equal to 0, and if it is not, an `IllegalArgumentException` will be thrown.\n\nThe implementation of the `factorialDouble` method uses the `factorialLog` method to calculate the natural logarithm of the factorial value and then applies the exponential function to obtain the factorial value. The result is rounded to the nearest integer using the `Math.floor` function.\n\nThe method documentation also mentions that if the computed factorial value exceeds the maximum value that can be represented by a `double`, the method will return `Double.POSITIVE_INFINITY`.\n\nOverall, the `factorialDouble` method provides a way to calculate the factorial of a number and handle edge cases such as input validation and potential overflow of the result.",
+      "line": 378
+    },
+    {
+      "file": "/src/java/org/apache/commons/math/util/MathUtils.java",
+      "description": "In the provided code snippet, there is a method named `factorialDouble` which is part of a utility class, possibly named `MathUtils`. This method calculates the factorial of a given integer `n` and returns the result as a `double` value.\n\nThe method includes preconditions that specify the requirements for the input parameter `n`. It states that `n` must be greater than or equal to 0, and if it is not, an `IllegalArgumentException` will be thrown.\n\nThe implementation of the `factorialDouble` method uses the `factorialLog` method to calculate the natural logarithm of the factorial value and then applies the exponential function to obtain the factorial value. The result is rounded to the nearest integer using the `Math.floor` function.\n\nThe method documentation also mentions that if the computed factorial value exceeds the maximum value that can be represented by a `double`, the method will return `Double.POSITIVE_INFINITY`.\n\nOverall, the `factorialDouble` method provides a way to calculate the factorial of a number and handle edge cases such as input validation and potential overflow of the result.",
+      "line": 402
+    }
+  ],
+  "ref": "D4J_Math_93_BUGGY_VERSION"
+}

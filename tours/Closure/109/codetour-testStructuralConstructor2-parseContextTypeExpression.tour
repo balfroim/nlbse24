@@ -1,0 +1,62 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testStructuralConstructor2 to parseContextTypeExpression",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet appears to be a method in Java that is responsible for parsing JSDoc information. The method starts by setting the initial state and skipping any end-of-line characters. It then proceeds to read tokens from the JSDoc token stream until the end of the comment is reached.\n\nThe method checks if JSDoc information should be parsed and records the block description if necessary. It then enters a loop to parse the JSDoc information with the help of a helper method.\n\nOverall, this method is responsible for parsing JSDoc information and recording relevant details for further processing.",
+      "line": 239
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet is a private method called `parseHelperLoop` that takes a `JsDocToken` and a list of `ExtendedTypeInfo` as parameters. It contains a while loop that iterates indefinitely, processing different cases based on the type of token received.\n\nThe method uses a switch statement to handle different token types. When encountering an ANNOTATION token, it checks the current state and then calls another method to parse the annotation. When encountering an EOC (end of comment) token, it performs some final checks and returns true. If the method encounters an EOF (end of file) token, it discards any accumulated information, builds the JSDoc, and returns false with a parser warning. If the token is an EOL (end of line), it resets the state if necessary. For any other token types, it adjusts the state and continues processing.\n\nOverall, this method is part of the JSDoc parsing process and handles different token types to extract and process JSDoc information.",
+      "line": 286
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet is a method called `parseAnnotation` that takes a `JsDocToken` and a list of `ExtendedTypeInfo` as parameters. The method is responsible for parsing different types of JSDoc annotations and processing them accordingly.\n\nThe method starts by extracting the annotation name and then checks for the specific annotation type. For each type of annotation, it performs different actions such as recording the annotation, checking for duplicates, recording information like author, deprecation reason, types, descriptions, and more. It also handles warnings and errors related to the annotations.\n\nThe method also handles special cases for annotations like `@param`, `@throws`, `@return`, `@type`, and others, where it records parameter types, throw types, return types, and type definitions.\n\nOverall, this method is a crucial part of the JSDoc parsing process, responsible for parsing various JSDoc annotations and recording relevant information for further processing.",
+      "line": 1076
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet is a method called `parseAndRecordTypeNode` that takes a `JsDocToken` as a parameter and is responsible for parsing and recording a type expression found at the current token position. The method consumes input and returns the type expression found, or null if none is found.\n\nThe method likely parses the current token and its context to identify and create a representation of a type expression, which could be used for further processing or validation. The method's JSDoc comment indicates that it looks for a type expression at the current token and returns it if found.\n\nOverall, this method appears to be a part of a larger system for parsing and handling type expressions within a JSDoc context.",
+      "line": 1272
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet is a private method called `parseAndRecordTypeNode` that takes several parameters including the current token, line number, starting character position, and flags for type expression parsing. The method is responsible for looking for a parameter type expression at the current token position and, if found, returning it. It also records the type node for further processing.\n\nThe method appears to handle the parsing and recording of type expressions within a JSDoc context. It checks the token and its context to determine the type of type expression to parse, either a simple type name or a more complex type expression. After parsing the type expression, it records the type node with the provided line number and character position.\n\nOverall, this method is a crucial part of the JSDoc parsing process, responsible for parsing and recording parameter type expressions for further analysis and usage.",
+      "line": 1339
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet contains a private method called `parseTypeExpressionAnnotation` that is responsible for parsing a type expression annotation within a JSDoc context. The method checks the current token to determine the type of type expression to parse.\n\nIf the current token is an opening curly brace (LC), the method proceeds to parse a top-level type expression enclosed within curly braces. It then returns the parsed type node.\n\nIf the current token is not an opening curly brace, the method simply parses a type expression and returns the result.\n\nOverall, this method is part of the JSDoc parsing process and handles the parsing of type expression annotations, ensuring that the type expressions are correctly parsed and returned for further processing.",
+      "line": 1731
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "In this code snippet, we have a private method called `parseTopLevelTypeExpression` that is responsible for parsing a top-level type expression within a JSDoc context. The method follows a specific rule defined as `TopLevelTypeExpression := TypeExpression | TypeUnionList`.\n\nThe method first attempts to parse a type expression using the `parseTypeExpression` method. If a type expression is successfully parsed, the method then checks if a type union is present by looking for a pipe symbol (|). If a pipe symbol is found, it indicates a union type, and the method proceeds to parse the union type with an alternate token.\n\nOverall, this method is part of the JSDoc parsing process and handles the parsing of top-level type expressions, including the support for union types for backward compatibility.",
+      "line": 1823
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "In this code snippet, we have a private method called `parseTypeExpression` that is responsible for parsing a type expression within a JSDoc context. The method follows a specific rule defined as:\n```\nTypeExpression := BasicTypeExpression\n    | '?' BasicTypeExpression\n    | '!' BasicTypeExpression\n    | BasicTypeExpression '?'\n    | BasicTypeExpression '!'\n    | '?'\n```\nThe method first checks the current token to determine the type of type expression to parse. If the token is a question mark (?), the method uses look-ahead to determine whether it signifies a nullable type or an unknown type. It then proceeds to parse and handle the different cases based on the following token.\n\nIf the token is an exclamation mark (!), the method wraps the parsed basic type expression with a node representing a non-nullable type.\n\nIf the token is neither a question mark nor an exclamation mark, the method parses a basic type expression and checks for the presence of a question mark or exclamation mark to wrap the basic type expression accordingly.\n\nOverall, this method is a crucial part of the JSDoc parsing process and handles the parsing of various type expressions, including nullable and non-nullable types, based on the provided tokens.",
+      "line": 1901
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "In this code snippet, we have a private method called `parseBasicTypeExpression` that is responsible for parsing a basic type expression within a JSDoc context. The method follows a specific rule defined as:\n```\nBasicTypeExpression := '*' | 'null' | 'undefined' | TypeName\n    | FunctionType | UnionType | RecordType | ArrayType\n```\nThe method checks the current token to determine the type of basic type expression to parse. If the token is a star (*), the method returns a node representing a star. If the token is an opening square bracket ([), the method proceeds to parse an array type. If the token is an opening curly brace ({), the method parses a record type. If the token is an opening parenthesis (() the method parses a union type. If the token is a string, the method checks for specific string values such as \"function\", \"null\", or \"undefined\" and then proceeds to parse the corresponding type. If none of the expected tokens are found, the method reports a syntax warning.\n\nOverall, this method is a crucial part of the JSDoc parsing process and handles the parsing of various basic type expressions based on the provided tokens.",
+      "line": 1941
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "This code snippet contains a private method called `parseFunctionType` that is responsible for parsing a function type within a JSDoc context. The method follows a specific rule defined as:\n```\nFunctionType := 'function' FunctionSignatureType\nFunctionSignatureType :=\n   TypeParameters '(' 'this' ':' TypeName, ParametersType ')' ResultType\n```\nThe method first checks the current token to ensure it is an opening parenthesis (LP). It then proceeds to parse the function type, including its parameters and result type, based on the provided tokens.\n\nThe method handles the parsing of function types by checking for the presence of parameters, including the context type (this or new), and then parsing the parameters type and result type accordingly. It also performs error checking to ensure the correct syntax for function type declarations.\n\nOverall, this method is a crucial part of the JSDoc parsing process and handles the parsing of function types, including their signature and parameters, based on the provided tokens.",
+      "line": 2059
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java",
+      "description": "In this code snippet, we have a private method called `parseContextTypeExpression` that is responsible for parsing a context type expression within a JSDoc context. The method follows a specific rule defined as:\n```\nContextTypeExpression := BasicTypeExpression | '?'\n```\nThe method is designed to parse the context type expression, which can be a basic type expression or a question mark (?). However, the implementation provided in the code snippet only parses a basic type expression by calling the `parseTypeName` method.\n\nIt's important to note that the provided implementation does not cover the full range of the defined context type expression rule, as it only handles the basic type expression part.\n\nOverall, this method is intended to parse the context type expression, but the current implementation is limited to parsing basic type expressions.",
+      "line": 1909
+    }
+  ],
+  "ref": "D4J_Closure_109_BUGGY_VERSION"
+}

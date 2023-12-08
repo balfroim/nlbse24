@@ -1,0 +1,57 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testNoInlineDeletedProperties to isInlinableObject",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/InlineObjectLiterals.java",
+      "description": "This code snippet appears to be a method named \"process\" that takes two parameters, \"externs\" and \"root\", both of type Node. Within the method, a new ReferenceCollectingCallback object is created, and its \"process\" method is called with the \"externs\" and \"root\" parameters. The ReferenceCollectingCallback seems to be used for collecting references, and it is initialized with a compiler and an InliningBehavior. This method seems to be part of a larger system that involves processing nodes and collecting references, but without more context, it's difficult to provide a more detailed explanation.",
+      "line": 68
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+      "description": "This code snippet is an overridden method named \"process\" that is part of a class implementing a certain interface or extending a superclass. The method is used as a convenience for running a specific pass over a tree with the current class as a callback.\n\nInside the method, the NodeTraversal utility class is used to traverse the tree starting from the given \"externs\" and \"root\" nodes. The \"compiler\" parameter seems to be a reference to a compiler instance, and the \"Lists.newArrayList(externs, root)\" creates a list containing the \"externs\" and \"root\" nodes. Finally, the \"this\" keyword is passed as the callback to handle the traversal.\n\nOverall, this method seems to be a way to initiate a tree traversal process using the current class as a callback for processing nodes in the tree.",
+      "line": 112
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a static method named \"traverseRoots\" within a class. It takes three parameters: an AbstractCompiler, a list of Node trees, and a Callback object. \n\nInside the method, a new NodeTraversal object is created with the given compiler and callback. Then, the \"traverseRoots\" method of the NodeTraversal object is called with the list of roots as a parameter.\n\nIn summary, this method provides a way to traverse a list of node trees using a provided callback and an abstract compiler. It seems to be a utility method for traversing and processing multiple node trees within a compiler infrastructure.",
+      "line": 466
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a method named \"traverseRoots\" that takes a list of Node objects as a parameter. The method begins by checking if the list is empty, and if so, it returns early.\n\nInside the method, it attempts to retrieve the scope root from the first node in the list and performs some initializations. Then, it iterates through the list of roots, ensuring that each root's parent matches the scope root before traversing the branch of each root within the scope.\n\nIf an unexpected exception occurs during the traversal, the method throws an unexpected exception to handle the error.\n\nIn summary, this method is responsible for traversing a list of node roots within a specific scope, performing necessary checks and handling unexpected exceptions that may occur during the traversal process.",
+      "line": 311
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a private method named \"traverseBranch\" within a class. It is used to traverse a branch of nodes in a tree structure.\n\nThe method begins by checking the type of the current node and performs specific actions based on the node type. For example, if the node type is Token.SCRIPT, it sets the inputId and sourceName. It then checks if the traversal should continue based on the callback's decision.\n\nThe method uses a switch statement to handle different node types, such as Token.FUNCTION, and calls specific traversal methods accordingly. For other node types, it iterates through the node's children and recursively traverses each child node.\n\nAfter traversing the children, the method calls the callback's visit method to handle the current node.\n\nIn summary, this method is responsible for recursively traversing a branch of nodes in a tree structure, handling different node types and invoking a callback to process each node during the traversal.",
+      "line": 506
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a private method named \"traverseBranch\" within a class. The method is used to traverse a branch of nodes in a tree structure.\n\nIt begins by determining the type of the current node and performing specific actions based on the node type. For instance, if the node type is Token.SCRIPT, it sets the inputId and sourceName. It then checks if the traversal should continue based on the callback's decision.\n\nThe method uses a switch statement to handle different node types, such as Token.FUNCTION, and calls specific traversal methods accordingly. For other node types, it iterates through the node's children and recursively traverses each child node.\n\nAfter traversing the children, the method calls the callback's visit method to handle the current node.\n\nIn summary, this method is responsible for recursively traversing a branch of nodes in a tree structure, handling different node types, and invoking a callback to process each node during the traversal. Additionally, the \"@SuppressWarnings(\"fallthrough\")\" annotation is used to suppress warnings related to fall-through in the switch statement.",
+      "line": 506
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a private method named \"traverseBranch\" within a class. The method is responsible for traversing a branch of nodes in a tree structure.\n\nIt begins by determining the type of the current node and performing specific actions based on the node type. For example, if the node type is Token.SCRIPT, it sets the inputId and sourceName. It then checks if the traversal should continue based on the callback's decision.\n\nThe method uses a switch statement to handle different node types, such as Token.FUNCTION, and calls specific traversal methods accordingly. For other node types, it iterates through the node's children and recursively traverses each child node.\n\nAfter traversing the children, the method calls the callback's visit method to handle the current node.\n\nAdditionally, the \"@SuppressWarnings(\"fallthrough\")\" annotation is used to suppress warnings related to fall-through in the switch statement.\n\nIn summary, this method is an essential part of the tree traversal process, handling different node types and invoking a callback to process each node during the traversal.",
+      "line": 506
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a method named \"traverseFunction\" within a class. The method is responsible for traversing a function node in a tree structure.\n\nIt begins by performing various checks to ensure that the node represents a function and has the expected child count. It also checks if the function is an expression or a declaration.\n\nIf it's a function declaration, the method traverses the function name within the current scope. Then, it pushes the function's scope and proceeds to traverse the function's arguments and body. After traversing the function's body, it pops the function's scope.\n\nIf it's a function expression, the method traverses the function name within the current scope and then proceeds to traverse the function's arguments and body within the function's scope.\n\nIn summary, this method is responsible for traversing the nodes within a function, handling function declarations and expressions, and managing the scope of the function during the traversal process.",
+      "line": 546
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet defines a method named \"popScope\" within a class. The method is responsible for managing the scope stack, particularly when exiting a scope, such as when leaving a function.\n\nThe method first checks if a scope callback is present, and if so, it calls the \"exitScope\" method on the scope callback. Then, it checks if the list of scope roots is empty. If it is empty, it pops the top scope from the stack. Otherwise, it pops the top scope root from the scope roots list. Additionally, it pops the control flow graph (cfg) from the cfgs stack.\n\nIn summary, this method is used to handle the cleanup and restoration of the scope stack when exiting a scope, ensuring that the appropriate actions are taken based on the current state of the scope stack.",
+      "line": 593
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+      "description": "This code snippet is an overridden method named \"exitScope\" within a class. The method is responsible for updating the block stack and invoking additional behavior when exiting a scope during node traversal.\n\nWhen the method is called, it pops the top element from the block stack. If the scope being exited is the global scope, it updates the global scope reference lists using the compiler and invokes additional behavior after exiting the scope. This behavior includes updating global variable references and invoking a callback to handle the exit scope event.\n\nIf the scope being exited is not the global scope, it invokes the additional behavior after exiting the scope with a wrapper around the reference map specific to the current scope.\n\nIn summary, this method manages the cleanup and additional actions needed when exiting a scope during node traversal, including updating the block stack and invoking specific behaviors based on the scope being exited.",
+      "line": 189
+    }
+  ],
+  "ref": "D4J_Closure_5_BUGGY_VERSION"
+}

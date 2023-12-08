@@ -1,0 +1,62 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testTypeRedefinition to expectCanAssignTo",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet appears to be a part of a larger system for testing JavaScript code. It seems to be a method called \"processForTesting\" that takes in the root nodes of external code and JavaScript code. \n\nHere's a summary of what the code does:\n1. It first checks the state to ensure that the scope creator and top scope are not already initialized.\n2. It then initializes the scope creator and top scope using the MemoizedScopeCreator and TypedScopeCreator classes.\n3. After that, it creates a scope for the combined external and JavaScript roots.\n4. It then initiates a type inference pass and processes the external and JavaScript roots.\n5. Finally, it returns the top scope.\n\nThis code seems to be part of a larger system for analyzing and testing JavaScript code, likely using type inference to infer types and process the code for testing.",
+      "line": 389
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet appears to be a method called \"process\" that is part of a larger system for processing JavaScript code. It takes in the root nodes of external code and JavaScript code.\n\nHere's a summary of what the code does:\n1. It first checks that the scope creator and top scope are not null.\n2. It then retrieves the combined external and JavaScript root nodes and ensures that they are not null.\n3. It checks if there are external root nodes and performs a check on them.\n4. It then performs a check on the JavaScript root nodes.\n\nThis code seems to be part of a system for checking and processing JavaScript code, likely performing various checks and validations on the code.",
+      "line": 369
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet shows a method named \"check\" that takes a Node and a boolean as parameters. Here's a summary of what the code does:\n\n1. It first checks that the input node is not null.\n2. It then creates a NodeTraversal object with the given compiler, this, and scopeCreator.\n3. It sets the \"inExterns\" flag based on the boolean parameter.\n4. It then traverses the node with the given scope and compiler.\n5. If the input is for externs, it processes JSDoc information for the node; otherwise, it processes JSDoc information for the JavaScript code.\n\nThis code seems to be part of a system for traversing and processing nodes in the JavaScript code, likely for checking and inferring JSDoc information.",
+      "line": 403
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named \"traverseWithScope\" that is responsible for recursively traversing a parse tree with a given scope, starting from the specified root node. Here's a summary of what the code does:\n\n1. It first checks that the given scope is the global scope.\n2. It initializes some variables like inputId, sourceName, and curNode based on the provided root node.\n3. It pushes the given scope onto the scope stack.\n4. It then traverses the branches of the parse tree starting from the root node.\n5. Once the traversal is complete, it pops the scope from the stack.\n\nThis method seems to be designed for traversing the parse tree with a specific scope, likely used for analyzing and processing the code within the given scope.",
+      "line": 345
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet shows a method named \"traverseBranch\" that is responsible for traversing a branch of the parse tree. Here's a summary of what the code does:\n\n1. It first checks the type of the node and handles special cases when the type is Token.SCRIPT, which involves setting the inputId and sourceName.\n2. It then sets the current node to the given node and checks if the traversal should continue based on the callback's decision.\n3. It uses a switch statement to handle different types of nodes. In the case of Token.FUNCTION, it calls the traverseFunction method.\n4. For other node types, it iterates through the children of the node and recursively traverses each child node.\n5. After traversing the children, it visits the current node using the callback.\n\nThis method seems to be a core part of the tree traversal process, handling different node types and invoking the callback for each node visit.",
+      "line": 506
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named \"traverseBranch\" which is used to traverse a branch of the parse tree. Here's a summary of what the code does:\n\n1. It checks the type of the node and handles special cases when the type is Token.SCRIPT, setting the inputId and sourceName accordingly.\n2. It then sets the current node to the given node and checks if the traversal should continue based on the callback's decision.\n3. It uses a switch statement to handle different types of nodes. In the case of Token.FUNCTION, it calls the traverseFunction method.\n4. For other node types, it iterates through the children of the node and recursively traverses each child node.\n5. After traversing the children, it visits the current node using the callback.\n\nThis method seems to be a fundamental part of the tree traversal process, handling different node types and invoking the callback for each node visit.",
+      "line": 506
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet contains a method named \"traverseBranch\" which is used to traverse a branch of the parse tree. Here's a summary of what the code does:\n\n1. It checks the type of the node and handles special cases when the type is Token.SCRIPT, setting the inputId and sourceName accordingly.\n2. It then sets the current node to the given node and checks if the traversal should continue based on the callback's decision.\n3. It uses a switch statement to handle different types of nodes. In the case of Token.FUNCTION, it calls the traverseFunction method.\n4. For other node types, it iterates through the children of the node and recursively traverses each child node.\n5. After traversing the children, it visits the current node using the callback.\n\nThis method seems to be a fundamental part of the tree traversal process, handling different node types and invoking the callback for each node visit.",
+      "line": 506
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet is a method named \"visit\" that is a part of a type checking process. It handles different types of parse tree nodes and performs type checking and validation based on the node's type. Here's a summary of what the code does:\n\n1. It switches based on the type of the node and performs specific actions for each type.\n2. For example, for Token.NAME, it calls the visitName method to perform type checking, and for Token.PARAM_LIST, it sets typeable to false.\n3. It handles various types of tokens such as Token.TRUE, Token.FALSE, Token.NUMBER, Token.STRING, Token.ARRAYLIT, Token.REGEXP, Token.GETPROP, Token.VAR, Token.NEW, Token.CALL, Token.RETURN, and many others, ensuring proper type checking and validation for each case.\n4. It also handles special cases such as Token.ASSIGN, Token.ASSIGN_LSH, Token.ASSIGN_RSH, and others, performing specific type checking and validation for each case.\n5. It also performs data flow analysis for certain nodes and handles cases where type inference is required.\n\nOverall, this method is the core of the type checking process, handling different node types and ensuring proper type validation and inference based on",
+      "line": 833
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "This code snippet defines a method named \"visitAssign\" which is responsible for handling the assignment of values to variables or properties in the context of type checking. Here's a summary of what the code does:\n\n1. It extracts the left-hand side (lvalue) and right-hand side (rvalue) of the assignment from the given Node.\n2. It checks if the lvalue is a property access (e.g., object.property) and performs specific checks related to the property assignment, including checking for enum aliases, property creation, and handling prototype assignments.\n3. It also checks for qualified name sets to 'object' and 'object.property', handling cases when the type of 'object' is not known.\n4. It performs type validation and inference for the assignment, ensuring that the right-hand side type can be assigned to the left-hand side type.\n5. It handles various cases of assignments, including cases when the type of the left-hand side is inferred or when the type of the right-hand side is not known.\n\nOverall, this method is a crucial part of the type checking process, ensuring that assignments are type-safe and handling various scenarios related to property assignments and type inference.",
+      "line": 980
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeCheck.java",
+      "description": "In this code snippet, the method \"checkEnumAlias\" is defined to handle the verification of enum aliases. Here's a summary of what the code does:\n\n1. The method checks if the provided declaration information contains an enum parameter type. If not, it exits early.\n2. It then retrieves the JSType of the value being used for initialization.\n3. If the value type is an enum type, it proceeds to compare the enum element type of the value with the enum element type of the enum the value is being assigned to.\n4. The method ensures that the enum element type of the value is a subtype of the enum element type of the enum it is being assigned to. If not, it reports an error for incompatible enum element types.\n\nOverall, this method is responsible for validating enum aliases and ensuring that the assignment of enum values is type-safe and compatible with the target enum's element type.",
+      "line": 1875
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/TypeValidator.java",
+      "description": "In this code snippet, the method \"expectCanAssignTo\" is defined to check if the first type can be assigned to a symbol of the second type. Here's a summary of what the code does:\n\n1. It takes the node traversal, the node to issue warnings on, the type on the right-hand side of the assignment, the type of the symbol on the left-hand side of the assignment, and an extra message for the mismatch warning as parameters.\n2. It checks if the right-hand side type can be assigned to the left-hand side type using the \"canAssignTo\" method of JSType.\n3. If the types do not match, it registers a mismatch or issues a warning with the provided message, right-hand side type, and left-hand side type.\n4. The method returns true if the types matched, and false otherwise.\n\nOverall, this method is responsible for ensuring type compatibility and issuing warnings for type mismatches during assignments in the code.",
+      "line": 413
+    }
+  ],
+  "ref": "D4J_Closure_6_BUGGY_VERSION"
+}

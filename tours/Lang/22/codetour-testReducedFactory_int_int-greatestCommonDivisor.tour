@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testReducedFactory_int_int to greatestCommonDivisor",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/math/FractionTest.java",
+      "description": "This code snippet appears to be a test method for a class called Fraction. The test method, testReducedFactory_int_int, is used to verify the behavior of the getReducedFraction method under various scenarios.\n\nThe test method checks the functionality of the getReducedFraction method by passing different input values and then asserting the expected output. It covers scenarios such as zero, normal, improper, negative, zero denominator, reduced, and extreme values.\n\nFor each scenario, the test method creates a Fraction object using the getReducedFraction method with specific input values and then asserts the expected numerator and denominator values of the resulting Fraction object. Additionally, it includes exception handling to test cases where an ArithmeticException is expected, such as when the denominator is zero or when negation leads to an overflow.\n\nOverall, this test method aims to ensure that the getReducedFraction method behaves as expected and handles various input scenarios correctly.",
+      "line": 338
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/math/Fraction.java",
+      "description": "This code snippet defines a method called getReducedFraction within a class, which appears to be a utility for creating reduced Fraction instances. The method takes two integer parameters, numerator, and denominator, and returns a new Fraction instance with the numerator and denominator reduced.\n\nThe method first checks if the denominator is zero and throws an ArithmeticException if it is. It then handles cases where the numerator is zero and returns a normalized zero Fraction.\n\nNext, the method handles special cases where the denominator is equal to Integer.MIN_VALUE and adjusts the numerator and denominator accordingly to avoid overflow.\n\nFollowing that, the method normalizes negative signs to be on the numerator and then simplifies the fraction by finding the greatest common divisor of the numerator and denominator and dividing both by it.\n\nOverall, this method is responsible for creating reduced Fraction instances from given numerator and denominator values, handling special cases, and ensuring the resulting Fraction is simplified.",
+      "line": 238
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/math/Fraction.java",
+      "description": "This code snippet defines a private static method called greatestCommonDivisor, which calculates the greatest common divisor (GCD) of two non-zero integers using the \"binary gcd\" method. The method avoids division and modulo operations and is based on an algorithm by Josef Stein.\n\nThe method first ensures that both input numbers are negative, as negative integers have a wider range than positive integers. It then finds the power of 2 by dividing both numbers by 2 until they are no longer even. If the process exceeds 31 iterations, an ArithmeticException is thrown to prevent overflow.\n\nAfter finding the power of 2, the method initializes a variable 't' based on the parity of the numbers. It then continues to cast out twos from 't' and updates the values of 'u' and 'v' until 't' becomes zero.\n\nFinally, the method returns the product of '-u' and '2^k', which represents the greatest common divisor of the original input numbers.\n\nIn summary, this method efficiently calculates the greatest common divisor of two non-zero integers using bitwise operations and arithmetic, while avoiding division and modulo operations.",
+      "line": 624
+    }
+  ],
+  "ref": "D4J_Lang_22_BUGGY_VERSION"
+}

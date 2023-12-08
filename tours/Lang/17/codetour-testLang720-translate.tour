@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testLang720 to translate",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/StringEscapeUtilsTest.java",
+      "description": "The code snippet is a test method that aims to verify the behavior of the `StringEscapeUtils.escapeXml` method from the Apache Commons Lang library. The test creates a string `input` by appending a Unicode character (\\ud842\\udfb7) and the letter \"A\". Then, it escapes the string using `StringEscapeUtils.escapeXml` and asserts that the escaped string is equal to the original input. However, the test is failing with the error message: `expected:<\ud842\udfb7[A]> but was:<\ud842\udfb7[?]>`.\n\nThe issue here is related to the Unicode character \\ud842\\udfb7, which is a supplementary character and not a valid XML character. When the string is escaped, the supplementary character is not properly handled, resulting in the failure of the test.\n\nTo address this, the test should be modified to handle supplementary characters properly, ensuring that the escaping mechanism supports Unicode characters beyond the Basic Multilingual Plane (BMP). This may involve using a different escaping mechanism or ensuring that the library being used supports full Unicode character escaping.",
+      "line": 432
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java",
+      "description": "This code snippet is a method named `escapeXml` that belongs to a class, possibly named `StringEscapeUtils`. The method is used to escape characters in a string using XML entities. It replaces characters that have special meaning in XML with their corresponding entity references. For example, it would replace \"&\" with \"&amp;\", \"<\" with \"&lt;\", \">\" with \"&gt;\", '\"' with \"&quot;\", and \"'\" with \"&apos;\".\n\nThe method documentation explains that it supports only the five basic XML entities and does not support DTDs or external entities. Additionally, it notes that as of version 3.0, Unicode characters greater than 0x7f are no longer escaped by default. However, it provides guidance on how to achieve this functionality if needed.\n\nThe method takes a string input and returns a new string with the escaped XML entities. If the input string is null, the method returns null.\n\nOverall, this method is designed to ensure that the input string is properly escaped for safe inclusion in XML documents, preventing any characters from being interpreted as markup.",
+      "line": 507
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java",
+      "description": "This code snippet shows a method named `translate` that is part of a class, possibly named `StringTranslator`. The method is intended as a helper for non-Writer usage and is used to translate a `CharSequence` input into a `String` output.\n\nThe method first checks if the input is null, and if so, it returns null. Then, it creates a `StringWriter` and uses it to translate the input using the `translate` method that takes a `CharSequence` and a `Writer`. The translated output is then returned as a string.\n\nIn the event of an `IOException`, which is highly unlikely when writing to a `StringWriter`, the method throws a `RuntimeException`.\n\nOverall, this method provides a convenient way to translate a `CharSequence` into a `String` without the need for an explicit `Writer` object, making it suitable for non-Writer usage scenarios.",
+      "line": 65
+    }
+  ],
+  "ref": "D4J_Lang_17_BUGGY_VERSION"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testLeapYearRulesConstruction to getDateTimeMillis",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/chrono/TestGJChronology.java",
+      "description": "The code snippet is a test method for checking leap year rules using the Joda-Time library. It creates a DateMidnight object set to February 29, 1500, using the Julian chronology. The test then asserts that the year, month, and day of the DateMidnight object match the expected values.\n\nHowever, the test has failed with the error \"org.joda.time.IllegalFieldValueException\" and the message \"Value 29 for dayOfMonth must be in the range [1,28]\". This error indicates that the day of the month (29) is invalid for February in the specified year according to the Julian calendar.\n\nIn plain English, the test is trying to verify leap year rules by creating a date object for February 29, 1500, but it's encountering an error due to the specific rules of the Julian calendar.",
+      "line": 500
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateMidnight.java",
+      "description": "The code snippet defines a constructor for the DateMidnight class, which is part of the Joda-Time library. This constructor is used to create an instance of DateMidnight by specifying the year, month, day, and chronology. The constructed DateMidnight object represents a specific date with a local time set to midnight.\n\nThe constructor takes the year, month of the year, day of the month, and an optional chronology as parameters. If the chronology is not provided (i.e., null), the ISOChronology in the default time zone is used.\n\nIn plain English, this constructor allows you to create a DateMidnight object representing a specific date and time zone by providing the year, month, day, and chronology as input parameters. If the chronology is not specified, the default ISOChronology in the default time zone is used.",
+      "line": 344
+    },
+    {
+      "file": "/src/main/java/org/joda/time/base/BaseDateTime.java",
+      "description": "This code snippet defines a constructor for the BaseDateTime class, which is part of the Joda-Time library. The constructor is used to create an instance of BaseDateTime by specifying the year, month, day, hour, minute, second, millisecond, and chronology. The constructed BaseDateTime object represents a specific date and time with the given chronology.\n\nThe constructor takes the individual components of date and time (year, month, day, hour, minute, second, millisecond) along with an optional chronology as parameters. If the chronology is not provided (i.e., null), the ISOChronology in the default time zone is used.\n\nIn plain English, this constructor allows you to create a BaseDateTime object representing a specific date and time with millisecond precision by providing the individual components of date and time, along with an optional chronology. If the chronology is not specified, the default ISOChronology in the default time zone is used.",
+      "line": 257
+    },
+    {
+      "file": "/src/main/java/org/joda/time/chrono/GJChronology.java",
+      "description": "This code snippet is a method from a class, possibly related to date and time calculations, that calculates the milliseconds representing a specific date and time. It takes the year, month, day, hour, minute, second, and millisecond as input parameters and returns the corresponding milliseconds.\n\nThe method first checks if there is a base chronology and delegates the calculation to it if available. If not, it assumes the date is in the Gregorian calendar and calculates the milliseconds using the Gregorian chronology. If the calculated milliseconds are before a specified cutover time, it then checks if the date might be in the Julian calendar and calculates the milliseconds using the Julian chronology. If the calculated milliseconds fall within a specified cutover gap, it throws an IllegalArgumentException indicating that the specified date does not exist.\n\nIn plain English, this method is responsible for converting the components of a date and time into milliseconds, taking into account the cutover between the Gregorian and Julian calendars if necessary. It ensures that the calculated milliseconds correspond to a valid date and time, handling potential discrepancies between the two calendar systems.",
+      "line": 378
+    }
+  ],
+  "ref": "D4J_Time_18_BUGGY_VERSION"
+}

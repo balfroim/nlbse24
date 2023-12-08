@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testForID_String_old to getConvertedId",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/TestDateTimeZone.java",
+      "description": "The second code snippet is a test method that maps different time zone abbreviations to their corresponding time zone IDs. It uses a map to store the abbreviation as the key and the expected time zone ID as the value. Then, it iterates through the map, retrieves the time zone ID using the abbreviation, and compares it with the expected value using the assertEquals method. If the retrieved time zone ID does not match the expected value, the test will fail.\n\nThe commented out lines seem to be for debugging purposes, providing additional information about the time zones and their display names. However, the test is currently failing with the error message \"expected:<[WET]> but was:<[Europe/London]>.\" This indicates that the expected time zone ID for \"WET\" is not matching the actual time zone ID retrieved from the system.",
+      "line": 288
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTimeZone.java",
+      "description": "The second code snippet is a method that converts a JDK TimeZone object into a Joda-Time DateTimeZone object. It first checks if the input TimeZone is null, and if so, returns the default DateTimeZone. If the TimeZone ID is \"UTC,\" it returns the DateTimeZone.UTC constant.\n\nNext, it attempts to convert the TimeZone ID using a mapping of old aliases to their corresponding DateTimeZone. If no mapping is found, it consults a provider to retrieve the DateTimeZone. If still not found, it checks for GMT+/-hh:mm formats and creates a fixed offset DateTimeZone if applicable.\n\nIf none of the conversion methods are successful, it throws an IllegalArgumentException indicating that the time zone ID is not recognized.\n\nOverall, this method is designed to handle the conversion of different time zone representations from the JDK TimeZone class to the Joda-Time DateTimeZone class, providing flexibility and compatibility between the two.",
+      "line": 338
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTimeZone.java",
+      "description": "The second code snippet is a method that converts a JDK TimeZone object into a Joda-Time DateTimeZone object. It first checks if the input TimeZone is null, and if so, returns the default DateTimeZone. If the TimeZone ID is \"UTC,\" it returns the DateTimeZone.UTC constant.\n\nNext, it attempts to convert the TimeZone ID using a mapping of old aliases to their corresponding DateTimeZone. If no mapping is found, it consults a provider to retrieve the DateTimeZone. If still not found, it checks for GMT+/-hh:mm formats and creates a fixed offset DateTimeZone if applicable.\n\nIf none of the conversion methods are successful, it throws an IllegalArgumentException indicating that the time zone ID is not recognized.\n\nOverall, this method is designed to handle the conversion of different time zone representations from the JDK TimeZone class to the Joda-Time DateTimeZone class, providing flexibility and compatibility between the two.",
+      "line": 598
+    }
+  ],
+  "ref": "D4J_Time_23_BUGGY_VERSION"
+}

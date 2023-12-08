@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testEscapeSurrogatePairs to translate",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/StringUtilsTest.java",
+      "description": "This code snippet appears to be a test method written in Java. The method is named \"testEscapeSurrogatePairs\" and it seems to be testing the functionality of the StringEscapeUtils class to escape CSV (comma-separated values) strings. The test is using the assertEquals method to compare the escaped strings with the expected results.\n\nThe test cases include surrogate pairs, which are used in UTF-16 encoding to represent characters outside the Basic Multilingual Plane. The test is checking if the StringEscapeUtils.escapeCsv method correctly escapes these surrogate pairs as expected.\n\nThe comments in the code indicate that the examples are taken from the Wikipedia page on UTF-16, suggesting that the test is validating the handling of surrogate pairs in UTF-16 encoding when escaping CSV strings.",
+      "line": 2193
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java",
+      "description": "This code snippet is a method named \"escapeCsv\" that belongs to a class, possibly named StringEscapeUtils. The method takes a String input, and based on certain conditions, it returns the input String enclosed in double quotes if it contains a comma, newline, or double quote. If the input String does not contain any of these characters, it returns the input String unchanged. If the input is null, the method returns null.\n\nThe method seems to be providing functionality to escape CSV column values by enclosing them in double quotes if necessary, and escaping any double quote characters within the value.\n\nThe comments in the code provide additional information about the purpose of the method and reference links to Wikipedia and RFC 4180 for further context on comma-separated values.\n\nOverall, this method appears to be a utility for handling CSV column values according to the CSV specifications.",
+      "line": 557
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java",
+      "description": "This code snippet appears to be a method named \"translate\" within a class. The method takes a CharSequence input and returns a String output of the translation. It is designed as a helper for non-Writer usage.\n\nThe method first checks if the input is null, and if so, it returns null. Then, it creates a StringWriter and attempts to translate the input using the translate method. The translated output is then converted to a String and returned.\n\nIn case of an IOException, which is unexpected when writing to a StringWriter, the method throws a RuntimeException.\n\nOverall, this method seems to provide a way to translate a CharSequence input into a String output, and it handles the translation process using a StringWriter. The method is designed to be a helper for scenarios where a Writer is not used.",
+      "line": 65
+    }
+  ],
+  "ref": "D4J_Lang_6_BUGGY_VERSION"
+}

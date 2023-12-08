@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testIssue1144 to visit",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/ScopedAliases.java",
+      "description": "The provided code snippet is a method named \"process\" that takes two parameters, \"externs\" and \"root,\" both of type Node. Within the method, there is a call to a function named \"hotSwapScript\" with the \"root\" parameter and a null value for the \"externs\" parameter. This method seems to be responsible for processing or handling some kind of script or code, possibly related to hot-swapping or dynamically updating scripts during runtime. However, without additional context or the implementation of the \"hotSwapScript\" function, it's challenging to provide a more detailed explanation.",
+      "line": 129
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ScopedAliases.java",
+      "description": "The provided code snippet appears to be a method named \"hotSwapScript\" that takes two parameters, \"root\" and \"originalRoot,\" both of type Node. The method performs a series of operations on the provided \"root\" node, which seems to be related to code traversal and manipulation.\n\nThe method begins by creating a Traversal object and using it to traverse the nodes within the compiler. It then checks for any errors encountered during the traversal.\n\nFollowing this, the method applies aliases to the code by processing alias usages and definitions. It iterates through the alias usages, applying the aliases and handling any potential alias cycles. It then removes the alias definitions from the code.\n\nAdditionally, the method collapses the scopes by replacing scope calls with their corresponding closure blocks and attempts to merge the resulting blocks. Finally, it checks for any changes made and reports them to the compiler if necessary.\n\nOverall, the method seems to be responsible for performing code transformations related to aliasing and scope manipulation, likely as part of a larger code transformation or optimization process.",
+      "line": 189
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "The provided code snippet is a method named \"traverse\" that takes three parameters: an AbstractCompiler, a Node named \"root,\" and a Callback named \"cb.\" The method appears to be part of a utility for traversing nodes within a compiler's abstract syntax tree (AST).\n\nInside the method, a new NodeTraversal object is created with the provided compiler and callback, and then it is used to traverse the provided root node recursively.\n\nThis method seems to encapsulate the process of traversing the nodes of an abstract syntax tree, likely for the purpose of performing operations or analyses on the nodes within the compiler. It provides a convenient way to initiate the traversal process with the given parameters.",
+      "line": 495
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "The provided code snippet appears to be a method named \"traverse\" within a class. This method takes a single parameter, \"root,\" which is of type Node. The method is responsible for traversing a parse tree recursively.\n\nUpon invocation, the method initializes some variables and then proceeds to push a scope for the root node. It then traverses the branches of the parse tree, ensuring that the shallow callbacks will traverse the root node. After completing the traversal, it pops the scope.\n\nAdditionally, the method includes error handling to catch any unexpected exceptions and throw them as unexpected exceptions.\n\nOverall, this method seems to encapsulate the functionality for recursively traversing a parse tree, likely as part of a larger parsing or analysis process.",
+      "line": 292
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "The provided code snippet contains a method named \"traverseBranch\" within a class. This method is marked as private and takes two parameters: \"n\" of type Node and \"parent\" of type Node. The method is responsible for traversing a branch of nodes within a tree structure.\n\nUpon invocation, the method first determines the type of the node and performs specific actions if the node is of type SCRIPT. It then sets the current node to the provided node and checks if the traversal should continue based on the callback's decision.\n\nIf the traversal should continue, the method proceeds to traverse the children nodes of the current node. If the node is of type FUNCTION, a specialized traversal for functions is performed. Otherwise, it iterates through the children nodes, recursively calling \"traverseBranch\" for each child node.\n\nAfter traversing the children nodes, the method then visits the current node using the provided callback.\n\nOverall, this method encapsulates the logic for recursively traversing a branch of nodes within a tree structure, providing specialized handling for different node types and invoking a callback during the traversal process.",
+      "line": 541
+    }
+  ],
+  "ref": "D4J_Closure_108_BUGGY_VERSION"
+}

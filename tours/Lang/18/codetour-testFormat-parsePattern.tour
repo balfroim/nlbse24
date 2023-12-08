@@ -1,0 +1,37 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testFormat to parsePattern",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/time/FastDateFormatTest.java",
+      "description": "This code snippet is a test method that checks the formatting of dates and time zones using the FastDateFormat and SimpleDateFormat classes. It sets the default locale to US and the default time zone to America/New_York for the purpose of the test. \n\nThe test creates two GregorianCalendar instances representing different dates and times. It then converts these instances to Date objects and long values representing milliseconds. The FastDateFormat and SimpleDateFormat classes are used to format these dates and time zones in various patterns. \n\nThe test compares the formatted output of the dates, time zones, and patterns to ensure they match the expected values. It also includes a bug fix for a SimpleDateFormat issue starting with Java 7.\n\nOverall, this test method ensures that the date and time formatting functionality behaves as expected, taking into account different locales and time zones.",
+      "line": 226
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java",
+      "description": "This code snippet is a method that returns a formatter instance using a specified date and time pattern in the default locale. The method takes a pattern string compatible with SimpleDateFormat as a parameter and returns a pattern-based date/time formatter.\n\nThe method utilizes a cache to obtain the formatter instance based on the specified pattern and the default locale. If the pattern is invalid, the method throws an IllegalArgumentException.\n\nIn summary, this method provides a convenient way to obtain a date/time formatter based on a specified pattern, allowing for consistent and easy formatting of date and time values in the application.",
+      "line": 160
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FormatCache.java",
+      "description": "It seems like the code snippet provided is incomplete or contains some errors. The method signature and implementation are not complete, and it's unclear what the \"F\" and \"MultipartKey\" types represent. Additionally, the method name \"getInstance\" suggests that it might be a factory method for obtaining a date/time formatter, but the implementation is incomplete and lacks context.\n\nIf you could provide the complete and correct code snippet, I'd be happy to help summarize and explain it in plain English.",
+      "line": 91
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java",
+      "description": "This code snippet represents a constructor for the FastDateFormat class. It takes three parameters: pattern, timeZone, and locale. The pattern parameter is a string compatible with the SimpleDateFormat class, while timeZone and locale are non-null objects representing the time zone and locale to be used for formatting dates and times.\n\nInside the constructor, the provided pattern, time zone, and locale are assigned to the corresponding class members (mPattern, mTimeZone, and mLocale). The init() method is then called to perform any necessary initialization for the FastDateFormat instance.\n\nIn summary, this constructor initializes a FastDateFormat object with the specified pattern, time zone, and locale, ensuring that the date and time formatting will be based on the provided parameters.",
+      "line": 438
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java",
+      "description": "In the provided code snippet, the init() method is a private method belonging to the PaintObject class. This method is responsible for initializing the instance for its first use.\n\nWithin the init() method, the parsePattern() method is called to obtain a list of rules, which are then converted into an array of Rule objects and assigned to the mRules member variable. These rules likely define how the pattern should be interpreted and applied.\n\nAdditionally, the method calculates an estimate of the maximum length required for the formatted output by iterating through the rules and summing up their estimated lengths. This length estimate is stored in the mMaxLengthEstimate member variable.\n\nIn summary, the init() method is crucial for setting up the PaintObject instance by parsing the pattern, defining rules, and estimating the maximum length required for the formatted output.",
+      "line": 453
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java",
+      "description": "This code snippet is a method called parsePattern() within the PaintObject class. The purpose of this method is to parse a date and time pattern and generate a list of rules based on the pattern. These rules are used to format the date and time according to the specified pattern.\n\nThe method starts by obtaining various date and time symbols such as eras, months, weekdays, and AM/PM strings from the DateFormatSymbols associated with the specified locale.\n\nIt then iterates through the pattern, parsing individual tokens and creating corresponding rules based on the token type. For example, it creates rules for handling year, month, day, hour, minute, second, millisecond, day of week, time zone, and more, based on the pattern components encountered.\n\nEach rule is added to a list of rules, and the method returns this list of rules.\n\nIn summary, the parsePattern() method is responsible for analyzing a date and time pattern and generating a set of rules that can be used to format dates and times according to the specified pattern.",
+      "line": 584
+    }
+  ],
+  "ref": "D4J_Lang_18_BUGGY_VERSION"
+}

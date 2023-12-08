@@ -1,0 +1,27 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testParseLocalDate_weekyear_month_week_2010 to computeMillis",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/format/TestDateTimeFormatter.java",
+      "description": "The code snippet is a test method that aims to parse a date string into a LocalDate object using Joda-Time library. The test is expecting the parsed date to be \"2010-01-04\", but the actual parsed date is \"2008-12-29\". This indicates that the parsing is not producing the expected result.\n\nThe test method uses the GJChronology to get an instance of the UTC time zone. It then creates a DateTimeFormatter with a specific pattern \"xxxx-MM-ww\" and the obtained chronology. The test checks if parsing the date string \"2010-01-01\" using this formatter results in a LocalDate of 2010-01-04.\n\nHowever, the test has failed, and the actual parsed date is \"2008-12-29\". This suggests that there might be an issue with the parsing logic or the expected date in the test. Further investigation is needed to identify and resolve the problem.",
+      "line": 429
+    },
+    {
+      "file": "/src/main/java/org/joda/time/format/DateTimeFormatter.java",
+      "description": "This code snippet is a method that parses only the local date from the given text and returns a new LocalDate object. It is part of a class that provides date parsing functionality. The method uses a formatter to parse the text fully, using the UTC time zone. Once parsed, only the local date is extracted and returned. This means that any parsed time, time-zone, or offset field is completely ignored, and the zone and offset-parsed settings are also ignored.\n\nThe method takes a text input to parse and returns the parsed local date as a LocalDate object. It throws an UnsupportedOperationException if parsing is not supported and an IllegalArgumentException if the text to parse is invalid.\n\nOverall, this method provides a way to parse a date string and extract only the local date part, ignoring the time and time zone information.",
+      "line": 760
+    },
+    {
+      "file": "/src/main/java/org/joda/time/format/DateTimeFormatter.java",
+      "description": "It seems like there might be a misunderstanding. The code snippet provided is a part of the Joda-Time library, which is used for date and time manipulation in Java. The provided code is a part of the Joda-Time library's internal implementation for parsing local date-time from a given text.\n\nThe `parseLocalDateTime` method is used to parse the local date-time from the given text and return a new LocalDateTime object. It fully parses the text according to the formatter, using the UTC zone. Once parsed, only the local date-time is used, meaning that any parsed time-zone or offset field is completely ignored.\n\nThe method uses a DateTimeParser to parse the text and a DateTimeParserBucket to handle the parsing process. It then computes the millis and creates a new LocalDateTime object based on the parsed information.\n\nOverall, this code snippet is a part of the internal implementation of the Joda-Time library for parsing local date-time and may not need to be directly used or modified in typical application code.",
+      "line": 814
+    },
+    {
+      "file": "/src/main/java/org/joda/time/format/DateTimeParserBucket.java",
+      "description": "This code snippet is part of the Joda-Time library and is related to computing the parsed datetime by setting the saved fields. It is used internally to calculate the milliseconds since 1970-01-01T00:00:00Z based on the parsed fields.\n\nThe method `computeMillis` takes two parameters: `resetFields` and `text`. The `resetFields` parameter, when set to true, clears unsaved field values. The `text` parameter is an optional text being parsed, to be included in any error message.\n\nThe method first sorts the saved fields and then iterates through them to compute the millis value. It also handles the time zone offset and transition to ensure the correctness of the computed millis.\n\nIf any field is out of range, an IllegalArgumentException is thrown. Additionally, if there is an issue with the time zone offset transition, an IllegalArgumentException is also thrown.\n\nOverall, this method is an important part of the Joda-Time library's internal functionality for computing the milliseconds based on the parsed fields and handling time zone offsets. It is not typically used directly in application code but is crucial for the proper functioning of date and time parsing in the library.",
+      "line": 378
+    }
+  ],
+  "ref": "D4J_Time_24_BUGGY_VERSION"
+}

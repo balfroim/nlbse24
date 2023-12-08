@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testFactory_daysBetween_RPartial_MonthDay to between",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/TestDays.java",
+      "description": "This code snippet appears to be a test method for a function related to calculating the number of days between two MonthDay instances using the Joda-Time library. \n\nThe test method is named \"testFactory_daysBetween_RPartial_MonthDay\" and it contains assertions to verify the correctness of the daysBetween function for different combinations of start and end MonthDay instances. \n\nThe MonthDay class represents a month and day without a year, and the Days class is used to represent a number of days. The test checks various scenarios such as the number of days between different start and end MonthDay instances, including cases where the end day is 28 or 29, and the start day is 1 or 2. \n\nThe assertions compare the expected number of days between the start and end instances with the actual result obtained from the daysBetween function. The test ensures that the daysBetween function correctly calculates the number of days between the given MonthDay instances.\n\nHowever, the error \"org.joda.time.IllegalFieldValueException\" with the message \"Value 29 for dayOfMonth must be in the range [1,28]\" indicates that there is an issue with the input values provided to the MonthDay instances. The error suggests that the value 29 is not a valid day for the month",
+      "line": 138
+    },
+    {
+      "file": "/src/main/java/org/joda/time/Days.java",
+      "description": "This code snippet defines a method named \"daysBetween\" that calculates the number of whole days between two specified partial datetimes. The method takes two parameters, start and end, both of which must be non-null partial date objects. The partials should contain the same fields, for example, two LocalDate objects.\n\nThe method first checks if the start and end partials are instances of LocalDate. If they are, it retrieves the Chronology and calculates the difference in days between the two local dates using the Chronology's days().getDifference method. The result is then wrapped in a Days object and returned.\n\nIf the start and end partials are not instances of LocalDate, the method calculates the amount of days between the partials using the BaseSingleFieldPeriod.between method and returns the result as a Days object.\n\nOverall, this method provides a way to calculate the number of days between two partial datetimes, with a specific focus on handling LocalDate instances.",
+      "line": 143
+    },
+    {
+      "file": "/src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java",
+      "description": "This code snippet defines a method named \"between\" that calculates the number of whole units between two specified partial datetimes. The method takes three parameters: start (the start partial date), end (the end partial date), and zeroInstance (a zero instance constant). \n\nThe method first performs several validations:\n1. It checks that the start and end partials are not null.\n2. It ensures that the start and end partials have the same set of fields.\n3. It verifies that the start and end partials are contiguous.\n\nAfter the validations, the method retrieves the Chronology and ensures it is in the UTC time zone. It then obtains the values of the partial datetimes using the zeroInstance and calculates the difference between the two partial datetimes.\n\nOverall, this method provides a way to calculate the number of whole units between two partial datetimes, with a specific focus on handling partial datetimes and performing necessary validations before the calculation.",
+      "line": 106
+    }
+  ],
+  "ref": "D4J_Time_10_BUGGY_VERSION"
+}

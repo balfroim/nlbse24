@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testObjectCycle to getRegistry",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/builder/ToStringBuilderTest.java",
+      "description": "The code snippet provided is a test method for the \"ObjectCycle\" class. It creates two instances of ObjectCycle, named \"a\" and \"b\", and then sets their \"obj\" attribute to refer to each other. After that, it constructs a string based on the structure of the objects and compares it with the result of calling the \"toString\" method on object \"a\". The test also includes a validation check for the null-to-string style registry.\n\nThe test is aiming to verify that the \"toString\" method of ObjectCycle correctly represents the cyclic reference between the two objects. It constructs a string representation of the objects and their references to each other, and then compares it with the expected string. If the comparison fails, it indicates that the \"toString\" method is not representing the cyclic reference as expected.",
+      "line": 838
+    },
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/builder/ToStringBuilderTest.java",
+      "description": "The provided code snippet contains a method named \"validateNullToStringStyleRegistry\" within an unspecified class. This method is responsible for validating the state of the \"ToStringStyle\" registry.\n\nThe method first checks if the \"ToStringStyle\" registry is not null, and if it's not null, it prints the contents of the registry. After that, it asserts that the \"ToStringStyle\" registry should be null.\n\nThe purpose of this method is to ensure that the \"ToStringStyle\" registry is null. If the registry is not null, it indicates a potential issue, and the contents of the registry are printed for further investigation. The subsequent assertion checks that the registry is indeed null, providing a validation mechanism for the state of the registry.",
+      "line": 587
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java",
+      "description": "This code snippet is a static method named \"getRegistry\" within an unspecified class. The method is responsible for returning the registry of objects being traversed by the \"reflectionToString\" methods in the current thread.\n\nThe method checks if the registry in the current thread is not null. If it's not null, it returns the registry; otherwise, it returns an empty map.\n\nThe purpose of this method is to provide access to the registry of objects being traversed by the \"reflectionToString\" methods. This registry is used to keep track of objects to avoid infinite loops or duplicate references when generating string representations of objects using reflection. If the registry is not null, it provides valuable information about the objects being traversed during the string representation generation process.",
+      "line": 149
+    }
+  ],
+  "ref": "D4J_Lang_34_BUGGY_VERSION"
+}

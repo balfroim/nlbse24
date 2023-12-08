@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testSmallDistances to chooseInitialCenters",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClustererTest.java",
+      "description": "In this code snippet, a test method named \"testSmallDistances\" is defined. This test method is part of a unit testing framework, likely JUnit, and is used to verify the behavior of a clustering algorithm, specifically the KMeansPlusPlusClusterer, when dealing with points that are very close together.\n\nThe test creates a collection of CloseIntegerPoint objects, with most of them being identical and one being different by a small distance. It then uses the KMeansPlusPlusClusterer to run zero iterations, essentially choosing initial cluster centers without performing actual clustering. The test then checks whether the unique point is chosen as one of the cluster centers.\n\nThe test asserts that the unique point is indeed chosen as a cluster center by using the assertTrue method, which will pass the test if the condition is true and fail otherwise.\n\nOverall, this test is designed to ensure that the clustering algorithm correctly identifies and includes points that are very close together in the initial cluster centers.",
+      "line": 250
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+      "description": "In this code snippet, a test method named \"testSmallDistances\" is defined. This test method is part of a unit testing framework, likely JUnit, and is used to verify the behavior of a clustering algorithm, specifically the KMeansPlusPlusClusterer, when dealing with points that are very close together.\n\nThe test creates a collection of CloseIntegerPoint objects, with most of them being identical and one being different by a small distance. It then uses the KMeansPlusPlusClusterer to run zero iterations, essentially choosing initial cluster centers without performing actual clustering. The test then checks whether the unique point is chosen as one of the cluster centers.\n\nThe test asserts that the unique point is indeed chosen as a cluster center by using the assertTrue method, which will pass the test if the condition is true and fail otherwise.\n\nOverall, this test is designed to ensure that the clustering algorithm correctly identifies and includes points that are very close together in the initial cluster centers.",
+      "line": 135
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+      "description": "In this code snippet, a method named \"chooseInitialCenters\" is defined. This method is used to implement the K-means++ algorithm for choosing the initial cluster centers when performing clustering.\n\nThe method takes as input a collection of points, the number of centers to choose, and a random generator. It then proceeds to select the initial centers based on the K-means++ algorithm.\n\nThe algorithm starts by choosing one center uniformly at random from the data points. Then, it iteratively selects new centers by computing the distance of each data point to the nearest center that has already been chosen. The probability of choosing a new center is proportional to the square of this distance.\n\nThe method continues this process until the desired number of centers is chosen, and then returns the list of initial centers.\n\nOverall, this method implements the K-means++ algorithm for selecting initial cluster centers, which is a crucial step in the K-means clustering algorithm.",
+      "line": 198
+    }
+  ],
+  "ref": "D4J_Math_57_BUGGY_VERSION"
+}

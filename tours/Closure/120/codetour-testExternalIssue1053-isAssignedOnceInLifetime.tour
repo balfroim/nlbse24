@@ -1,0 +1,37 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testExternalIssue1053 to isAssignedOnceInLifetime",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/InlineVariables.java",
+      "description": "This code snippet appears to be a method named \"process\" that takes two parameters, \"externs\" and \"root,\" of type Node. Within the method, a new instance of ReferenceCollectingCallback is created, and its \"process\" method is called with the \"externs\" and \"root\" parameters. The ReferenceCollectingCallback seems to be performing some kind of processing or analysis on the provided nodes, possibly related to a compiler or inlining behavior. The specific details of what this processing entails are not clear from the provided code snippet.",
+      "line": 87
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+      "description": "This code snippet is a method named \"process\" that overrides a method from an interface or superclass. It takes two parameters, \"externs\" and \"root,\" which are of type Node. Within the method, it uses the NodeTraversal utility to traverse the tree with the given \"externs\" and \"root\" nodes, using the current object (this) as the callback. This method seems to be a convenient way to run a specific pass over a tree, utilizing the functionality provided by the NodeTraversal class and the compiler. The specific details of what this pass does are not evident from the provided code snippet.",
+      "line": 112
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a static method named \"traverseRoots\" that belongs to the NodeTraversal class. It takes three parameters: an AbstractCompiler, a list of Node trees called \"roots,\" and a Callback object \"cb.\" Within the method, it creates a new NodeTraversal instance with the provided compiler and callback, and then calls the \"traverseRoots\" method on this instance with the list of roots. This method seems to provide a way to traverse multiple node trees using the NodeTraversal functionality, possibly for analyzing or processing the nodes within those trees. The specific details of what the traversal does are not explicitly stated in the provided code snippet.",
+      "line": 504
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a method named \"traverseRoots\" that belongs to a class, and it takes a list of Node objects called \"roots\" as a parameter. Within the method, it first checks if the list of roots is empty and returns if so. Then, it retrieves the scope root from the first node in the list, performs some checks, sets inputId and sourceName, and initializes the traversal with the scope root. After that, it iterates through the roots, ensuring that each root's parent is the scope root, and then traverses each branch of the tree starting from the respective root. Finally, it pops the scope. If an unexpected exception occurs during this process, it is caught and rethrown as a new unexpected exception. This method seems to be responsible for traversing multiple node trees and handling any unexpected exceptions that may occur during the traversal.",
+      "line": 321
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/NodeTraversal.java",
+      "description": "This code snippet is a private method named \"popScope\" within a class. It is responsible for managing the scope of the program. When called, it first checks if a scope callback is present and if so, it calls the \"exitScope\" method on the scopeCallback object. Then, it either pops the scope or scopeRoots from the respective stack, and also pops the control flow graph (cfgs). If there is still a scope present after popping, it sets the compiler's scope to the root of the current scope. This method seems to be part of a larger system for managing program scope, possibly related to program analysis or transformation.",
+      "line": 629
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java",
+      "description": "This code snippet is a method named \"exitScope\" that overrides a method from an interface or superclass. It takes a NodeTraversal object \"t\" as a parameter. Within the method, it pops an item from the block stack. If the scope associated with the NodeTraversal object is global, it updates global scope reference lists and invokes additional behavior after exiting the scope. If the scope is not global, it invokes the additional behavior after exiting the scope with a wrapper for the reference map. This method seems to be part of a system for managing and updating scope-related information during program traversal and analysis.",
+      "line": 189
+    }
+  ],
+  "ref": "D4J_Closure_120_BUGGY_VERSION"
+}

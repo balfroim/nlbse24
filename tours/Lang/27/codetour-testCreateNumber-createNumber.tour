@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testCreateNumber to createNumber",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java",
+      "description": "This code snippet appears to be a test method for the `createNumber` method in the `NumberUtils` class. The method is testing various scenarios to ensure that the `createNumber` method can successfully convert different string representations of numbers into their corresponding numeric types, such as Integer, Float, Double, Long, BigInteger, and BigDecimal.\n\nThe test method contains multiple assertions to verify the conversion of different string representations, including positive and negative numbers, scientific notation, hexadecimal notation, and edge cases like null input. It also includes checks for specific scenarios related to different Java versions and specific issues like LANG-521 and LANG-638.\n\nThe test method is quite comprehensive and covers a wide range of scenarios to ensure the robustness and accuracy of the `createNumber` method in handling different input cases.",
+      "line": 217
+    },
+    {
+      "file": "/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java",
+      "description": "This code snippet defines a private method `checkCreateNumber` that takes a string `val` as input. The method attempts to create a number from the input string using the `NumberUtils.createNumber` method. If the creation is successful and the result is not null, the method returns true, indicating that the input string can be successfully converted to a number. If an exception of type `NumberFormatException` is caught during the creation process, the method returns false, indicating that the input string cannot be converted to a number.\n\nThis method essentially serves as a utility for testing the robustness of the `NumberUtils.createNumber` method by checking if it can handle different input strings and successfully create numbers from them.",
+      "line": 1154
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+      "description": "This code snippet is a method named `createNumber` within the `NumberUtils` class. The method is responsible for converting a given string into a Java `Number` object. It follows a set of rules to determine the appropriate type of number to create based on the input string.\n\nThe method first checks for type qualifiers at the end of the string (e.g., 'f', 'F', 'd', 'D', 'l', 'L') and attempts to create successively larger types until one is found that can represent the value. If no type specifier is found, it checks for a decimal point and then tries successively larger types from `Integer` to `BigInteger` and from `Float` to `BigDecimal`.\n\nAdditionally, the method handles hexadecimal integers if the string starts with \"0x\" or \"-0x\". It also handles scientific notation and returns `null` if the input string is `null`.\n\nThe method does not trim the input string and throws a `NumberFormatException` if the value cannot be converted. It also includes specific checks and protections for various scenarios, such as handling specific characters at the end of the string, interpreting hexadecimal integers, and managing decimal points and scientific notation.\n\nOverall, this method provides a comprehensive and robust way to convert a string",
+      "line": 599
+    }
+  ],
+  "ref": "D4J_Lang_27_BUGGY_VERSION"
+}

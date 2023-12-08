@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testForOffsetHoursMinutes_int_int to forOffsetMillis",
+  "steps": [
+    {
+      "file": "/src/test/java/org/joda/time/TestDateTimeZone.java",
+      "description": "This code snippet appears to be a test method for the `forOffsetHoursMinutes` function of the `DateTimeZone` class. The method tests various input combinations to ensure that the function correctly returns the expected `DateTimeZone` instances for different offset hour and minute values. \n\nThe test includes assertions for both positive and negative offset values, as well as edge cases such as the maximum offset values and invalid minute values. Additionally, the test includes assertions for the expected exceptions to be thrown when invalid input is provided.\n\nOverall, this test method aims to verify the correctness of the `forOffsetHoursMinutes` function in creating `DateTimeZone` instances based on the provided offset hour and minute values.",
+      "line": 334
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTimeZone.java",
+      "description": "This code snippet defines a method `forOffsetHoursMinutes` within the `DateTimeZone` class. This method is used to obtain a `DateTimeZone` instance based on a specified offset from UTC in hours and minutes.\n\nThe method takes two parameters: `hoursOffset` for the offset in hours from UTC, ranging from -23 to +23, and `minutesOffset` for the offset in minutes from UTC, which must be between 0 and 59 inclusive. The method then calculates the total offset in milliseconds and returns the corresponding `DateTimeZone` object.\n\nThe method includes validation checks to ensure that the input parameters are within the valid range and throws an `IllegalArgumentException` if the offset or minute values are too large or too small.\n\nOverall, this method provides a convenient way to create `DateTimeZone` instances with a fixed offset based on the specified hours and minutes, handling the necessary conversions and validations internally.",
+      "line": 273
+    },
+    {
+      "file": "/src/main/java/org/joda/time/DateTimeZone.java",
+      "description": "This code snippet defines a method `forOffsetHoursMinutes` within the `DateTimeZone` class. This method is used to obtain a `DateTimeZone` instance based on a specified offset from UTC in hours and minutes.\n\nThe method takes two parameters: `hoursOffset` for the offset in hours from UTC, ranging from -23 to +23, and `minutesOffset` for the offset in minutes from UTC, which must be between 0 and 59 inclusive. The method then calculates the total offset in milliseconds and returns the corresponding `DateTimeZone` object.\n\nThe method includes validation checks to ensure that the input parameters are within the valid range and throws an `IllegalArgumentException` if the offset or minute values are too large or too small.\n\nOverall, this method provides a convenient way to create `DateTimeZone` instances with a fixed offset based on the specified hours and minutes, handling the necessary conversions and validations internally.",
+      "line": 284
+    }
+  ],
+  "ref": "D4J_Time_9_BUGGY_VERSION"
+}

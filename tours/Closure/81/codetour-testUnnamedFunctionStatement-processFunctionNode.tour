@@ -1,0 +1,72 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testUnnamedFunctionStatement to processFunctionNode",
+  "steps": [
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/ParserRunner.java",
+      "description": "This code snippet is a Java method that parses JavaScript code. It takes in the filename, source code from the file, a configuration, an error reporter, and a logger as input parameters. The method uses the Mozilla Rhino library to parse the JavaScript source code and generate an Abstract Syntax Tree (AST) representation of the code.\n\nThe method initializes a JavaScript context, sets the language version, and configures the parser environment. It then uses the parser to parse the source code and handle any parsing errors. If parsing is successful, it transforms the AST using an IRFactory and sets it as a synthetic block before returning the root node of the AST.\n\nOverall, this method provides a way to parse JavaScript code and obtain its AST, which can be used for various purposes such as analysis, transformation, or interpretation.",
+      "line": 127
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet defines a method named `transformTree` that takes an `AstRoot` node, a source string, a configuration, and an error reporter as input parameters. The method uses an `IRFactory` to transform the given AST node into an intermediate representation (IR) node.\n\nDuring the transformation process, the method also handles comments associated with the AST node, specifically looking for file overview JSDoc comments and setting them in the IRFactory. Once the transformation is complete, the method returns the transformed IR node.\n\nIn summary, this method is responsible for transforming an AST node into an intermediate representation node, handling associated comments, and setting file overview JSDoc comments.",
+      "line": 143
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/IRFactory.java",
+      "description": "This code snippet is a method named `createExprStatement` that creates and returns a new Node representing an expression statement. It takes in the expression node, line number, and character number as input parameters.\n\nThe method determines the type of the expression statement based on whether it is inside a function or not. If inside a function, it creates a void expression statement; otherwise, it creates a regular expression result statement. It then constructs and returns a new Node with the specified type, expression, line number, and character number.\n\nIn summary, this method is responsible for creating an expression statement Node based on the provided expression, line number, and character number, taking into account whether it is inside a function or not.",
+      "line": 133
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet contains a private method named `transform` that takes an `AstNode` as input and returns a `Node`. The method is responsible for transforming an abstract syntax tree (AST) node into an intermediate representation (IR) node.\n\nWithin the method, it first handles any JSDoc comments associated with the node and then performs the transformation using the `justTransform` method. If there is JSDoc information available, it sets it in the resulting IR node.\n\nAdditionally, the method handles setting the position (line number and character number) of the IR node based on the type of the node. For named functions, it sets the position to that of the function name. If the node does not have a line number, it sets the line number and character number based on the original AST node.\n\nIn summary, this method is responsible for transforming an AST node into an IR node, handling JSDoc information, and setting the position of the resulting IR node based on the original AST node.",
+      "line": 229
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/IRFactory.java",
+      "description": "This code snippet is a method named `createContinue` that is responsible for creating and returning a new Node representing a continue statement in JavaScript. The method takes a label, line number, and character number as input parameters.\n\nIf the label is null, the method creates a simple continue statement Node. If the label is not null, it creates a labeled continue statement Node with the specified label. It then constructs and returns the resulting Node representing the continue statement.\n\nIn summary, this method is used to generate nodes representing continue statements in JavaScript, with the option to include a label if provided.",
+      "line": 275
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet is a private method named `justTransform` that takes an `AstNode` as input and returns a `Node`. The method delegates the transformation of the given AST node to a `transformDispatcher` object, which processes and transforms the node.\n\nIn summary, this method acts as a simple wrapper that forwards the AST node to a transformation dispatcher for processing and returns the resulting transformed node.",
+      "line": 275
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/TypeSafeDispatcher.java",
+      "description": "This code snippet is a method named `process` that takes an `AstNode` as input and processes it based on its type. The method uses a switch statement to handle different types of AST nodes and delegates the processing to specific methods based on the node's type.\n\nFor example, it processes binary and unary expressions, literals, loops, statements, function calls, and various other types of nodes. Each case in the switch statement corresponds to a specific type of AST node and calls the corresponding processing method.\n\nOverall, this method serves as a central dispatcher for processing different types of AST nodes, ensuring that each type is handled appropriately based on its specific characteristics and requirements.",
+      "line": 282
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/IRFactory.java",
+      "description": "This code snippet is a method named `createLeaf` that creates and returns a new Node with the specified node type. The method takes the node type as an input parameter and constructs a new Node with the given type.\n\nIn summary, this method is a simple utility for creating leaf nodes in an abstract syntax tree (AST) by instantiating a new Node with the specified type.",
+      "line": 77
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet introduces the beginning of a new class named `IRFactory`. The class name suggests that it might be related to creating or handling intermediate representation (IR) objects. However, without further context or the implementation of the class, it's not possible to provide a more detailed summary or explanation.",
+      "line": 77
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet defines a private method named `transform` within an unknown context. The method takes an `AstNode` as input and is responsible for transforming it into another representation, possibly an intermediate representation (IR) node.\n\nThe method first handles any JSDoc comments associated with the node and then performs the transformation using the `justTransform` method. If there is JSDoc information available, it sets it in the resulting IR node.\n\nAdditionally, the method handles setting the position (line number and character number) of the IR node based on the type of the node. For named functions, it sets the position to that of the function name. If the node does not have a line number, it sets the line number and character number based on the original AST node.\n\nOverall, this method appears to be a crucial part of a transformation process, ensuring that the resulting IR node is properly annotated and positioned based on the original AST node.",
+      "line": 229
+    },
+    {
+      "file": "/src/com/google/javascript/rhino/IRFactory.java",
+      "description": "This code snippet is a method named `createContinue` that is responsible for creating and returning a new Node representing a continue statement in a program's abstract syntax tree (AST). The method takes a label, line number, and character number as input parameters.\n\nIf the label is null, the method creates a simple continue statement Node. If the label is not null, it creates a labeled continue statement Node with the specified label. It then constructs and returns the resulting Node representing the continue statement.\n\nIn summary, this method is used to generate nodes representing continue statements in a program's AST, with the option to include a label if provided.",
+      "line": 275
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/IRFactory.java",
+      "description": "This code snippet features a private method called `justTransform` that accepts an `AstNode` as a parameter and returns a `Node`. The method delegates the transformation of the given AST node to a `transformDispatcher` object, which processes and transforms the node.\n\nIn essence, this method acts as a simple intermediary, forwarding the AST node to a transformation dispatcher for processing and returning the resulting transformed node.",
+      "line": 275
+    },
+    {
+      "file": "/src/com/google/javascript/jscomp/parsing/TypeSafeDispatcher.java",
+      "description": "This code snippet features a private method called `justTransform` that accepts an `AstNode` as a parameter and returns a `Node`. The method delegates the transformation of the given AST node to a `transformDispatcher` object, which processes and transforms the node.\n\nIn essence, this method acts as a simple intermediary, forwarding the AST node to a transformation dispatcher for processing and returning the resulting transformed node.",
+      "line": 282
+    }
+  ],
+  "ref": "D4J_Closure_81_BUGGY_VERSION"
+}

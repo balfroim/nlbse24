@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tour from testCircleFitting to getChiSquare",
+  "steps": [
+    {
+      "file": "/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java",
+      "description": "The second code snippet appears to be a test method for fitting a circle to a set of points using the Levenberg-Marquardt optimization algorithm. The test method sets up a circle with a few points, then uses the optimizer to find the best-fitting circle. It includes assertions to check various properties of the fitted circle, such as the radius, center coordinates, covariance, and parameter errors. Additionally, it adds perfect measurements to the circle and checks if the errors are reduced after optimization.\n\nThe test method seems to be quite comprehensive, covering various aspects of the circle fitting process and verifying the correctness of the optimization results through assertions.",
+      "line": 445
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+      "description": "The provided code snippet is a method named `guessParametersErrors` that is part of a class related to optimization. This method is responsible for estimating the errors in optimized parameters based on covariance. It calculates the errors and returns them as an array.\n\nThe method first checks if the number of measurements is greater than the number of parameters, and if not, it throws an OptimizationException. Then, it calculates the errors using the covariance matrix and the chi-square value. Finally, it returns the array of estimated errors.\n\nThis method seems to be an essential part of the optimization process, providing insights into the reliability of the optimized parameters by estimating their errors.",
+      "line": 324
+    },
+    {
+      "file": "/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java",
+      "description": "The provided code snippet contains a method named `getChiSquare` within a class related to optimization. This method calculates a Chi-Square-like value based on the residuals and their corresponding weights.\n\nThe method iterates through the residuals and calculates the Chi-Square value by summing the squares of the residuals divided by their respective weights. This calculation is based on the assumption that the residuals follow distinct normal distributions centered on 0, and their variances are the reciprocal of the weights.\n\nIn summary, the `getChiSquare` method computes a Chi-Square-like value, which is commonly used in statistical analysis to assess the goodness of fit of a model to the observed data.",
+      "line": 261
+    }
+  ],
+  "ref": "D4J_Math_65_BUGGY_VERSION"
+}
