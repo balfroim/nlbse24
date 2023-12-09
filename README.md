@@ -3,9 +3,9 @@
 ## Prerequisites for Running This Project
 
 Before running this project, ensure you have the following tools installed:
-- `codeql`: A code analysis engine used for detecting security vulnerabilities.
-- `defects4J`: A database of real-world Java bugs and tools for bug manipulation.
-- `poetry`: A tool for Python package management and dependency resolution.
+- `codeql`: https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli
+- `defects4J`: https://github.com/rjust/defects4j
+- `poetry`: https://python-poetry.org/
 
 ## Repository Structure Overview
 
