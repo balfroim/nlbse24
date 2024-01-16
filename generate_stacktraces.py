@@ -21,6 +21,8 @@ from models.method import Method
 from models.failing_test import FailingTest
 from constants.code import STACK_TRACE_RECORDER_CODE, STACK_TRACE_RECORDER_LINE
 from controllers.command_runner import CommandRunner
+from install_codeql import install_codeql
+
 
 bugs = Bug.from_json_file(DATASET_PATH)
 
@@ -106,7 +108,9 @@ def fail_tour(error, reason):
 
 # if codeql not exists raise exception
 if not os.path.exists("./codeql"):
-    raise Exception("CodeQL not found. Please install CodeQL (See https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli)")
+    logging.info("CodeQL not found. Installing CodeQL...")
+    install_codeql()
+    # raise Exception("CodeQL not found. Please install CodeQL (See https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli)")
 
 os.makedirs(os.path.join(*QUERIES_MIDDLE_PATH), exist_ok=True)
 os.makedirs("./stacktraces", exist_ok=True)
