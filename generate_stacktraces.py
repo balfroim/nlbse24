@@ -22,7 +22,10 @@ from models.failing_test import FailingTest
 from constants.code import STACK_TRACE_RECORDER_CODE, STACK_TRACE_RECORDER_LINE
 from controllers.command_runner import CommandRunner
 from install_codeql import install_codeql
+from decorators.ensure_in_path import ensure_in_path
 
+VERBOSE_SKIP = False
+DELETE = False
 
 bugs = Bug.from_json_file(DATASET_PATH)
 
@@ -85,8 +88,9 @@ def extract_changed_lines(src_path, data) -> List[ChangedLine]:
 def fail(bug, error, reason):
     logging.info(f"Skipping {bug.project.name} {bug.project.version} because it {reason}")
     logging.error(error)
-    with contextlib.suppress(Exception):
-        shutil.rmtree(bug.project.PATH)
+    if DELETE:
+        with contextlib.suppress(Exception):
+            shutil.rmtree(bug.project.PATH)
     CommandRunner.write_to_file(bug.project.STACKTRACE_PATH, json.dumps({
                     "tours": [],
                     "project": {
@@ -106,33 +110,28 @@ def fail_tour(error, reason):
             "error_message": str(error)
         }
 
-# if codeql not exists raise exception
 if not os.path.exists("./codeql"):
     logging.info("CodeQL not found. Installing CodeQL...")
     install_codeql()
-    # raise Exception("CodeQL not found. Please install CodeQL (See https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli)")
 
 os.makedirs(os.path.join(*QUERIES_MIDDLE_PATH), exist_ok=True)
 os.makedirs("./stacktraces", exist_ok=True)
 
-if not os.path.exists(os.path.join(*QUERIES_MIDDLE_PATH, "method_extract.qll")):
-    CommandRunner.write_to_file(os.path.join(*QUERIES_MIDDLE_PATH, "method_extract.qll"), EXTRACT_METHODS_QLL)
-
 for bug in bugs:
-    if os.path.exists(bug.project.STACKTRACE_PATH):
-        logging.info(f"Skipping {bug.project.name} {bug.project.version} because it is already done")
-        continue
-
-    if bug.project.name == "Mockito":
-        logging.info(f"Skipping {bug.project.name} {bug.project.version} because it is Mockito")
+    if os.path.exists(bug.project.STACKTRACE_PATH) or bug.project.name == "Mockito":
+        if VERBOSE_SKIP:
+            logging.info(f"Skipping {bug.project.name} {bug.project.version}")
         continue
 
     logging.info(f"Initializing {bug.project.name} {bug.project.version}")
     try:
         D4JController.checkout(bug.project)
         DBController.create_db(bug)
+    except TypeError as e:
+        fail(bug, e, ".env might not be set")
+        continue
     except Exception as e:
-        fail(e, "failed to initialize")
+        fail(bug, e, "failed to initialize")
         continue
 
     logging.info(f"Extracting start and end points for {bug.project.name} {bug.project.version}")
@@ -140,7 +139,7 @@ for bug in bugs:
     try:
         patched_methods = extract_patched_methods(bug)
     except Exception as e:
-        fail(e, "failed to extract patched methods")
+        fail(bug, e, "failed to extract patched methods")
         continue
 
 
@@ -185,4 +184,5 @@ for bug in bugs:
     })
     CommandRunner.write_to_file(bug.project.STACKTRACE_PATH, json_data)
 
-    shutil.rmtree(bug.project.PATH)
+    if DELETE:
+        shutil.rmtree(bug.project.PATH)
