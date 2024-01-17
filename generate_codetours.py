@@ -23,23 +23,12 @@ TEMPERATURE = 0.2 # Nam et al.
 with open("selected_tours.json") as f:
     taken_tours = json.load(f)
 
-# print(taken_tours)
-
-# raise Exception("STOP")
 
 dotenv.load_dotenv()
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-# print(taken_tours.)
-
-
-
 
 for tour in taken_tours:
-    # if tour['project']['name'] in already_done_projects:
-    #     continue
-    # already_done_projects.add(tour['project']['name'])
-
     test = FailingTest.from_json(json.loads(tour['test']))
     project = Project(tour['name'], tour['version'])
     method = Method.from_json(project, json.loads(tour['method']))
@@ -52,7 +41,6 @@ for tour in taken_tours:
     logging.info(f"PROMPT: {messages[-1]['content']}")
     explained_steps = []
     for step_data in tour["steps"]:
-        # step = json.load(step_data)
         step = json.loads(step_data["step"])
         messages.append({"role": "user", "content": EXPLAIN_PROMPT_TEMPLATE_FEWSHOT.format(code_snippet=step["content"])})
       
@@ -87,8 +75,6 @@ for tour in taken_tours:
         "steps": explained_steps,
         "ref": project.REF
     }
-    # D4JController.checkout(project)
     os.makedirs(project.TOURS_PATH, exist_ok=True)
     with open(project.tour_path(test.methodName, method.method_name), "w") as f:
         json.dump(codetour, f, indent=2)
-    # break
