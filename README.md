@@ -5,7 +5,15 @@
 Before running this project, ensure you have the following tools installed:
 - `codeql`: https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli
 - `defects4J`: https://github.com/rjust/defects4j
-- `poetry`: https://python-poetry.org/
+- `poetry`: You'll need Poetry to install the project dependencies. If you don't have it yet, check out [poetry](https://python-poetry.org/) to get it installed. The `poetry install` command installs dependencies and should be executed only once. The `poetry shell` command activates the virtual environment and should run at the start of each session.
+- `Java 8`: We recommend using [sdk man](https://sdkman.io/install) because all you have to do is execute the command `sdk env install` after `poetry shell` to easily install the exact Java version we used (8.0.362-amzn).
+
+Don't forget to create a `.env` file with these  variables:
+```bash
+DEFECTS4J_HOME= # path to Defects4J
+CODEQL_HOME= # path to CodeQL
+OPENAI_API_KEY= # OpenAI key
+```
 
 ## Repository Structure Overview
 
@@ -34,9 +42,7 @@ Before running this project, ensure you have the following tools installed:
 
 ### Data Resources
 
-- [stacktraces](./stacktraces): Contains generated stack traces for each project version.
 - [defects4j-bugs](./data/defects4j-bugs.json): Provides extracted information about Defects4J projects, sourced from Sobreira (2018).
-- [selected_tours.json](./selected_tours.json): Details about the selected code tours.
-- [tours](./tours): Stores all generated code tours.
+- [dataset](https://github.com/balfroim/nlbse24-dataset): You'll find the generated data from all the scripts
 
 
