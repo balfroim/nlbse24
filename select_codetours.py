@@ -4,69 +4,88 @@ import os
 import re
 import pandas as pd
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+def setting_up_logging():
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
                         logging.StreamHandler(),
-                              logging.FileHandler('analyse-stacktraces.log')
+                              logging.FileHandler('codetour-selection.log')
                 ]
-)
+    )
 
-projects = []
+def load_projects():
+    projects = []
+    for project_name in ("Chart", "Closure", "Lang", "Math", "Time"):
+        for filename in os.listdir('./stacktraces'):
+            filename_re = re.compile(r'^' + project_name + r'-\d+\.json$')
+            if filename_re.match(filename):
+                with open('./stacktraces/' + filename) as f:
+                    projects.append(json.load(f))
+    return projects
 
-for project_name in ("Chart", "Closure", "Lang", "Math", "Time"):
-    for filename in os.listdir('./stacktraces'):
-        filename_re = re.compile(r'^' + project_name + r'-\d+\.json$')
-        if filename_re.match(filename):
-            with open('./stacktraces/' + filename) as f:
-                projects.append(json.load(f))
-
-steps_tours = {
-    'name': [],
-    'version': [],
-    'test': [],
-    'method': [],
-    'order': [],
-    'step': [],
-    'tour_id': []
-}
-
-for project in projects:
+def get_project_failure_reason(project):
     if 'generation_failure' in project:
         reason = project['generation_failure']['error_message']
         if 'codeql database create' in reason:
             reason = 'Failing to create the database'
         if 'defects4j checkout' in reason:
             reason = 'Failing to checkout the project'
-    else:
-        for i_tour, tour in enumerate(project['tours']):
-            if 'generation_failure' in tour:
-                reason = tour['generation_failure']['error_message']
-                if 'No such file or directory' in reason:
-                    reason = 'Direct call'
-                if 'defects4j test' in reason:
-                    reason = 'Failing to run the test'
-                if 'codeql database analyze' in reason or reason == 'No columns to parse from file':
-                    reason = 'Failing to extract methods'
-            else:
-                for i_step, step in enumerate(tour['steps']):
-                    steps_tours['name'].append(project['project']['name'])
-                    steps_tours['version'].append(project['project']['version'])
-                    steps_tours['test'].append(json.dumps(tour['failing_test']))
-                    steps_tours['method'].append(json.dumps(tour['patched_method']))
-                    steps_tours['order'].append(i_step)
-                    steps_tours['step'].append(json.dumps(step))
-                    steps_tours['tour_id'].append(i_tour)
+        return reason
+    return None
 
-df_steps_tours = pd.DataFrame(steps_tours)
 
+def initialize_steps_tours_data():
+    return {
+        'name': [],
+        'version': [],
+        'test': [],
+        'method': [],
+        'order': [],
+        'step': [],
+        'tour_id': []
+    }
+
+def get_tour_failure_reason(tour):
+    if 'generation_failure' in tour:
+        reason = tour['generation_failure']['error_message']
+        if 'No such file or directory' in reason:
+            return 'Direct call'
+        if 'defects4j test' in reason:
+            return 'Failing to run the test'
+        if 'codeql database analyze' in reason or reason == 'No columns to parse from file':
+            return 'Failing to extract methods'
+    return None
+
+def append_step_data(project, tour, step, i_step, i_tour, steps_tours_data):
+    steps_tours_data['name'].append(project['project']['name'])
+    steps_tours_data['version'].append(project['project']['version'])
+    steps_tours_data['test'].append(json.dumps(tour['failing_test']))
+    steps_tours_data['method'].append(json.dumps(tour['patched_method']))
+    steps_tours_data['order'].append(i_step)
+    steps_tours_data['step'].append(json.dumps(step))
+    steps_tours_data['tour_id'].append(i_tour)
+
+def add_project_steps_to_data(project, steps_tours_data):
+    for i_tour, tour in enumerate(project['tours']):
+        reason = get_tour_failure_reason(tour)
+        if reason is None:
+            for i_step, step in enumerate(tour['steps']):
+                append_step_data(project, tour, step, i_step, i_tour, steps_tours_data)
+
+def json_list_to_df(projects):
+    """
+    Convert the projects the list of json files to a dataframe
+    """
+    steps_tours_data = initialize_steps_tours_data()
+    for project in projects:
+        reason = get_project_failure_reason(project)
+        if reason is None:
+            add_project_steps_to_data(project, steps_tours_data)
+    return pd.DataFrame(steps_tours_data)
+
+projects = load_projects()
+df_steps_tours = json_list_to_df(projects)
 df_steps_tours = df_steps_tours.sort_values(by=['name', 'version', 'tour_id', 'order'])
-
-
 grouped_tours = df_steps_tours.groupby(['name', 'version', 'tour_id'])
-
 tours_per_project_count = grouped_tours.count().groupby(['name'])
-
-tours_per_project_count_describe = tours_per_project_count['order'].describe()
-
 min_length_steps_per_project = tours_per_project_count.quantile(0.25)['order']
 min_length_steps_per_project = min_length_steps_per_project.map(lambda x: 3 if x < 3 else x)
 max_length_steps_per_project = tours_per_project_count.quantile(0.75)['order']
@@ -98,11 +117,6 @@ for tour_id, tour_data in grouped_tours:
         unique_methods_set.add(method)
 
 df_selected_tours = df_steps_tours.set_index(['name', 'version', 'tour_id']).loc[selected_tours_refined].sort_values(by=['name', 'version', 'tour_id', 'order']).reset_index()
-
-tours_per_project_count = pd.DataFrame(selected_tours_refined, columns=['name', 'version', 'tour_id']).groupby('name').size().sort_values(ascending=False)
-
-print(tours_per_project_count.sum())
-
 common_attributes = df_selected_tours[['name', 'version', 'tour_id', 'test', 'method']].drop_duplicates()
 steps = df_selected_tours.groupby(['name', 'version', 'tour_id'])[['step']].apply(lambda x: x.to_dict(orient='records')).rename('steps')
 grouped_tours = common_attributes.join(steps, on=['name', 'version', 'tour_id'])
