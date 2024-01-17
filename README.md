@@ -34,6 +34,7 @@ OPENAI_API_KEY= # OpenAI key
   - [queries](./constants/queries.py): CodeQL queries for method extraction.
 - [ensure_in_path](./decorators/ensure_in_path.py): Ensures that `defects4J` and `codeql` are included in the system PATH.
 - [pyproject.toml](./pyproject.toml): Configures project settings, dependencies, and build specifications.
+- [install_codeql](./install_codeql.py): Install codeql libraries
 
 ### Scripts
 

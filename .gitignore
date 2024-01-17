@@ -8,3 +8,9 @@ codeql/
 .env
 
 projects/
+
+selected_tours.json
+
+stacktraces/
+
+tours/

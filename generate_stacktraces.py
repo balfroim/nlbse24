@@ -20,12 +20,10 @@ import contextlib
 from models.method import Method
 from models.failing_test import FailingTest
 from constants.code import STACK_TRACE_RECORDER_CODE, STACK_TRACE_RECORDER_LINE
+from constants.values import DELETE, VERBOSE_SKIP
 from controllers.command_runner import CommandRunner
 from install_codeql import install_codeql
 from decorators.ensure_in_path import ensure_in_path
-
-VERBOSE_SKIP = False
-DELETE = False
 
 bugs = Bug.from_json_file(DATASET_PATH)
 
@@ -83,14 +81,16 @@ def extract_changed_lines(src_path, data) -> List[ChangedLine]:
         changed_lines.append(changed_line)
     return changed_lines
 
-
+def delete_project(path):
+    if DELETE:
+        with contextlib.suppress(Exception):
+            shutil.rmtree(path)
+        logging.info(f"Deleted {bug.project.name} {bug.project.version}")
 
 def fail(bug, error, reason):
     logging.info(f"Skipping {bug.project.name} {bug.project.version} because it {reason}")
     logging.error(error)
-    if DELETE:
-        with contextlib.suppress(Exception):
-            shutil.rmtree(bug.project.PATH)
+    delete_project(bug.project.PATH)
     CommandRunner.write_to_file(bug.project.STACKTRACE_PATH, json.dumps({
                     "tours": [],
                     "project": {
@@ -184,5 +184,4 @@ for bug in bugs:
     })
     CommandRunner.write_to_file(bug.project.STACKTRACE_PATH, json_data)
 
-    if DELETE:
-        shutil.rmtree(bug.project.PATH)
+    delete_project(bug.project.PATH)
