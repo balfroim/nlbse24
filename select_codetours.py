@@ -70,27 +70,22 @@ def add_project_steps_to_data(project, steps_tours_data):
             for i_step, step in enumerate(tour['steps']):
                 append_step_data(project, tour, step, i_step, i_tour, steps_tours_data)
 
-def generate_df_steps_tours():
-    projects = load_projects()
+def json_list_to_df(projects):
+    """
+    Convert the projects the list of json files to a dataframe
+    """
     steps_tours_data = initialize_steps_tours_data()
     for project in projects:
         reason = get_project_failure_reason(project)
         if reason is None:
             add_project_steps_to_data(project, steps_tours_data)
-
     return pd.DataFrame(steps_tours_data)
 
-df_steps_tours = generate_df_steps_tours()
-
+projects = load_projects()
+df_steps_tours = json_list_to_df(projects)
 df_steps_tours = df_steps_tours.sort_values(by=['name', 'version', 'tour_id', 'order'])
-
-
 grouped_tours = df_steps_tours.groupby(['name', 'version', 'tour_id'])
-
 tours_per_project_count = grouped_tours.count().groupby(['name'])
-
-tours_per_project_count_describe = tours_per_project_count['order'].describe()
-
 min_length_steps_per_project = tours_per_project_count.quantile(0.25)['order']
 min_length_steps_per_project = min_length_steps_per_project.map(lambda x: 3 if x < 3 else x)
 max_length_steps_per_project = tours_per_project_count.quantile(0.75)['order']
@@ -122,11 +117,6 @@ for tour_id, tour_data in grouped_tours:
         unique_methods_set.add(method)
 
 df_selected_tours = df_steps_tours.set_index(['name', 'version', 'tour_id']).loc[selected_tours_refined].sort_values(by=['name', 'version', 'tour_id', 'order']).reset_index()
-
-tours_per_project_count = pd.DataFrame(selected_tours_refined, columns=['name', 'version', 'tour_id']).groupby('name').size().sort_values(ascending=False)
-
-print(tours_per_project_count.sum())
-
 common_attributes = df_selected_tours[['name', 'version', 'tour_id', 'test', 'method']].drop_duplicates()
 steps = df_selected_tours.groupby(['name', 'version', 'tour_id'])[['step']].apply(lambda x: x.to_dict(orient='records')).rename('steps')
 grouped_tours = common_attributes.join(steps, on=['name', 'version', 'tour_id'])
