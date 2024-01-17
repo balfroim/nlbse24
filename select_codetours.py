@@ -19,22 +19,6 @@ for project_name in ("Chart", "Closure", "Lang", "Math", "Time"):
             with open('./stacktraces/' + filename) as f:
                 projects.append(json.load(f))
 
-generations_failures_projects = {
-    'name': [],
-    'version': [],
-    'reason': [],
-    'error_message': []
-}
-
-generations_failures_tours = {
-    'name': [],
-    'version': [],
-    'test': [],
-    'method': [],
-    'reason': [],
-    'error_message': []
-}
-
 steps_tours = {
     'name': [],
     'version': [],
@@ -42,29 +26,18 @@ steps_tours = {
     'method': [],
     'order': [],
     'step': [],
-    # 'step_content': [],
     'tour_id': []
 }
 
 for project in projects:
-    generations_failures_projects['name'].append(project['project']['name'])
-    generations_failures_projects['version'].append(project['project']['version'])
     if 'generation_failure' in project:
         reason = project['generation_failure']['error_message']
         if 'codeql database create' in reason:
             reason = 'Failing to create the database'
         if 'defects4j checkout' in reason:
             reason = 'Failing to checkout the project'
-        generations_failures_projects['reason'].append(reason)
-        generations_failures_projects['error_message'].append(project['generation_failure']['error_message'])
     else:
-        generations_failures_projects['reason'].append('No generation failure')
-        generations_failures_projects['error_message'].append('No generation failure')
         for i_tour, tour in enumerate(project['tours']):
-            generations_failures_tours['name'].append(project['project']['name'])
-            generations_failures_tours['version'].append(project['project']['version'])
-            generations_failures_tours['test'].append(tour['failing_test']['methodName'])
-            generations_failures_tours['method'].append(tour['patched_method']['method_name'])
             if 'generation_failure' in tour:
                 reason = tour['generation_failure']['error_message']
                 if 'No such file or directory' in reason:
@@ -72,13 +45,8 @@ for project in projects:
                 if 'defects4j test' in reason:
                     reason = 'Failing to run the test'
                 if 'codeql database analyze' in reason or reason == 'No columns to parse from file':
-                    # print(project['project']['name'], project['project']['version'])
                     reason = 'Failing to extract methods'
-                generations_failures_tours['reason'].append(reason)
-                generations_failures_tours['error_message'].append(tour['generation_failure']['error_message'])
             else:
-                generations_failures_tours['reason'].append('No generation failure')
-                generations_failures_tours['error_message'].append('No generation failure')
                 for i_step, step in enumerate(tour['steps']):
                     steps_tours['name'].append(project['project']['name'])
                     steps_tours['version'].append(project['project']['version'])
