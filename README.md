@@ -1,4 +1,10 @@
-# nlbse24
+# Towards LLM-Generated Code Tours for Onboarding - NLBSE@ICSE24
+
+## What is this Project ?
+
+**Abstract**
+
+> Onboarding new developers is a challenge for any software project. Addressing this challenge relies on human resources (e.g., having a senior developer write documentation or mentor the new developer). One promising solution is using annotated code tours. While this approach partially lifts the need for mentorship, it still requires a senior developer to write this interactive form of documentation. This paper argues that a Large Language Model (LLM) might help with this documentation process. Our approach is to record the stack trace between a failed test and a faulty method. We then extract code snippets from the methods in this stack trace using CodeQL, a static analysis tool and have them explained by \texttt{gpt-3.5-turbo-1106}, the LLM behind ChatGPT. Finally, we evaluate the quality of a sample of these generated tours using a checklist. We show that the automatic generation of code tours is feasible but has limitations like redundant and low-level explanations.
 
 ## Prerequisites for Running This Project
 
