@@ -463,7 +463,7 @@ The "[select-codetours.py](http://select-codetours.py/)" script helps in selecti
         
         We used the example from Figure 1 in Taylor, 2022. However, since we did not have the original code, we generated our version using ChatGPT based on the explanation. The generated code snippet may not be completely accurate or fully aligned with the description. However, this should be fine as ground truth demonstrations are not required [(Min, 2022)](https://aclanthology.org/2022.emnlp-main.759/).
         
-![Figure 1 in Taylor, 2022](./images/Untitled.png)
+![Figure 1 in Taylor, 2022](./images/figure1.png)
         
         > 
         > 
