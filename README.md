@@ -52,7 +52,7 @@ We will use Chart 25 from falling test testDrawWithNullMeanVertical to the fault
 
 ### 1. Initialisation
 
-- Checking out the project's faulty (`b`) version using the `[defects4j checkout](http://defects4j.org/html_doc/d4j/d4j-checkout.html)` command.
+- Checking out the project's faulty (`b`) version using the [`defects4j checkout`](http://defects4j.org/html_doc/d4j/d4j-checkout.html) command.
 - Preparing CodeQL
     - Copying the [folder](https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli) that contains the necessary tools and libraries for CodeQL database creation and analysis.
         - It contains the `method_extract.qll` file that helps extract methods or constructors' start and end lines from a Java class or interface.
@@ -115,7 +115,7 @@ We will use Chart 25 from falling test testDrawWithNullMeanVertical to the fault
             }
             ```
             
-    - Running the `[codeql database create](https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual/database-create)` command to create the CodeQL database.
+    - Running the [`codeql database create`](https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual/database-create) command to create the CodeQL database.
         
         Note that the database creation time has been reduced by deleting passing tests. Automatic fixes are applied in some projects.
         
@@ -463,7 +463,7 @@ The "[select-codetours.py](http://select-codetours.py/)" script helps in selecti
         
         We used the example from Figure 1 in Taylor, 2022. However, since we did not have the original code, we generated our version using ChatGPT based on the explanation. The generated code snippet may not be completely accurate or fully aligned with the description. However, this should be fine as ground truth demonstrations are not required [(Min, 2022)](https://aclanthology.org/2022.emnlp-main.759/).
         
-        ![Untitled](images/Untitled.png)
+![Figure 1 in Taylor, 2022](./images/Untitled.png)
         
         > 
         > 
@@ -509,5 +509,7 @@ The "[select-codetours.py](http://select-codetours.py/)" script helps in selecti
         > "”"
         >
 
+Here is an excerpt of the sixth step of the code tour generated:
+![Excerpt](./images/excerpt.png)
 
 
